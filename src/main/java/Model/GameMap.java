@@ -41,6 +41,8 @@ public class GameMap {
         List<Element> elements = new ArrayList<>();
 
         elements.add(chicken);
+        for(Vehicle vehicle: vehicles)
+            elements.add(vehicle);
 
         return elements;
     }
