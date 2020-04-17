@@ -15,7 +15,7 @@ public class Game {
 
     private void start() throws IOException {
         GameMapCreator creator = new GameMapCreator();
-        map = creator.createGameMap(35,60);
+        map = creator.createGameMap(40,35);
 
         gui = new Gui(map);
         gui.draw();
