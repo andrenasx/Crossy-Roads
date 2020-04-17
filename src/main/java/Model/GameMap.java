@@ -4,15 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameMap {
-    private int height;
     private int width;
-
+    private int height;
     private Chicken chicken;
 
-    public GameMap(int height, int width) {
-        this.height = height;
+    public GameMap(int width, int height) {
         this.width = width;
-        this.chicken = new Chicken(20, 40);
+        this.height = height;
+        this.chicken = new Chicken(15, 20);
     }
 
     public int getHeight() {
