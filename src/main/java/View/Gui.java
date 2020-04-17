@@ -1,10 +1,10 @@
 package View;
 
+import Model.Chicken;
+import Model.Element;
 import Model.GameMap;
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.TextColor;
+import Model.Position;
+import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
@@ -12,7 +12,6 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
-import javax.swing.text.Position;
 import java.io.IOException;
 
 public class Gui {
@@ -27,7 +26,7 @@ public class Gui {
 
         screen.setCursorPosition(null);   // we don't need a cursor
         screen.startScreen();             // screens must be started
-        //screen.doResizeIfNecessary();     // resize screen if necessary
+        screen.doResizeIfNecessary();     // resize screen if necessary
 
         this.gameMap = map;
     }
@@ -37,14 +36,29 @@ public class Gui {
 
         drawGameMap();
 
+        for (Element element: gameMap.getAllElements()) drawElement(element);
+
         screen.refresh();
     }
 
     private void drawGameMap() {
         TextGraphics graphics = screen.newTextGraphics();
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#336699"));
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
         graphics.fillRectangle(
                 new TerminalPosition(0, 0),
-                new TerminalSize(gameMap.getWidth(), gameMap.getHeight()), ' ');
+               new TerminalSize(gameMap.getWidth(), gameMap.getHeight()), ' ');
+    }
+
+    private void drawElement(Element element) {
+        if (element instanceof Chicken) drawCharacter(element.getPosition(), "O", "#FFFFFF");
+    }
+
+    private void drawCharacter(Position position, String character, String color) {
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
+        graphics.setForegroundColor(TextColor.Factory.fromString(color));
+        graphics.enableModifiers(SGR.BOLD);
+
+        graphics.putString(position.getX(), position.getY(), character);
     }
 }
