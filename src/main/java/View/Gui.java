@@ -34,7 +34,6 @@ public class Gui {
         drawGameMap();
 
         for (Element element: gameMap.getAllElements()) drawElement(element);
-
         screen.refresh();
     }
 
