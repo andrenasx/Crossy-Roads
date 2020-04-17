@@ -8,11 +8,13 @@ public class GameMap {
     private int width;
 
     private Chicken chicken;
+    private List<Vehicle> vehicles;
 
     public GameMap(int height, int width) {
         this.height = height;
         this.width = width;
         this.chicken = new Chicken(20, 40);
+        this.vehicles = new ArrayList<>();
     }
 
     public int getHeight() {
@@ -29,6 +31,11 @@ public class GameMap {
 
     public void setWidth(int width) {
         this.width = width;
+    }
+
+    public void addElement(Element element) {
+        if (element instanceof Car) vehicles.add((Car) element);
+
     }
 
     public List<Element> getAllElements() {
