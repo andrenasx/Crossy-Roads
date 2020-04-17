@@ -1,9 +1,6 @@
 package View;
 
-import Model.Chicken;
-import Model.Element;
-import Model.GameMap;
-import Model.Position;
+import Model.*;
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
@@ -51,6 +48,7 @@ public class Gui {
 
     private void drawElement(Element element) {
         if (element instanceof Chicken) drawCharacter(element.getPosition(), "O", "#FFFFFF");
+        if (element instanceof Car) drawCharacter(element.getPosition(), "C", "#FFFFFF");
     }
 
     private void drawCharacter(Position position, String character, String color) {
