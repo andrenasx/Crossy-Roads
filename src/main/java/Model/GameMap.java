@@ -9,6 +9,7 @@ public class GameMap {
     private Chicken chicken;
     private List<Vehicle> vehicles;
     private boolean gamefinished;
+    private List<GameMapObserver> observers;
 
     public GameMap(int width, int height) {
         this.width = width;
@@ -16,6 +17,7 @@ public class GameMap {
         this.chicken = new Chicken(15, 20);
         this.vehicles = new ArrayList<>();
         this.gamefinished = false;
+        this.observers = new ArrayList<>();
     }
 
     public int getHeight() {
@@ -64,6 +66,7 @@ public class GameMap {
     public void moveChicken(Position position){
         if (chickenStaysInScreen(position))
             chicken.setPosition(position);
+        this.notifyObservers();
     }
 
     public boolean isGameFinished(){
@@ -72,5 +75,15 @@ public class GameMap {
 
     public void gameFinish(){
         this.gamefinished = true;
+    }
+
+    public void addObserver(GameMapObserver observer) {
+        observers.add(observer);
+    }
+
+    public void notifyObservers() {
+        for (GameMapObserver observer : observers) {
+            observer.gameMapChanged();
+        }
     }
 }
