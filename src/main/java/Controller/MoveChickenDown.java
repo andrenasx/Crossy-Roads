@@ -1,5 +1,4 @@
 package Controller;
-
 import Model.GameMap;
 import Model.Position;
 
