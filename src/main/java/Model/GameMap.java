@@ -33,6 +33,7 @@ public class GameMap {
     }
 
     public void addElement(Element element) {
+        if (element instanceof Chicken) chicken = (Chicken) element;
         if (element instanceof Car) vehicles.add((Car) element);
         if (element instanceof Truck) vehicles.add((Truck) element);
 
@@ -42,9 +43,7 @@ public class GameMap {
         List<Element> elements = new ArrayList<>();
 
         elements.add(chicken);
-        for(Vehicle vehicle: vehicles)
-            elements.add(vehicle);
-
+        elements.addAll(vehicles);
         return elements;
     }
 }
