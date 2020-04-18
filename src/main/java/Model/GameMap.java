@@ -67,7 +67,7 @@ public class GameMap {
     }
 
     public boolean isGameFinished(){
-        return gamefinished;
+        return gamefinished || chicken.isDead();
     }
 
     public void gameFinish(){
