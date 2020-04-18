@@ -48,6 +48,7 @@ public class Gui {
     private void drawElement(Element element) {
         if (element instanceof Chicken) drawCharacter(element.getPosition(), "O", "#FFFFFF");
         if (element instanceof Car) drawCharacter(element.getPosition(), "C", "#FFFFFF");
+        if (element instanceof Truck) drawCharacter(element.getPosition(), "TT", "#FFFFFF");
     }
 
     private void drawCharacter(Position position, String character, String color) {
