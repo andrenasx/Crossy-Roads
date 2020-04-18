@@ -10,6 +10,7 @@ public class GameMap {
     private List<Vehicle> vehicles;
     private boolean gamefinished;
     private List<GameMapObserver> observers;
+    private List<Coin> coins;
 
     public GameMap(int width, int height) {
         this.width = width;
@@ -18,6 +19,7 @@ public class GameMap {
         this.vehicles = new ArrayList<>();
         this.gamefinished = false;
         this.observers = new ArrayList<>();
+        this.coins = new ArrayList<>();
     }
 
     public int getHeight() {
@@ -40,6 +42,7 @@ public class GameMap {
         if (element instanceof Chicken) chicken = (Chicken) element;
         if (element instanceof Car) vehicles.add((Car) element);
         if (element instanceof Truck) vehicles.add((Truck) element);
+        if (element instanceof Coin) coins.add((Coin) element);
 
     }
 
@@ -48,6 +51,7 @@ public class GameMap {
 
         elements.add(chicken);
         elements.addAll(vehicles);
+        elements.addAll(coins);
         return elements;
     }
 
