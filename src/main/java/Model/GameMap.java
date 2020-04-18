@@ -34,6 +34,7 @@ public class GameMap {
 
     public void addElement(Element element) {
         if (element instanceof Car) vehicles.add((Car) element);
+        if (element instanceof Truck) vehicles.add((Truck) element);
 
     }
 
