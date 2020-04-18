@@ -1,5 +1,6 @@
 package View;
 
+import Controller.*;
 import Model.*;
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -58,5 +59,20 @@ public class Gui {
         graphics.enableModifiers(SGR.BOLD);
 
         graphics.putString(position.getX(), position.getY(), character);
+    }
+
+    public Command getNextCommand() throws IOException {
+        KeyStroke input = screen.readInput();
+
+        System.out.println(input.getCharacter());
+
+        if (input.getKeyType() == KeyType.EOF) return new QuitCommand(gameMap, screen);
+        if (input.getKeyType() == KeyType.Character && input.getCharacter() == 'q') return new QuitCommand(gameMap, screen);
+        if (input.getKeyType() == KeyType.ArrowDown) return new MoveChickenDown(gameMap);
+        if (input.getKeyType() == KeyType.ArrowUp) return new MoveChickenUp(gameMap);
+        if (input.getKeyType() == KeyType.ArrowLeft) return new MoveChickenLeft(gameMap);
+        if (input.getKeyType() == KeyType.ArrowRight) return new MoveChickenRight(gameMap);
+
+        return new DoNothingCommand();
     }
 }
