@@ -3,16 +3,16 @@ package Controller;
 import Model.GameMap;
 import Model.Position;
 
-public class MoveHeroDown extends Command {
+public class MoveChickenUp extends Command {
     private GameMap map;
 
-    public MoveHeroDown(GameMap map) {
+    public MoveChickenUp(GameMap map) {
         this.map = map;
     }
 
     @Override
     public void execute() {
-        Position position = map.getChickenPosition().down();
+        Position position = map.getChickenPosition().up();
         map.moveChicken(position);
     }
 }
