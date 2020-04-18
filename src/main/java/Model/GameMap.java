@@ -8,12 +8,14 @@ public class GameMap {
     private int height;
     private Chicken chicken;
     private List<Vehicle> vehicles;
+    private boolean gamefinished;
 
     public GameMap(int width, int height) {
         this.width = width;
         this.height = height;
         this.chicken = new Chicken(15, 20);
         this.vehicles = new ArrayList<>();
+        this.gamefinished = false;
     }
 
     public int getHeight() {
@@ -62,5 +64,13 @@ public class GameMap {
     public void moveChicken(Position position){
         if (chickenStaysInScreen(position))
             chicken.setPosition(position);
+    }
+
+    public boolean isGameFinished(){
+        return gamefinished;
+    }
+
+    public void gameFinish(){
+        this.gamefinished = true;
     }
 }
