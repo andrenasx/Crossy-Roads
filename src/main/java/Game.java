@@ -1,3 +1,4 @@
+import Controller.Command;
 import Model.GameMap;
 import Model.GameMapCreator;
 import View.Gui;
@@ -19,5 +20,11 @@ public class Game {
 
         gui = new Gui(map);
         gui.draw();
+
+        while(!map.isGameFinished()){
+            Command command = gui.getNextCommand();
+            command.execute();
+            gui.draw();
+        }
     }
 }
