@@ -46,4 +46,21 @@ public class GameMap {
         elements.addAll(vehicles);
         return elements;
     }
+
+    public Position getChickenPosition(){
+        return chicken.getPosition();
+    }
+
+    private boolean chickenStaysInScreen(Position position){
+        if (position.getX() < 0 || position.getX() >= width)
+            return false;
+        if (position.getY() < 0 || position.getY() >= height)
+            return false;
+        return true;
+    }
+
+    public void moveChicken(Position position){
+        if (chickenStaysInScreen(position))
+            chicken.setPosition(position);
+    }
 }
