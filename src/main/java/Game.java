@@ -1,12 +1,13 @@
 import Controller.Command;
 import Model.GameMap;
 import Model.GameMapCreator;
+import Model.GameMapObserver;
 import View.Gui;
 
 import java.io.IOException;
 import java.util.Map;
 
-public class Game {
+public class Game implements GameMapObserver {
     private GameMap map;
     private Gui gui;
 
@@ -17,6 +18,7 @@ public class Game {
     private void start() throws IOException {
         GameMapCreator creator = new GameMapCreator();
         map = creator.createGameMap(40,35);
+        map.addObserver(this);
 
         gui = new Gui(map);
         gui.draw();
@@ -24,7 +26,15 @@ public class Game {
         while(!map.isGameFinished()){
             Command command = gui.getNextCommand();
             command.execute();
+        }
+    }
+
+    @Override
+    public void gameMapChanged() {
+        try {
             gui.draw();
+        } catch (IOException e) {
+            // Nothing to do if drawing fails
         }
     }
 }
