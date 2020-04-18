@@ -21,4 +21,8 @@ public class Chicken extends Element{
     public boolean isDead(){
         return this.lives<=0;
     }
+
+    public void raiseScore(int quantity){
+        this.score += quantity;
+    }
 }
