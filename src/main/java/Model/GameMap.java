@@ -69,6 +69,13 @@ public class GameMap {
         this.notifyObservers();
     }
 
+    public void moveVehicles(){
+        for (Vehicle vehicle: vehicles){
+            vehicle.setPosition(vehicle.getPosition().left());
+        }
+        this.notifyObservers();
+    }
+
     public boolean isGameFinished(){
         return gamefinished || chicken.isDead();
     }

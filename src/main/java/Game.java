@@ -26,6 +26,7 @@ public class Game implements GameMapObserver {
         while(!map.isGameFinished()){
             Command command = gui.getNextCommand();
             command.execute();
+            map.moveVehicles();
         }
     }
 
