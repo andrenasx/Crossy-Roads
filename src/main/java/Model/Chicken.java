@@ -25,4 +25,6 @@ public class Chicken extends Element{
     public void raiseScore(int quantity){
         this.score += quantity;
     }
+
+    public void removeLife(){this.lives-=1;};
 }
