@@ -10,12 +10,14 @@ import java.util.Map;
 public class Game implements GameMapObserver {
     private GameMap map;
     private Gui gui;
+    private long startTime;
 
     public static void main(String[] args) throws IOException {
         new Game().start();
     }
 
     private void start() throws IOException {
+        startTime = System.currentTimeMillis();
         GameMapCreator creator = new GameMapCreator();
         map = creator.createGameMap(40,35);
         map.addObserver(this);
@@ -23,10 +25,13 @@ public class Game implements GameMapObserver {
         gui = new Gui(map);
         gui.draw();
 
+
+
         while(!map.isGameFinished()){
             Command command = gui.getNextCommand();
             command.execute();
-            map.moveVehicles();
+            if ((System.currentTimeMillis() - startTime) % 1000 == 0)
+                map.moveVehicles();
         }
     }
 

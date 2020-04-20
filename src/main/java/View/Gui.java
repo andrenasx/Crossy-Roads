@@ -62,16 +62,16 @@ public class Gui {
     }
 
     public Command getNextCommand() throws IOException {
-        KeyStroke input = screen.readInput();
+        KeyStroke input = screen.pollInput();
 
-        System.out.println(input.getCharacter());
-
-        if (input.getKeyType() == KeyType.EOF) return new QuitCommand(gameMap, screen);
-        if (input.getKeyType() == KeyType.Character && input.getCharacter() == 'q') return new QuitCommand(gameMap, screen);
-        if (input.getKeyType() == KeyType.ArrowDown) return new MoveChickenDown(gameMap);
-        if (input.getKeyType() == KeyType.ArrowUp) return new MoveChickenUp(gameMap);
-        if (input.getKeyType() == KeyType.ArrowLeft) return new MoveChickenLeft(gameMap);
-        if (input.getKeyType() == KeyType.ArrowRight) return new MoveChickenRight(gameMap);
+        if (input != null){
+            if (input.getKeyType() == KeyType.EOF) return new QuitCommand(gameMap, screen);
+            if (input.getKeyType() == KeyType.Character && input.getCharacter() == 'q') return new QuitCommand(gameMap, screen);
+            if (input.getKeyType() == KeyType.ArrowDown) return new MoveChickenDown(gameMap);
+            if (input.getKeyType() == KeyType.ArrowUp) return new MoveChickenUp(gameMap);
+            if (input.getKeyType() == KeyType.ArrowLeft) return new MoveChickenLeft(gameMap);
+            if (input.getKeyType() == KeyType.ArrowRight) return new MoveChickenRight(gameMap);
+        }
 
         return new DoNothingCommand();
     }
