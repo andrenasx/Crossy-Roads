@@ -70,6 +70,8 @@ public class GameMap {
     public void moveChicken(Position position){
         if (chickenStaysInScreen(position))
             chicken.setPosition(position);
+        checkCollisions(position);
+
         this.notifyObservers();
     }
 
@@ -78,6 +80,29 @@ public class GameMap {
             vehicle.setPosition(vehicle.getPosition().left());
         }
         this.notifyObservers();
+    }
+
+    private void checkCollisions(Position position) {
+        Vehicle vehicle = (Vehicle) getCollidingElement(position, vehicles);
+        if (vehicle != null) {
+            chicken.removeLife();
+            System.out.println(chicken.getLives());
+        }
+
+        Coin coin = (Coin) getCollidingElement(position, coins);
+        if (coin != null) {
+            chicken.raiseScore(coin.getValue());
+            System.out.println(chicken.getScore());
+            coins.remove(coin);
+        }
+    }
+
+    private Element getCollidingElement(Position position, List<? extends Element> elements) {
+        for (Element element : elements)
+            if (element.getPosition().equals(position))
+                return element;
+
+        return null;
     }
 
     public boolean isGameFinished(){
