@@ -77,7 +77,10 @@ public class GameMap {
 
     public void moveVehicles(){
         for (Vehicle vehicle: vehicles){
-            vehicle.setPosition(vehicle.getPosition().left());
+            if(vehicle.getDirection().equals("left"))
+                vehicle.setPosition(vehicle.getPosition().left());
+            else
+                vehicle.setPosition(vehicle.getPosition().right());
         }
         this.notifyObservers();
     }
