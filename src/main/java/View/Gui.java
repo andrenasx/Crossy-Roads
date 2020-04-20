@@ -10,7 +10,7 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
-import java.io.IOException;
+import java.io.*;
 
 public class Gui {
     private final GameMap gameMap;
@@ -40,22 +40,50 @@ public class Gui {
 
     private void drawGameMap() {
         TextGraphics graphics = screen.newTextGraphics();
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
-        graphics.fillRectangle(
-                new TerminalPosition(0, 0),
-               new TerminalSize(gameMap.getWidth(), gameMap.getHeight()), ' ');
+        File file = new File("../map.txt");
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(file));
+            String st;
+            int x = 0;
+            int y = 0;
+            while ((st = br.readLine()) != null){
+                if(st.equals("gggggggggggggggggggggggggggggggggggggggg")){
+                    graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
+                    graphics.fillRectangle(
+                        new TerminalPosition(x,  y),
+                        new TerminalSize(gameMap.getWidth(), 1), ' ');
+                    y++;
+                }
+                else if(st.equals("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")){
+                    graphics.setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
+                    graphics.fillRectangle(
+                            new TerminalPosition(x,  y),
+                            new TerminalSize(gameMap.getWidth(), 1), ' ');
+                    y++;
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void drawElement(Element element) {
-        if (element instanceof Chicken) drawCharacter(element.getPosition(), "O", "#FFFFFF");
-        if (element instanceof Car) drawCharacter(element.getPosition(), "CC", "#FF0000");
-        if (element instanceof Truck) drawCharacter(element.getPosition(), "TTTTT", "#0000FF");
-        if (element instanceof Coin) drawCharacter(element.getPosition(), "S", "#FFFF00");
+        if (element instanceof Chicken) drawCharacter(element.getPosition(), "O", "#FFFFFF", false);
+        if (element instanceof Car) drawCharacter(element.getPosition(), "CC", "#FF0000", true);
+        if (element instanceof Truck) drawCharacter(element.getPosition(), "TTTTT", "#0000FF", true);
+        if (element instanceof Coin) drawCharacter(element.getPosition(), "S", "#FFFF00", false);
     }
 
-    private void drawCharacter(Position position, String character, String color) {
+    private void drawCharacter(Position position, String character, String color, boolean road) {
         TextGraphics graphics = screen.newTextGraphics();
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
+        if(road){
+            graphics.setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
+        }
+        else
+            graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
         graphics.setForegroundColor(TextColor.Factory.fromString(color));
         graphics.enableModifiers(SGR.BOLD);
 
