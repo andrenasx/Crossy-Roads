@@ -15,7 +15,7 @@ public class GameMap {
     public GameMap(int width, int height) {
         this.width = width;
         this.height = height;
-        this.chicken = new Chicken(15, 20);
+        this.chicken = new Chicken(width/2, height-1);
         this.vehicles = new ArrayList<>();
         this.gamefinished = false;
         this.observers = new ArrayList<>();
