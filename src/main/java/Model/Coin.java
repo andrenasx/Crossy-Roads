@@ -5,6 +5,8 @@ public class Coin extends Element {
     public Coin(int x, int y, int value) {
         super(x, y);
         this.value = value;
+        setCharacter("S");
+        setColor("#FFFF00");
     }
 
     public int getValue() {
