@@ -76,24 +76,25 @@ public class Gui {
 
     }
 
-    private void drawElement(Element element) {
+    /*private void drawElement(Element element) {
         if (element instanceof Chicken) drawCharacter(element.getPosition(), "O", "#FFFFFF", false);
         if (element instanceof Car) drawCharacter(element.getPosition(), "CC", "#FF0000", true);
-        if (element instanceof Truck) drawCharacter(element.getPosition(), "TTTTT", "#0000FF", true);
+        if (element instanceof Truck) drawCharacter(element.getPosition(), "TTTT", "#0000FF", true);
         if (element instanceof Coin) drawCharacter(element.getPosition(), "S", "#FFFF00", false);
-    }
+    }*/
 
-    private void drawCharacter(Position position, String character, String color, boolean road) {
+    private void drawElement(Element element) {
         TextGraphics graphics = screen.newTextGraphics();
+        /*boolean road=false;
         if(road){
             graphics.setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
         }
         else
-            graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
-        graphics.setForegroundColor(TextColor.Factory.fromString(color));
+            graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));*/
+        graphics.setForegroundColor(TextColor.Factory.fromString(element.getColor()));
         graphics.enableModifiers(SGR.BOLD);
 
-        graphics.putString(position.getX(), position.getY(), character);
+        graphics.putString(element.getPosition().getX(), element.getPosition().getY(), element.getCharacter());
     }
 
     public Command getNextCommand() throws IOException {
