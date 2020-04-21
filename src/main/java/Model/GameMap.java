@@ -119,4 +119,12 @@ public class GameMap {
             observer.gameMapChanged();
         }
     }
+
+    public int getScore() {
+        return chicken.getScore();
+    }
+
+    public int getLives() {
+        return chicken.getLives();
+    }
 }
