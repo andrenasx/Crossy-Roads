@@ -33,9 +33,15 @@ public class Gui {
         screen.clear();
 
         drawGameMap();
-
+        drawScore();
         for (Element element: gameMap.getAllElements()) drawElement(element);
         screen.refresh();
+    }
+
+    private void drawScore() {
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.enableModifiers(SGR.BOLD);
+        graphics.putString(0, gameMap.getHeight(), "Score: " + gameMap.getScore() + "\tHealth: " + gameMap.getLives());
     }
 
     private void drawGameMap() {
