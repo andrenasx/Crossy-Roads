@@ -33,14 +33,20 @@ public class Gui {
         screen.clear();
 
         drawGameMap();
-
+        drawScore();
         for (Element element: gameMap.getAllElements()) drawElement(element);
         screen.refresh();
     }
 
+    private void drawScore() {
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.enableModifiers(SGR.BOLD);
+        graphics.putString(0, gameMap.getHeight(), "Score: " + gameMap.getScore() + "\tHealth: " + gameMap.getLives());
+    }
+
     private void drawGameMap() {
         TextGraphics graphics = screen.newTextGraphics();
-        File file = new File("../map.txt");
+        File file = new File("src/main/java/map.txt");
         BufferedReader br = null;
         try {
             br = new BufferedReader(new FileReader(file));
@@ -48,14 +54,14 @@ public class Gui {
             int x = 0;
             int y = 0;
             while ((st = br.readLine()) != null){
-                if(st.equals("gggggggggggggggggggggggggggggggggggggggg")){
+                if(String.valueOf(st.charAt(0)).equals("g")){
                     graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
                     graphics.fillRectangle(
                             new TerminalPosition(x,  y),
                             new TerminalSize(gameMap.getWidth(), 1), ' ');
                     y++;
                 }
-                else if(st.equals("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")){
+                else if(String.valueOf(st.charAt(0)).equals("r")){
                     graphics.setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
                     graphics.fillRectangle(
                             new TerminalPosition(x,  y),

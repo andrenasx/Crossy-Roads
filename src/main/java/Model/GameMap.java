@@ -60,11 +60,7 @@ public class GameMap {
     }
 
     private boolean chickenStaysInScreen(Position position){
-        if (position.getX() < 0 || position.getX() >= width)
-            return false;
-        if (position.getY() < 0 || position.getY() >= height)
-            return false;
-        return true;
+        return (position.getX()>=0 && position.getX()<width && position.getY()>=0 && position.getY()<height);
     }
 
     public void moveChicken(Position position){
@@ -89,13 +85,11 @@ public class GameMap {
         Vehicle vehicle = (Vehicle) getCollidingElement(position, vehicles);
         if (vehicle != null) {
             chicken.removeLife();
-            System.out.println(chicken.getLives());
         }
 
         Coin coin = (Coin) getCollidingElement(position, coins);
         if (coin != null) {
             chicken.raiseScore(coin.getValue());
-            System.out.println(chicken.getScore());
             coins.remove(coin);
         }
     }
@@ -124,5 +118,13 @@ public class GameMap {
         for (GameMapObserver observer : observers) {
             observer.gameMapChanged();
         }
+    }
+
+    public int getScore() {
+        return chicken.getScore();
+    }
+
+    public int getLives() {
+        return chicken.getLives();
     }
 }
