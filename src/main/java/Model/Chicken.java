@@ -8,6 +8,8 @@ public class Chicken extends Element{
         super(x, y);
         this.lives = 3;
         this.score = 0;
+        setCharacter("O");
+        setColor("#FFFFFF");
     }
 
     public int getScore() {
