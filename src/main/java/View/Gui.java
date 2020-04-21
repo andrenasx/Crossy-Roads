@@ -51,8 +51,8 @@ public class Gui {
                 if(st.equals("gggggggggggggggggggggggggggggggggggggggg")){
                     graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
                     graphics.fillRectangle(
-                        new TerminalPosition(x,  y),
-                        new TerminalSize(gameMap.getWidth(), 1), ' ');
+                            new TerminalPosition(x,  y),
+                            new TerminalSize(gameMap.getWidth(), 1), ' ');
                     y++;
                 }
                 else if(st.equals("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")){
