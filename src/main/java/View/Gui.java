@@ -68,6 +68,14 @@ public class Gui {
                             new TerminalSize(gameMap.getWidth(), 1), ' ');
                     y++;
                 }
+                else if(String.valueOf(st.charAt(0)).equals("d")){ //finish line
+                    graphics.setBackgroundColor(TextColor.Factory.fromString("#013220"));
+                    graphics.fillRectangle(
+                            new TerminalPosition(x,  y),
+                            new TerminalSize(gameMap.getWidth(), 1), ' ');
+                    y++;
+                }
+
             }
 
         } catch (IOException e) {
