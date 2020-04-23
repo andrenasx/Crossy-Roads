@@ -15,6 +15,7 @@ import java.io.*;
 public class Gui {
     private final GameMap gameMap;
     private final TerminalScreen screen;
+    public enum COMMAND {UP, DOWN, LEFT, RIGHT, NOTHING};
 
     public Gui(GameMap map) throws IOException {
         TerminalSize terminalSize = new TerminalSize(map.getWidth(), map.getHeight() + 1);
@@ -105,18 +106,26 @@ public class Gui {
         graphics.putString(element.getPosition().getX(), element.getPosition().getY(), element.getCharacter());
     }
 
-    public Command getNextCommand() throws IOException {
-        KeyStroke input = screen.pollInput();
-
-        if (input != null){
-            if (input.getKeyType() == KeyType.EOF) return new QuitCommand(gameMap, screen);
-            if (input.getKeyType() == KeyType.Character && input.getCharacter() == 'q') return new QuitCommand(gameMap, screen);
-            if (input.getKeyType() == KeyType.ArrowDown) return new MoveChickenDown(gameMap);
-            if (input.getKeyType() == KeyType.ArrowUp) return new MoveChickenUp(gameMap);
-            if (input.getKeyType() == KeyType.ArrowLeft) return new MoveChickenLeft(gameMap);
-            if (input.getKeyType() == KeyType.ArrowRight) return new MoveChickenRight(gameMap);
-        }
-
-        return new DoNothingCommand();
+    public COMMAND getNextCommand() throws IOException {
+            KeyStroke input = screen.pollInput();
+            if(input != null){
+                switch (input.getKeyType()){
+                    case ArrowUp:
+                        return COMMAND.UP;
+                    case ArrowDown:
+                        return COMMAND.DOWN;
+                    case ArrowRight:
+                        return COMMAND.RIGHT;
+                    case ArrowLeft:
+                        return COMMAND.LEFT;
+                    default:
+                        return COMMAND.NOTHING;
+                }
+            }
+//            if(input.getKeyType() == KeyType.ArrowUp) return COMMAND.UP;
+//            if(input.getKeyType() == KeyType.ArrowDown) return COMMAND.DOWN;
+//            if(input.getKeyType() == KeyType.ArrowLeft) return COMMAND.LEFT;
+//            if(input.getKeyType() == KeyType.ArrowRight) return COMMAND.RIGHT;
+            return COMMAND.NOTHING;
     }
 }

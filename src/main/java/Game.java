@@ -1,4 +1,4 @@
-import Controller.Command;
+import Controller.GameController;
 import Model.GameMap;
 import Model.GameMapCreator;
 import Model.GameMapObserver;
@@ -25,11 +25,12 @@ public class Game implements GameMapObserver {
         gui = new Gui(map);
         gui.draw();
 
+        GameController commands = new GameController(gui, map);
+        //commands.execute();
 
 
         while(!map.isGameFinished()){
-            Command command = gui.getNextCommand();
-            command.execute();
+            commands.execute();
             if ((System.currentTimeMillis() - startTime) % 1000 == 0)
                 map.moveVehicles();
         }
