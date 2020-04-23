@@ -11,6 +11,7 @@ public class GameMap {
     private boolean gamefinished;
     private List<GameMapObserver> observers;
     private List<Coin> coins;
+    private Terrain terrain;
 
     public GameMap(int width, int height) {
         this.width = width;
@@ -20,6 +21,7 @@ public class GameMap {
         this.gamefinished = false;
         this.observers = new ArrayList<>();
         this.coins = new ArrayList<>();
+        this.terrain = new Terrain("map.txt");
     }
 
     public int getHeight() {
@@ -126,5 +128,9 @@ public class GameMap {
 
     public int getLives() {
         return chicken.getLives();
+    }
+
+    public List<String> getGameTerrain(){
+        return terrain.getTerrainStrings();
     }
 }
