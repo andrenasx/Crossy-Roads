@@ -46,42 +46,21 @@ public class Gui {
 
     private void drawGameMap() {
         TextGraphics graphics = screen.newTextGraphics();
-        File file = new File("src/main/resources/map.txt");
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader(new FileReader(file));
-            String st;
-            int x = 0;
-            int y = 0;
-            while ((st = br.readLine()) != null){
-                if(String.valueOf(st.charAt(0)).equals("g")){
-                    graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
-                    graphics.fillRectangle(
-                            new TerminalPosition(x,  y),
-                            new TerminalSize(gameMap.getWidth(), 1), ' ');
-                    y++;
-                }
-                else if(String.valueOf(st.charAt(0)).equals("r")){
-                    graphics.setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
-                    graphics.fillRectangle(
-                            new TerminalPosition(x,  y),
-                            new TerminalSize(gameMap.getWidth(), 1), ' ');
-                    y++;
-                }
-                else if(String.valueOf(st.charAt(0)).equals("d")){ //finish line
-                    graphics.setBackgroundColor(TextColor.Factory.fromString("#013220"));
-                    graphics.fillRectangle(
-                            new TerminalPosition(x,  y),
-                            new TerminalSize(gameMap.getWidth(), 1), ' ');
-                    y++;
-                }
-
+        int x=0;
+        int y=0;
+        for (String terrain: gameMap.getGameTerrain()){
+            if(String.valueOf(terrain.charAt(0)).equals("g")){
+                graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            else if(String.valueOf(terrain.charAt(0)).equals("r")){
+                graphics.setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
+            }
+            else if(String.valueOf(terrain.charAt(0)).equals("d")){ //finish line
+                graphics.setBackgroundColor(TextColor.Factory.fromString("#013220"));
+            }
+            graphics.fillRectangle(new TerminalPosition(x,  y), new TerminalSize(gameMap.getWidth(), 1), ' ');
+            y++;
         }
-
     }
 
     /*private void drawElement(Element element) {
