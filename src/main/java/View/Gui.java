@@ -46,7 +46,7 @@ public class Gui {
 
     private void drawGameMap() {
         TextGraphics graphics = screen.newTextGraphics();
-        File file = new File("src/main/java/map.txt");
+        File file = new File("src/main/resources/map.txt");
         BufferedReader br = null;
         try {
             br = new BufferedReader(new FileReader(file));
