@@ -16,8 +16,6 @@ public class GameController {
     }
 
     public void execute() throws IOException {
-        while(true){
-            gui.draw();
             Gui.COMMAND command = gui.getNextCommand();
 
             if(command == Gui.COMMAND.UP)
@@ -30,6 +28,6 @@ public class GameController {
                 map.moveChicken(map.getChickenPosition().right());
 
             }
-        }
+
     }
 

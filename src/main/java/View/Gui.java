@@ -64,21 +64,8 @@ public class Gui {
         }
     }
 
-    /*private void drawElement(Element element) {
-        if (element instanceof Chicken) drawCharacter(element.getPosition(), "O", "#FFFFFF", false);
-        if (element instanceof Car) drawCharacter(element.getPosition(), "CC", "#FF0000", true);
-        if (element instanceof Truck) drawCharacter(element.getPosition(), "TTTT", "#0000FF", true);
-        if (element instanceof Coin) drawCharacter(element.getPosition(), "S", "#FFFF00", false);
-    }*/
-
     private void drawElement(Element element) {
         TextGraphics graphics = screen.newTextGraphics();
-        /*boolean road=false;
-        if(road){
-            graphics.setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
-        }
-        else
-            graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));*/
         graphics.setForegroundColor(TextColor.Factory.fromString(element.getColor()));
         graphics.enableModifiers(SGR.BOLD);
 
@@ -101,10 +88,6 @@ public class Gui {
                         return COMMAND.NOTHING;
                 }
             }
-//            if(input.getKeyType() == KeyType.ArrowUp) return COMMAND.UP;
-//            if(input.getKeyType() == KeyType.ArrowDown) return COMMAND.DOWN;
-//            if(input.getKeyType() == KeyType.ArrowLeft) return COMMAND.LEFT;
-//            if(input.getKeyType() == KeyType.ArrowRight) return COMMAND.RIGHT;
             return COMMAND.NOTHING;
     }
 }
