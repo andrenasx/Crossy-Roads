@@ -133,4 +133,6 @@ public class GameMap {
     public List<String> getGameTerrain(){
         return terrain.getTerrainStrings();
     }
+
+    public String getBackgroundColor(int y){return terrain.getTerrainColor(y);}
 }
