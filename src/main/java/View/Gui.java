@@ -47,26 +47,16 @@ public class Gui {
 
     private void drawGameMap() {
         TextGraphics graphics = screen.newTextGraphics();
-        int x=0;
-        int y=0;
-        for (String terrain: gameMap.getGameTerrain()){
-            if(String.valueOf(terrain.charAt(0)).equals("g")){
-                graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
-            }
-            else if(String.valueOf(terrain.charAt(0)).equals("r")){
-                graphics.setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
-            }
-            else if(String.valueOf(terrain.charAt(0)).equals("d")){ //finish line
-                graphics.setBackgroundColor(TextColor.Factory.fromString("#013220"));
-            }
-            graphics.fillRectangle(new TerminalPosition(x,  y), new TerminalSize(gameMap.getWidth(), 1), ' ');
-            y++;
+        for (int y=0; y<gameMap.getHeight(); y++){
+            graphics.setBackgroundColor(TextColor.Factory.fromString(gameMap.getBackgroundColor(y)));
+            graphics.fillRectangle(new TerminalPosition(0,  y), new TerminalSize(gameMap.getWidth(), 1), ' ');
         }
     }
 
     private void drawElement(Element element) {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setForegroundColor(TextColor.Factory.fromString(element.getColor()));
+        graphics.setBackgroundColor(TextColor.Factory.fromString(gameMap.getBackgroundColor(element.getPosition().getY())));
         graphics.enableModifiers(SGR.BOLD);
 
         graphics.putString(element.getPosition().getX(), element.getPosition().getY(), element.getCharacter());
