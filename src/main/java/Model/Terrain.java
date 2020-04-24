@@ -1,9 +1,5 @@
 package Model;
 
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextColor;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -40,5 +36,18 @@ public class Terrain {
 
     public List<String> getTerrainStrings() {
         return terrainStrings;
+    }
+
+    public String getTerrainColor(int y){
+        String terrain = terrainStrings.get(y);
+        switch (String.valueOf(terrain.charAt(0))) {
+            case "g":
+                return "#006600";
+            case "r":
+                return "#C8C8C8";
+            case "d":   //finish line
+                return "#013220";
+        }
+        return "000000";
     }
 }
