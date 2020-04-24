@@ -40,6 +40,10 @@ public class GameMap {
         this.width = width;
     }
 
+    public List<Coin> getCoins(){ return coins; }
+
+    public Chicken getChicken(){ return chicken;}
+
     public void addElement(Element element) {
         if (element instanceof Chicken) chicken = (Chicken) element;
         if (element instanceof Car) vehicles.add((Car) element);
