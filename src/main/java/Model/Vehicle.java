@@ -2,7 +2,7 @@ package Model;
 
 public abstract class Vehicle extends Element {
     private String direction;
-    protected int lenght;
+    protected int length;
 
     public Vehicle(int x, int y, String direction) {
         super(x, y);
@@ -17,14 +17,14 @@ public abstract class Vehicle extends Element {
         this.direction = direction;
     }
 
-    public int getLenght() {
-        return lenght;
+    public int getLength() {
+        return length;
     }
 
     @Override
     public String getCharacter() {
         String chr="";
-        for(int i=1; i<=lenght;i++){
+        for(int i=1; i<=length;i++){
             chr = chr.concat(character);
         }
 
