@@ -30,4 +30,8 @@ public abstract class Vehicle extends Element {
 
         return chr;
     }
+
+    public boolean checkCollision(Position position){
+        return (this.getPosition().getX()<=position.getX() && (this.getPosition().getX()+this.length-1)>=position.getX() && this.getPosition().getY()==position.getY());
+    }
 }
