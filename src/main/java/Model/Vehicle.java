@@ -2,7 +2,6 @@ package Model;
 
 public abstract class Vehicle extends Element {
     private String direction;
-    protected int length;
 
     public Vehicle(int x, int y, String direction) {
         super(x, y);
@@ -17,14 +16,12 @@ public abstract class Vehicle extends Element {
         this.direction = direction;
     }
 
-    public int getLength() {
-        return length;
-    }
+    public abstract int getLength();
 
     @Override
     public String getCharacter() {
         String chr="";
-        for(int i=1; i<=length;i++){
+        for(int i=1; i<=getLength();i++){
             chr = chr.concat(character);
         }
 
@@ -32,6 +29,6 @@ public abstract class Vehicle extends Element {
     }
 
     public boolean checkCollision(Position position){
-        return (this.getPosition().getX()<=position.getX() && (this.getPosition().getX()+this.length-1)>=position.getX() && this.getPosition().getY()==position.getY());
+        return (this.getPosition().getX()<=position.getX() && (this.getPosition().getX()+this.getLength()-1)>=position.getX() && this.getPosition().getY()==position.getY());
     }
 }
