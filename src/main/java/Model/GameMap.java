@@ -84,15 +84,21 @@ public class GameMap {
     }
 
     private void checkCollisions(Position position) {
-        Vehicle vehicle = (Vehicle) getCollidingElement(position, vehicles);
-        if (vehicle != null) {
-            chicken.removeLife();
-        }
+        checkVehicleCollision(position);
 
         Coin coin = (Coin) getCollidingElement(position, coins);
         if (coin != null) {
             chicken.raiseScore(coin.getValue());
             coins.remove(coin);
+        }
+    }
+
+    private void checkVehicleCollision(Position position){
+        for (Vehicle vehicle: vehicles){
+            if (vehicle.checkCollision(position)){
+                chicken.removeLife();
+                break;
+            }
         }
     }
 
