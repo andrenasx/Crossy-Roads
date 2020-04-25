@@ -140,9 +140,7 @@ public class GameMap {
         return chicken.getLives();
     }
 
-    public List<String> getGameTerrain(){
+    public String getGameTerrain(){
         return terrain.getTerrainStrings();
     }
-
-    public String getBackgroundColor(int y){return terrain.getTerrainColor(y);}
 }
