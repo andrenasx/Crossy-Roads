@@ -1,6 +1,5 @@
- import Model.Chicken;
- import Model.Coin;
- import Model.Position;
+ import model.Chicken;
+ import model.Position;
 import org.junit.Test;
 
 import java.util.Random;

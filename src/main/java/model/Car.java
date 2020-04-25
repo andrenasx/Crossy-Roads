@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public class Car extends Vehicle {
     public Car(int x, int y, String direction) {

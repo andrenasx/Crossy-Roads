@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public class Coin extends Element {
     private int value;

@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public class Chicken extends Element{
     private int score;

@@ -1,4 +1,4 @@
-import Model.Coin;
+import model.Coin;
 import org.junit.Test;
 
 import java.util.Random;

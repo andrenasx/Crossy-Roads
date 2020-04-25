@@ -1,7 +1,7 @@
-package Controller;
+package controller;
 
-import Model.GameMap;
-import View.Gui;
+import model.GameMap;
+import view.Gui;
 
 
 import java.io.IOException;

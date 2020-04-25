@@ -1,11 +1,10 @@
-import Controller.GameController;
-import Model.GameMap;
-import Model.GameMapCreator;
-import Model.GameMapObserver;
-import View.Gui;
+import controller.GameController;
+import model.GameMap;
+import model.GameMapCreator;
+import model.GameMapObserver;
+import view.Gui;
 
 import java.io.IOException;
-import java.util.Map;
 
 public class Game implements GameMapObserver {
     private GameMap map;

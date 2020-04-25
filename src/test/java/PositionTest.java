@@ -1,5 +1,4 @@
-import Model.Position;
-import javafx.geometry.Pos;
+import model.Position;
 import org.junit.Test;
 
 import java.util.Random;
