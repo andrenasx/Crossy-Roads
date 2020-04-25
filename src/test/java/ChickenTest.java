@@ -8,14 +8,14 @@ import java.util.Random;
 
  public class ChickenTest {
     @Test
-    public void getChickenTest(){
+    public void chickenGetPositionTest(){
         Random rand = new Random();
         int x = rand.nextInt(40);
         int y = rand.nextInt(35);
 
-        Position position = new Position(x, y);
-        assertEquals(x, position.getX());
-        assertEquals(y, position.getY());
+        Chicken chicken = new Chicken(x, y);
+        assertEquals(x, chicken.getPosition().getX());
+        assertEquals(y, chicken.getPosition().getY());
     }
 
     @Test
@@ -42,8 +42,20 @@ import java.util.Random;
     }
 
      @Test
-     public void ChickenColorTest(){
+     public void chickenColorTest(){
          Chicken chicken = new Chicken(1, 2);
          assertEquals("#FFFFFF", chicken.getColor());
+     }
+
+     @Test
+     public void chickenSetPositionTest(){
+        Chicken chicken = new Chicken(1, 2);
+        Random rand = new Random();
+        int x = rand.nextInt(40);
+        int y = rand.nextInt(35);
+        chicken.setPosition(new Position(x, y));
+        assertEquals(x, chicken.getPosition().getX());
+        assertEquals(y, chicken.getPosition().getY());
+
      }
 }
