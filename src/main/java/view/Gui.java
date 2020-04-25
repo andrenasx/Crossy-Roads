@@ -52,12 +52,21 @@ public class Gui {
     }
 
     private void drawElement(Element element) {
+        String character="";
+        if (element instanceof Chicken) character="O";
+        if (element instanceof Coin) character="O";
+        if (element instanceof Car) character="CC";
+        if (element instanceof Truck) character="TTTT";
+        drawCharacter(element.getPosition(), character, element.getColor());
+    }
+
+    private void drawCharacter(Position position, String character, String color){
         TextGraphics graphics = screen.newTextGraphics();
-        graphics.setForegroundColor(TextColor.Factory.fromString(element.getColor()));
-        graphics.setBackgroundColor(TextColor.Factory.fromString(getBackgroundColor(element.getPosition().getY())));
+        graphics.setForegroundColor(TextColor.Factory.fromString(color));
+        graphics.setBackgroundColor(TextColor.Factory.fromString(getBackgroundColor(position.getY())));
         graphics.enableModifiers(SGR.BOLD);
 
-        graphics.putString(element.getPosition().getX(), element.getPosition().getY(), element.getCharacter());
+        graphics.putString(position.getX(), position.getY(), character);
     }
 
     private String getBackgroundColor(int y){
