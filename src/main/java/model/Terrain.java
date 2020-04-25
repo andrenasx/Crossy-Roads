@@ -7,15 +7,17 @@ import java.io.IOException;
 public class Terrain {
     private String filename;
     private String terrainStrings;
+    private String directory;
 
-    public Terrain(String filename) {
+    public Terrain(String filename, String directory) {
         this.filename = filename;
-        this.terrainStrings = readFile(this.filename);
+        this.directory = directory;
+        this.terrainStrings = readFile(this.filename, this.directory);
     }
 
-    private String readFile(String filename){
+    private String readFile(String filename, String directory){
         String terrain = "";
-        String filePath = "src/main/resources/" + filename;
+        String filePath = "src/" + directory + "/resources/" + filename;
         BufferedReader br;
         try {
             br = new BufferedReader(new FileReader(filePath));

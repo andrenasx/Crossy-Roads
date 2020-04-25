@@ -21,7 +21,7 @@ public class GameMap {
         this.gamefinished = false;
         this.observers = new ArrayList<>();
         this.coins = new ArrayList<>();
-        this.terrain = new Terrain("map.txt");
+        this.terrain = new Terrain("map.txt", "main");
     }
 
     public int getHeight() {
