@@ -27,12 +27,6 @@ public class CoinTest {
     }
 
     @Test
-    public void CoinCharacterTest(){
-        Coin coin = new Coin(1,1,1);
-        assertEquals("S", coin.getCharacter());
-    }
-
-    @Test
     public void CoinColorTest(){
         Coin coin = new Coin(1,1,1);
         assertEquals("#FFFF00", coin.getColor());

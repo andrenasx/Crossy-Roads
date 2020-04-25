@@ -42,12 +42,6 @@ import java.util.Random;
     }
 
      @Test
-     public void ChickenCharacterTest() {
-         Chicken chicken = new Chicken(1, 2);
-         assertEquals("O", chicken.getCharacter());
-     }
-
-     @Test
      public void ChickenColorTest(){
          Chicken chicken = new Chicken(1, 2);
          assertEquals("#FFFFFF", chicken.getColor());
