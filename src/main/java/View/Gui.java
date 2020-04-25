@@ -48,7 +48,7 @@ public class Gui {
     private void drawGameMap() {
         TextGraphics graphics = screen.newTextGraphics();
         for (int y=0; y<gameMap.getHeight(); y++){
-            graphics.setBackgroundColor(TextColor.Factory.fromString(gameMap.getBackgroundColor(y)));
+            graphics.setBackgroundColor(TextColor.Factory.fromString(getBackgroundColor(y)));
             graphics.fillRectangle(new TerminalPosition(0,  y), new TerminalSize(gameMap.getWidth(), 1), ' ');
         }
     }
@@ -56,10 +56,24 @@ public class Gui {
     private void drawElement(Element element) {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setForegroundColor(TextColor.Factory.fromString(element.getColor()));
-        graphics.setBackgroundColor(TextColor.Factory.fromString(gameMap.getBackgroundColor(element.getPosition().getY())));
+        graphics.setBackgroundColor(TextColor.Factory.fromString(getBackgroundColor(element.getPosition().getY())));
         graphics.enableModifiers(SGR.BOLD);
 
         graphics.putString(element.getPosition().getX(), element.getPosition().getY(), element.getCharacter());
+    }
+
+    private String getBackgroundColor(int y){
+        String color = gameMap.getGameTerrain();
+
+        switch (color.charAt(y)) {
+            case 'g':
+                return "#006600";
+            case 'r':
+                return "#C8C8C8";
+            case 'd':   //finish line
+                return "#013220";
+        }
+        return "000000";
     }
 
     public COMMAND getNextCommand() throws IOException {
