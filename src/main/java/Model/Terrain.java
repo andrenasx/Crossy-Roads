@@ -8,22 +8,22 @@ import java.util.List;
 
 public class Terrain {
     private String filename;
-    private List<String> terrainStrings;
+    private String terrainStrings;
 
     public Terrain(String filename) {
         this.filename = filename;
         this.terrainStrings = readFile(this.filename);
     }
 
-    private List<String> readFile(String filename){
-        List<String> terrain = new ArrayList<>();
+    private String readFile(String filename){
+        String terrain = "";
         String filePath = "src/main/resources/" + filename;
-        BufferedReader br = null;
+        BufferedReader br;
         try {
             br = new BufferedReader(new FileReader(filePath));
             String st;
             while ((st = br.readLine()) != null){
-                terrain.add(st);
+                terrain = st;
             }
             br.close();
         }
@@ -34,20 +34,7 @@ public class Terrain {
         return terrain;
     }
 
-    public List<String> getTerrainStrings() {
+    public String getTerrainStrings() {
         return terrainStrings;
-    }
-
-    public String getTerrainColor(int y){
-        String terrain = terrainStrings.get(y);
-        switch (String.valueOf(terrain.charAt(0))) {
-            case "g":
-                return "#006600";
-            case "r":
-                return "#C8C8C8";
-            case "d":   //finish line
-                return "#013220";
-        }
-        return "000000";
     }
 }
