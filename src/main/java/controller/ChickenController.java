@@ -37,7 +37,7 @@ public class ChickenController {
         }
     }
 
-    private boolean chickenStaysInScreen(Position position){
+    public boolean chickenStaysInScreen(Position position){
         return (position.getX()>=0 && position.getX()<map.getWidth() && position.getY()>=0 && position.getY()<map.getHeight());
     }
 
