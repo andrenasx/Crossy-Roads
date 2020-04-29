@@ -68,14 +68,4 @@ public class GameMapTest {
 
     }
 
-    @Test
-    public void moveChickenTest(){
-        GameMap game = new GameMap(30,70);
-        Position position = new Position(15,15);
-        game.moveChicken(position);
-
-        assertEquals(position,game.getChickenPosition());
-
-    }
-
 }
