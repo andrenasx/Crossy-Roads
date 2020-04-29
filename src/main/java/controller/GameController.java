@@ -3,31 +3,26 @@ package controller;
 import model.GameMap;
 import view.Gui;
 
-
 import java.io.IOException;
 
 public class GameController {
+    private ChickenController chickenController;
+    //private VehicleController vehicleController;
     private Gui gui;
     private GameMap map;
 
     public GameController(Gui gui, GameMap map) {
         this.gui = gui;
         this.map = map;
+
+        this.chickenController = new ChickenController(gui, map);
+        //this.vehicleController = new VehicleController(..);
     }
 
-    public void execute() throws IOException {
-            Gui.COMMAND command = gui.getNextCommand();
-
-            if(command == Gui.COMMAND.UP)
-                map.moveChicken(map.getChickenPosition().up());
-            if(command == Gui.COMMAND.DOWN)
-                map.moveChicken(map.getChickenPosition().down());
-            if(command == Gui.COMMAND.LEFT)
-                map.moveChicken(map.getChickenPosition().left());
-            if(command == Gui.COMMAND.RIGHT)
-                map.moveChicken(map.getChickenPosition().right());
-
-            }
-
+    public void start(){
+        chickenController.start();
+        //vehicleController.start();
     }
+
+}
 
