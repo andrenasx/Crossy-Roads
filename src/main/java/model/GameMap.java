@@ -79,7 +79,7 @@ public class GameMap {
         this.notifyObservers();
     }*/
 
-    public void moveVehicles(){
+    /*public void moveVehicles(){
         for (Vehicle vehicle: vehicles){
             if(vehicle.getDirection().equals("left"))
                 vehicle.setPosition(vehicle.getPosition().left());
@@ -114,7 +114,7 @@ public class GameMap {
                 return element;
 
         return null;
-    }
+    }*/
 
     public boolean isGameFinished(){
         return this.gamefinished || chicken.isDead() || coins.isEmpty();
