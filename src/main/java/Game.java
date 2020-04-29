@@ -29,7 +29,7 @@ public class Game implements GameMapObserver {
 
 
         while(!map.isGameFinished()){
-            commands.execute();
+            commands.start();
             if ((System.currentTimeMillis() - startTime) % 1000 == 0)
                 map.moveVehicles();
         }

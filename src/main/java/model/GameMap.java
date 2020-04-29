@@ -65,7 +65,7 @@ public class GameMap {
         return chicken.getPosition();
     }
 
-    private boolean chickenStaysInScreen(Position position){
+    /*private boolean chickenStaysInScreen(Position position){
         return (position.getX()>=0 && position.getX()<width && position.getY()>=0 && position.getY()<height);
     }
 
@@ -75,7 +75,7 @@ public class GameMap {
         checkCollisions(position);
 
         this.notifyObservers();
-    }
+    }*/
 
     public void moveVehicles(){
         for (Vehicle vehicle: vehicles){
