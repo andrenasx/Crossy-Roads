@@ -1,6 +1,7 @@
 package controller;
 
 import model.GameMap;
+import model.Position;
 import model.Vehicle;
 
 import java.util.List;
@@ -31,4 +32,7 @@ public class VehicleController {
             moveVehicles();
     }
 
+    /*public boolean vehicleLeavesScreen(Position position){
+
+    }*/
 }
