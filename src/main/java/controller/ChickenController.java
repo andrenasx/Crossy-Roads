@@ -16,24 +16,23 @@ public class ChickenController {
         this.gui = gui;
     }
 
-    public void execute() throws IOException {
-        Gui.COMMAND command = gui.getNextCommand();
-
+    public void execute(Gui.COMMAND command) throws IOException {
+        Chicken chicken = map.getChicken();
         if(command == Gui.COMMAND.UP)
-            moveChicken(map.getChickenPosition().up());
+            moveChicken(chicken.getPosition().up());
         if(command == Gui.COMMAND.DOWN)
-            moveChicken(map.getChickenPosition().down());
+            moveChicken(chicken.getPosition().down());
         if(command == Gui.COMMAND.LEFT)
-            moveChicken(map.getChickenPosition().left());
+            moveChicken(chicken.getPosition().left());
         if(command == Gui.COMMAND.RIGHT)
-            moveChicken(map.getChickenPosition().right());
+            moveChicken(chicken.getPosition().right());
 
     }
 
     public void start(){
         while(!map.isGameFinished()){
             try {
-                gui.getNextCommand();
+                execute(gui.getNextCommand());
             } catch (IOException e) {
                 e.printStackTrace();
             }
