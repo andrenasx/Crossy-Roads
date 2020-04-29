@@ -15,7 +15,7 @@ public class VehicleController {
         this.startTime = System.currentTimeMillis();
     }
 
-    private void moveVehicles() {
+    public void moveVehicles() {
         List<Vehicle> vehicles = gameMap.getVehicles();
         for (Vehicle vehicle: vehicles){
             if(vehicle.getDirection().equals("left"))
