@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class GameController {
     private ChickenController chickenController;
-    //private VehicleController vehicleController;
+    private VehicleController vehicleController;
     private Gui gui;
     private GameMap map;
 
@@ -16,12 +16,12 @@ public class GameController {
         this.map = map;
 
         this.chickenController = new ChickenController(gui, map);
-        //this.vehicleController = new VehicleController(..);
+        this.vehicleController = new VehicleController(map);
     }
 
     public void start(){
         chickenController.start();
-        //vehicleController.start();
+        vehicleController.start();
     }
 
 }
