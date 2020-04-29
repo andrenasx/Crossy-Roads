@@ -18,11 +18,18 @@ public class VehicleController {
 
     public void moveVehicles() {
         List<Vehicle> vehicles = gameMap.getVehicles();
-        for (Vehicle vehicle: vehicles){
-            if(vehicle.getDirection().equals("left"))
+        for (Vehicle vehicle: vehicles) {
+            if (vehicle.getDirection().equals("left")) {
                 vehicle.setPosition(vehicle.getPosition().left());
-            else
+                if(vehicle.getPosition().getX() + vehicle.getLength() == 0){ //Make another function for these verifications
+                    vehicle.setPosition(new Position(gameMap.getWidth(), vehicle.getPosition().getY()));
+                }
+            } else {
                 vehicle.setPosition(vehicle.getPosition().right());
+                if(vehicle.getPosition().getX() == gameMap.getWidth()){
+                    vehicle.setPosition(new Position(0, vehicle.getPosition().getY()));
+                }
+            }
         }
         gameMap.notifyObservers();
     }
