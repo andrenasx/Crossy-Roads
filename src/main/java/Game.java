@@ -24,15 +24,9 @@ public class Game implements GameMapObserver {
         gui = new Gui(map);
         gui.draw();
 
-        GameController commands = new GameController(gui, map);
-        //commands.execute();
+        GameController controller = new GameController(gui, map);
 
-
-        while(!map.isGameFinished()){
-            commands.start();
-            if ((System.currentTimeMillis() - startTime) % 1000 == 0)
-                map.moveVehicles();
-        }
+        controller.start();
     }
 
     @Override

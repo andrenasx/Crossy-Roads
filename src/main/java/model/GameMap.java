@@ -44,6 +44,8 @@ public class GameMap {
 
     public Chicken getChicken(){ return chicken;}
 
+    public List<Vehicle> getVehicles(){return vehicles;}
+
     public void addElement(Element element) {
         if (element instanceof Chicken) chicken = (Chicken) element;
         if (element instanceof Car) vehicles.add((Car) element);
