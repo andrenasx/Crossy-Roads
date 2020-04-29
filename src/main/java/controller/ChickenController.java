@@ -30,12 +30,10 @@ public class ChickenController {
     }
 
     public void start(){
-        while(!map.isGameFinished()){
-            try {
-                execute(gui.getNextCommand());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            execute(gui.getNextCommand());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

@@ -27,10 +27,8 @@ public class VehicleController {
     }
 
     public void start() {
-        while(!gameMap.isGameFinished()){
-            if ((System.currentTimeMillis() - startTime) % 1000 == 0)
-                moveVehicles();
-        }
+        if ((System.currentTimeMillis() - startTime) % 1000 == 0)
+            moveVehicles();
     }
 
 }

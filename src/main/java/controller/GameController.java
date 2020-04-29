@@ -20,8 +20,10 @@ public class GameController {
     }
 
     public void start(){
-        chickenController.start();
-        vehicleController.start();
+        while(!map.isGameFinished()) {
+            chickenController.start();
+            vehicleController.start();
+        }
     }
 
 }
