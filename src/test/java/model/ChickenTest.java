@@ -1,4 +1,6 @@
- import model.Chicken;
+package model;
+
+import model.Chicken;
  import model.Position;
 import org.junit.Test;
 

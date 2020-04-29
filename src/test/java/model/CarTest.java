@@ -1,3 +1,5 @@
+package model;
+
 import model.Car;
 import model.Position;
 import org.junit.Test;
