@@ -1,5 +1,6 @@
 package controller;
 
+import model.Chicken;
 import model.GameMap;
 import model.Position;
 import model.Vehicle;
@@ -27,16 +28,25 @@ public class VehicleController {
             } else {
                 vehicle.setPosition(vehicle.getPosition().right());
                 if(vehicle.getPosition().getX() == gameMap.getWidth()){
-                    vehicle.setPosition(new Position(0, vehicle.getPosition().getY()));
+                    vehicle.setPosition(new Position(-vehicle.getLength(), vehicle.getPosition().getY()));
                 }
             }
+            checkChickenCollision(vehicle);
         }
         gameMap.notifyObservers();
     }
 
+    public void checkChickenCollision(Vehicle vehicle) {
+        Chicken chicken = gameMap.getChicken();
+        if(vehicle.checkCollision(chicken.getPosition())){
+            chicken.removeLife();
+        }
+    }
+
     public void start() {
-        if ((System.currentTimeMillis() - startTime) % 1000 == 0)
+        if ((System.currentTimeMillis() - startTime) % 200 == 0) {
             moveVehicles();
+        }
     }
 
     /*public boolean vehicleLeavesScreen(Position position){
