@@ -55,8 +55,8 @@ public class Gui {
         String character="";
         if (element instanceof Chicken) character="O";
         if (element instanceof Coin) character="O";
-        if (element instanceof Car) character="CC";
-        if (element instanceof Truck) character="TTTT";
+        if (element instanceof Car) character="<>";
+        if (element instanceof Truck) character="<==>";
         drawCharacter(element.getPosition(), character, element.getColor());
     }
 
