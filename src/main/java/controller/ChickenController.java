@@ -1,11 +1,10 @@
 package controller;
 
-import model.Chicken;
-import model.GameMap;
-import model.Position;
+import model.*;
 import view.Gui;
 
 import java.io.IOException;
+import java.util.List;
 
 public class ChickenController {
     private GameMap map;
@@ -45,6 +44,34 @@ public class ChickenController {
         Chicken chicken = map.getChicken();
         if (chickenStaysInScreen(position))
             chicken.setPosition(position);
+        checkCollisions(position);
         map.notifyObservers();
+    }
+
+    public void checkCollisions(Position position) {
+        checkVehicleCollision(position);
+
+        Coin coin = (Coin) getCollidingElement(position, map.getCoins());
+        if (coin != null) {
+            map.getChicken().raiseScore(coin.getValue());
+            map.getCoins().remove(coin);
+        }
+    }
+
+    private void checkVehicleCollision(Position position){
+        for (Vehicle vehicle: map.getVehicles()){
+            if (vehicle.checkCollision(position)){
+                map.getChicken().removeLife();
+                break;
+            }
+        }
+    }
+
+    private Element getCollidingElement(Position position, List<? extends Element> elements) {
+        for (Element element : elements)
+            if (element.getPosition().equals(position))
+                return element;
+
+        return null;
     }
 }
