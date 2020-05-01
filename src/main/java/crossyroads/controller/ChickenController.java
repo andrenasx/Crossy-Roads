@@ -9,6 +9,7 @@ import java.util.List;
 public class ChickenController {
     private GameMap map;
     private Gui gui;
+    private boolean collided;
 
     public ChickenController(Gui gui, GameMap map) {
         this.map = map;
@@ -62,6 +63,7 @@ public class ChickenController {
         for (Vehicle vehicle: map.getVehicles()){
             if (vehicle.checkCollision(position)){
                 map.getChicken().removeLife();
+                map.resetChickenPosition();
                 break;
             }
         }
