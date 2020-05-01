@@ -1,13 +1,14 @@
 plugins {
     id 'java'
     id 'application'
+    id 'info.solidsoft.pitest' version '1.4.6'
 }
 
 application {
     mainClassName = 'Game'
 }
 
-group 'org.example'
+group 'crossyroads'
 version '1.0-SNAPSHOT'
 
 repositories {
