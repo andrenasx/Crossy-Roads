@@ -31,5 +31,5 @@ public class Chicken extends Element{
         this.score += quantity;
     }
 
-    public void removeLife(){this.lives-=1;};
+    public void removeLife(){this.lives-=1;}
 }
