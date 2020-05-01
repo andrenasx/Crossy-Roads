@@ -96,4 +96,8 @@ public class GameMap {
     public String getGameTerrain(){
         return terrain.getTerrainStrings();
     }
+
+    public void resetChickenPosition(){
+        chicken.setPosition(new Position(width/2, height-1));
+    }
 }
