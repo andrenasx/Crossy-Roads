@@ -12,7 +12,8 @@ Este projeto está a ser desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt
 - **Moedas:** quando a galinha passa por cima de uma moeda, esta última desaparece e o _score_ da galinha é incrementado dependendo do valor da moeda recolhida.
 - **Movimento dos veículos:** os veículos deslocam-se consoante a sua direção (esquerda ou direita) a cada 200ms.
 - **Colisão entre galinha e veículos:** quando a galinha vai contra um veículo ou é atropleado por um a sua vida é reduzida.
-(screenshots do score e health)
+
+    [![Image from Gyazo](https://i.gyazo.com/63df273c94498e994c27186b530ddefa.gif)](https://gyazo.com/63df273c94498e994c27186b530ddefa)
 
 ##Planned Features
 
