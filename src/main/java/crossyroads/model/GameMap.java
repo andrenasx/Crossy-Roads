@@ -28,17 +28,10 @@ public class GameMap {
         return height;
     }
 
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
     public int getWidth() {
         return width;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
-    }
 
     public List<Coin> getCoins(){ return coins; }
 
@@ -69,10 +62,6 @@ public class GameMap {
     
     public boolean isGameFinished(){
         return this.gamefinished || chicken.isDead() || coins.isEmpty();
-    }
-
-    public void gameFinish(){
-        this.gamefinished = true;
     }
 
     public void addObserver(GameMapObserver observer) {
