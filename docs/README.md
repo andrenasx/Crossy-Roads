@@ -11,7 +11,7 @@ Este projeto está a ser desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt
 - **Controlo da galinha:** a galinha é controlada através das setas do teclado.
 - **Moedas:** quando a galinha passa por cima de uma moeda, esta última desaparece e o _score_ da galinha é incrementado dependendo do valor da moeda recolhida.
 - **Movimento dos veículos:** os veículos deslocam-se consoante a sua direção (esquerda ou direita) a cada 200ms.
-- **Colisão entre galinha e veículos:** quando a galinha vai contra um veículo ou é atropleado por um a sua vida é reduzida.
+- **Colisão entre galinha e veículos:** quando a galinha vai contra um veículo ou é atropleado por um a sua vida é reduzida e volta à posição inicial.
 (screenshots do score e health)
 
 ##Planned Features
