@@ -40,6 +40,7 @@ public class VehicleController {
         Chicken chicken = gameMap.getChicken();
         if(vehicle.checkCollision(chicken.getPosition())){
             chicken.removeLife();
+            gameMap.resetChickenPosition();
         }
     }
 
