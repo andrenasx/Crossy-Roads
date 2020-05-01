@@ -1,4 +1,4 @@
-package model;
+package crossyroads.model;
 
 public class Truck extends Vehicle {
     public Truck(int x, int y, String direction) {

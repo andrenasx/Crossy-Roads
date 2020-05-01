@@ -1,4 +1,4 @@
-package model;
+package crossyroads.model;
 
 import java.util.Objects;
 

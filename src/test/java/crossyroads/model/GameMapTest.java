@@ -1,6 +1,5 @@
-package model;
+package crossyroads.model;
 
-import model.*;
 import org.junit.Test;
 
 import java.util.ArrayList;

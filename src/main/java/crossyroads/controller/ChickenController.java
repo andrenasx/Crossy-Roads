@@ -1,7 +1,7 @@
-package controller;
+package crossyroads.controller;
 
-import model.*;
-import view.Gui;
+import crossyroads.model.*;
+import crossyroads.view.Gui;
 
 import java.io.IOException;
 import java.util.List;

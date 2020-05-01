@@ -1,9 +1,9 @@
-package controller;
+package crossyroads.controller;
 
-import model.GameMap;
-import model.Position;
+import crossyroads.model.GameMap;
+import crossyroads.model.Position;
 import org.junit.Test;
-import view.Gui;
+import crossyroads.view.Gui;
 
 import java.io.IOException;
 

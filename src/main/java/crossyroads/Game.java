@@ -1,8 +1,10 @@
-import controller.GameController;
-import model.GameMap;
-import model.GameMapCreator;
-import model.GameMapObserver;
-import view.Gui;
+package crossyroads;
+
+import crossyroads.controller.GameController;
+import crossyroads.model.GameMap;
+import crossyroads.model.GameMapCreator;
+import crossyroads.model.GameMapObserver;
+import crossyroads.view.Gui;
 
 import java.io.IOException;
 

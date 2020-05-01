@@ -1,4 +1,4 @@
-package model;
+package crossyroads.model;
 
 public class GameMapCreator {
     public GameMapCreator() {

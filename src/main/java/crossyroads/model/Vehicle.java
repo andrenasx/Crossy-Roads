@@ -1,4 +1,4 @@
-package model;
+package crossyroads.model;
 
 public abstract class Vehicle extends Element {
     private String direction;

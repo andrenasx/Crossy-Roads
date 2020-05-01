@@ -1,4 +1,4 @@
-package model;
+package crossyroads.model;
 
 public class Coin extends Element {
     private int value;

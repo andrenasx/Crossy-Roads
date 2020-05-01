@@ -1,8 +1,5 @@
-package model;
+package crossyroads.model;
 
-import model.Car;
-import model.Position;
-import model.Truck;
 import org.junit.Test;
 
 import java.util.Random;

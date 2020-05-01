@@ -1,4 +1,4 @@
-package model;
+package crossyroads.model;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

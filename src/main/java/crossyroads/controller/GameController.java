@@ -1,9 +1,7 @@
-package controller;
+package crossyroads.controller;
 
-import model.GameMap;
-import view.Gui;
-
-import java.io.IOException;
+import crossyroads.model.GameMap;
+import crossyroads.view.Gui;
 
 public class GameController {
     private ChickenController chickenController;

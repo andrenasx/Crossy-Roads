@@ -1,4 +1,4 @@
-package model;
+package crossyroads.model;
 
 public abstract class Element {
     private Position position;

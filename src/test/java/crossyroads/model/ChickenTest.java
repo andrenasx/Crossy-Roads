@@ -1,7 +1,5 @@
-package model;
+package crossyroads.model;
 
-import model.Chicken;
- import model.Position;
 import org.junit.Test;
 
 import java.util.Random;

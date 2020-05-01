@@ -1,4 +1,4 @@
-package model;
+package crossyroads.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,56 +66,7 @@ public class GameMap {
     public Position getChickenPosition(){
         return chicken.getPosition();
     }
-
-    /*private boolean chickenStaysInScreen(Position position){
-        return (position.getX()>=0 && position.getX()<width && position.getY()>=0 && position.getY()<height);
-    }
-
-    public void moveChicken(Position position){
-        if (chickenStaysInScreen(position))
-            chicken.setPosition(position);
-        checkCollisions(position);
-
-        this.notifyObservers();
-    }*/
-
-    /*public void moveVehicles(){
-        for (Vehicle vehicle: vehicles){
-            if(vehicle.getDirection().equals("left"))
-                vehicle.setPosition(vehicle.getPosition().left());
-            else
-                vehicle.setPosition(vehicle.getPosition().right());
-        }
-        this.notifyObservers();
-    }
-
-    private void checkCollisions(Position position) {
-        checkVehicleCollision(position);
-
-        Coin coin = (Coin) getCollidingElement(position, coins);
-        if (coin != null) {
-            chicken.raiseScore(coin.getValue());
-            coins.remove(coin);
-        }
-    }
-
-    private void checkVehicleCollision(Position position){
-        for (Vehicle vehicle: vehicles){
-            if (vehicle.checkCollision(position)){
-                chicken.removeLife();
-                break;
-            }
-        }
-    }
-
-    private Element getCollidingElement(Position position, List<? extends Element> elements) {
-        for (Element element : elements)
-            if (element.getPosition().equals(position))
-                return element;
-
-        return null;
-    }*/
-
+    
     public boolean isGameFinished(){
         return this.gamefinished || chicken.isDead() || coins.isEmpty();
     }

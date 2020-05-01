@@ -1,9 +1,8 @@
-package controller;
+package crossyroads.controller;
 
-import model.Car;
-import model.GameMap;
-import model.Position;
-import model.Vehicle;
+import crossyroads.model.Car;
+import crossyroads.model.GameMap;
+import crossyroads.model.Position;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

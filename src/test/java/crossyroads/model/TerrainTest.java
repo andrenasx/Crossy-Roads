@@ -1,6 +1,5 @@
-package model;
+package crossyroads.model;
 
-import model.Terrain;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

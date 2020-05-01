@@ -1,9 +1,9 @@
-package controller;
+package crossyroads.controller;
 
-import model.Chicken;
-import model.GameMap;
-import model.Position;
-import model.Vehicle;
+import crossyroads.model.Chicken;
+import crossyroads.model.GameMap;
+import crossyroads.model.Position;
+import crossyroads.model.Vehicle;
 
 import java.util.List;
 
