@@ -10,7 +10,7 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 
 public class ChickenControllerTest {
-    @Test
+    /*@Test
     public void chickenStaysInScreenTest() throws IOException {
         GameMap map = new GameMap(40, 35);
         Gui gui = new Gui(map);
@@ -58,5 +58,5 @@ public class ChickenControllerTest {
         chickenController.execute(Gui.COMMAND.LEFT);
         assertEquals(map.getChickenPosition(), new Position(position4.getX()-1, position4.getY()));
 
-    }
+    }*/
 }

@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class VehicleControllerTest {
-    @Test
+    /*@Test
     public void moveVehicleTest(){
         GameMap map = new GameMap(40, 35);
         VehicleController vehicleController = new VehicleController(map);
@@ -22,5 +22,5 @@ public class VehicleControllerTest {
         assertEquals(car1.getPosition(), new Position(position1.getX()-1, position1.getY()));
         assertEquals(car2.getPosition(), new Position(position2.getX()+1, position2.getY()));
 
-    }
+    }*/
 }
