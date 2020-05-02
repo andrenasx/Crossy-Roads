@@ -56,9 +56,9 @@ public class Gui {
     private void drawElement(Element element) {
         String character="";
         if (element instanceof Chicken) character="O";
-        if (element instanceof Coin) character="O";
-        if (element instanceof Car) character="<>";
-        if (element instanceof Truck) character="<==>";
+        else if (element instanceof Coin) character="O";
+        else if (element instanceof Car) character="<>";
+        else if (element instanceof Truck) character="<==>";
         drawCharacter(element.getPosition(), character, element.getColor());
     }
 
@@ -90,21 +90,21 @@ public class Gui {
     }
 
     public COMMAND getNextCommand() throws IOException {
-            KeyStroke input = screen.pollInput();
-            if(input != null){
-                switch (input.getKeyType()){
-                    case ArrowUp:
-                        return COMMAND.UP;
-                    case ArrowDown:
-                        return COMMAND.DOWN;
-                    case ArrowRight:
-                        return COMMAND.RIGHT;
-                    case ArrowLeft:
-                        return COMMAND.LEFT;
-                    default:
-                        return COMMAND.NOTHING;
-                }
+        KeyStroke input = screen.pollInput();
+        if(input != null){
+            switch (input.getKeyType()){
+                case ArrowUp:
+                    return COMMAND.UP;
+                case ArrowDown:
+                    return COMMAND.DOWN;
+                case ArrowRight:
+                    return COMMAND.RIGHT;
+                case ArrowLeft:
+                    return COMMAND.LEFT;
+                default:
+                    return COMMAND.NOTHING;
             }
-            return COMMAND.NOTHING;
+        }
+        return COMMAND.NOTHING;
     }
 }
