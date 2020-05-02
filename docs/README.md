@@ -18,6 +18,8 @@ Este projeto está a ser desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt
 
     [![Vehicle Collision](https://i.gyazo.com/63df273c94498e994c27186b530ddefa.gif)](https://gyazo.com/63df273c94498e994c27186b530ddefa)
 
+- **Terminar o jogo:** a janela do jogo fecha e o jogo termina quando a galinha ganha ou perde ou quando o utilizador clica no X da janela do jogo.
+
 ## Planned Features
 
 - **Menu inicial:** um menu que permite ao utilizador jogar, sair e ver uma tabela dos _highscores_.
@@ -30,7 +32,7 @@ Este projeto está a ser desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt
 (aprofundar muito mais!)
 - Factory Method: element, as subclasses especificam o objeto a criar
 - Composite: element e vehicle, representam uma parte todo , permitindo nos decompor em objetos mais complexos;
-- Observer:  gameObserver, quando um veiculo ou a galinha se mexem pode-se notificar a view para desenhar~.
+- Observer:  gameObserver, quando um veículo ou a galinha se mexem pode-se notificar a view para desenhar~.
 - MVC: o modelo representa a data, a view mostra os dados do modelo e manda as ações para o controlador; o controlador manda os dados do modelo para a view e interpreta as ações do utilizador.
 
 ## Known Code Smells and Refactoring Suggestions
@@ -41,7 +43,7 @@ As classes Truck e Car implementam apenas 2 métodos, um para obter o compriment
 
 Uma das formas de eliminar este code smell seria eliminar as subclasses e os seus atributos e métodos passarem a fazer parte da classe mãe.
 
-- Long Method
+- _Long Method_
 
 Na classe VehicleController o método moveVehicles() é demasiado extenso.
 
@@ -52,3 +54,5 @@ Uma forma de melhorar o código seria dividir este método em vários, ficando o
 - _Screenshot of coverage report:_
 
 - _Link to mutation testing report:_
+
+## Self-Evaluation
