@@ -50,7 +50,4 @@ public class VehicleController {
         }
     }
 
-    /*public boolean vehicleLeavesScreen(Position position){
-
-    }*/
 }
