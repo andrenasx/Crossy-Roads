@@ -144,8 +144,10 @@ public class ChickenControllerTest {
 
     @Test
     public void startTest(){
-        ChickenController chickenController = Mockito.mock(ChickenController.class);
+        GameMap map = Mockito.mock(GameMap.class);
+        Gui gui = Mockito.mock(Gui.class);
+        ChickenController chickenController = new ChickenController(gui, map);
         chickenController.start();
-        Mockito.verify(chickenController, Mockito.times(1)).start();
+        Mockito.verify(map, Mockito.times(1)).getChicken();
     }
 }
