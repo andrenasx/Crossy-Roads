@@ -57,10 +57,6 @@ public class GameMap {
         return elements;
     }
 
-    public Position getChickenPosition(){
-        return chicken.getPosition();
-    }
-
     public void addObserver(GameMapObserver observer) {
         observers.add(observer);
     }
