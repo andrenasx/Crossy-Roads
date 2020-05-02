@@ -10,11 +10,9 @@ import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.*;
 
-//import static com.sun.tools.doclint.Entity.and;
-
 public class Gui {
-    private final GameMap gameMap;
-    private final TerminalScreen screen;
+    private GameMap gameMap;
+    private TerminalScreen screen;
     public enum COMMAND {UP, DOWN, LEFT, RIGHT, NOTHING};
 
     public Gui(GameMap map) throws IOException {
@@ -30,11 +28,13 @@ public class Gui {
         this.gameMap = map;
     }
 
+    public void setScreen(TerminalScreen screen){this.screen=screen;}
+
     public void draw() throws IOException {
         screen.clear();
 
-        drawGameMap();
         drawScore();
+        drawGameMap();
         for (Element element: gameMap.getAllElements()) drawElement(element);
         screen.refresh();
     }
