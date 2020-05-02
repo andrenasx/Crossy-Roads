@@ -126,11 +126,11 @@ public class ChickenControllerTest {
 
     }
 
-    /*@Test
+    @Test
     public void startTest(){
         GameMap map = Mockito.mock(GameMap.class);
         ChickenController chickenController = new ChickenController(map);
-        chickenController.start(Gui.COMMAND.UP);
+        chickenController.start(Gui.COMMAND.NOTHING);
         Mockito.verify(map, Mockito.times(1)).getChicken();
-    }*/
+    }
 }
