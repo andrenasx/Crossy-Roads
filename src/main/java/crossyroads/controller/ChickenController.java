@@ -8,16 +8,13 @@ import java.util.List;
 
 public class ChickenController {
     private GameMap map;
-    private Gui gui;
 
-    public ChickenController(Gui gui, GameMap map) {
+    public ChickenController(GameMap map) {
         this.map = map;
-        this.gui = gui;
     }
 
-    public void execute() throws IOException {
+    public void execute(Gui.COMMAND command) {
         Chicken chicken = map.getChicken();
-        Gui.COMMAND command = gui.getNextCommand();
         if(command == Gui.COMMAND.UP)
             moveChicken(chicken.getPosition().up());
         if(command == Gui.COMMAND.DOWN)
@@ -29,12 +26,8 @@ public class ChickenController {
 
     }
 
-    public void start(){
-        try {
-            execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void start(Gui.COMMAND command){
+        execute(command);
     }
 
     public boolean chickenStaysInScreen(Position position){
