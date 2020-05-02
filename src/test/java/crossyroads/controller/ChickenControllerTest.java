@@ -141,4 +141,11 @@ public class ChickenControllerTest {
         assertTrue(map.getCoins().isEmpty());
 
     }
+
+    @Test
+    public void startTest(){
+        ChickenController chickenController = Mockito.mock(ChickenController.class);
+        chickenController.start();
+        Mockito.verify(chickenController, Mockito.times(1)).start();
+    }
 }
