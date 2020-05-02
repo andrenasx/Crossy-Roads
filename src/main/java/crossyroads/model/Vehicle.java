@@ -12,10 +12,6 @@ public abstract class Vehicle extends Element {
         return direction;
     }
 
-    public void setDirection(String direction) {
-        this.direction = direction;
-    }
-
     public abstract int getLength();
 
     public boolean checkCollision(Position position){
