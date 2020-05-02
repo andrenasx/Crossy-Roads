@@ -32,4 +32,9 @@ public class Chicken extends Element{
     }
 
     public void removeLife(){this.lives-=1;}
+
+    @Override
+    public Position getPosition() {
+        return super.getPosition();
+    }
 }

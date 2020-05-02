@@ -18,10 +18,11 @@ public class GameController {
     }
 
     public void start(){
-        while(!map.isGameFinished()) {
+        while(!gui.verifyFinnishLine()) {
             chickenController.start();
             vehicleController.start();
         }
+        System.exit(0);
     }
 
 }

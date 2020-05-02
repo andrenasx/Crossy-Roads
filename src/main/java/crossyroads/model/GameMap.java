@@ -1,5 +1,6 @@
 package crossyroads.model;
 
+import crossyroads.view.Gui;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,10 +59,6 @@ public class GameMap {
 
     public Position getChickenPosition(){
         return chicken.getPosition();
-    }
-    
-    public boolean isGameFinished(){
-        return this.gamefinished || chicken.isDead() || coins.isEmpty();
     }
 
     public void addObserver(GameMapObserver observer) {

@@ -10,6 +10,8 @@ import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.*;
 
+//import static com.sun.tools.doclint.Entity.and;
+
 public class Gui {
     private final GameMap gameMap;
     private final TerminalScreen screen;
@@ -81,6 +83,10 @@ public class Gui {
                 return "#013220";
         }
         return "000000";
+    }
+
+    public boolean verifyFinnishLine() {
+        return (getBackgroundColor(gameMap.getChicken().getPosition().getY()).equals("#013220") & gameMap.getCoins().isEmpty()) || gameMap.getChicken().isDead();
     }
 
     public COMMAND getNextCommand() throws IOException {
