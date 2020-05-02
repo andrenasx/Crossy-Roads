@@ -3,6 +3,8 @@ package crossyroads.controller;
 import crossyroads.model.GameMap;
 import crossyroads.view.Gui;
 
+import java.io.IOException;
+
 public class GameController {
     private ChickenController chickenController;
     private VehicleController vehicleController;
@@ -13,13 +15,15 @@ public class GameController {
         this.gui = gui;
         this.map = map;
 
-        this.chickenController = new ChickenController(gui, map);
+        this.chickenController = new ChickenController(map);
         this.vehicleController = new VehicleController(map);
     }
 
-    public void start(){
+    public void start() throws IOException {
         while(!gui.verifyFinnishLine()) {
-            chickenController.start();
+            Gui.COMMAND command = gui.getNextCommand();
+            if(command == Gui.COMMAND.EOF) break;
+            chickenController.start(command);
             vehicleController.start();
         }
         System.exit(0);
