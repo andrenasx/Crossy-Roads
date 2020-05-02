@@ -15,8 +15,9 @@ public class ChickenController {
         this.gui = gui;
     }
 
-    public void execute(Gui.COMMAND command) throws IOException {
+    public void execute() throws IOException {
         Chicken chicken = map.getChicken();
+        Gui.COMMAND command = gui.getNextCommand();
         if(command == Gui.COMMAND.UP)
             moveChicken(chicken.getPosition().up());
         if(command == Gui.COMMAND.DOWN)
@@ -30,7 +31,7 @@ public class ChickenController {
 
     public void start(){
         try {
-            execute(gui.getNextCommand());
+            execute();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -58,7 +59,7 @@ public class ChickenController {
         }
     }
 
-    private void checkVehicleCollision(Position position){
+    public void checkVehicleCollision(Position position){
         for (Vehicle vehicle: map.getVehicles()){
             if (vehicle.checkCollision(position)){
                 map.getChicken().removeLife();
