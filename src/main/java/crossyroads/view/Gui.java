@@ -13,7 +13,7 @@ import java.io.*;
 public class Gui {
     private GameMap gameMap;
     private TerminalScreen screen;
-    public enum COMMAND {UP, DOWN, LEFT, RIGHT, NOTHING};
+    public enum COMMAND {UP, DOWN, LEFT, RIGHT, NOTHING, EOF};
 
     public Gui(GameMap map) throws IOException {
         TerminalSize terminalSize = new TerminalSize(map.getWidth(), map.getHeight() + 1);
@@ -101,6 +101,8 @@ public class Gui {
                     return COMMAND.RIGHT;
                 case ArrowLeft:
                     return COMMAND.LEFT;
+                case EOF:
+                    return COMMAND.EOF;
                 default:
                     return COMMAND.NOTHING;
             }
