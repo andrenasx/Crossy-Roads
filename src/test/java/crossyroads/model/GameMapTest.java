@@ -1,5 +1,6 @@
 package crossyroads.model;
 
+import crossyroads.Game;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -66,6 +67,32 @@ public class GameMapTest {
         elements.add(coin1);
 
         assertEquals(elements,game.getAllElements());
+
+    }
+
+    @Test
+    public void resetChickenTest(){
+        GameMap map = new GameMap(14, 40);
+        Chicken chicken = map.getChicken();
+        chicken.setPosition(new Position(1, 2));
+        map.resetChickenPosition();
+        assertEquals(chicken.getPosition(), new Position(14/2, 40-1));
+    }
+
+    @Test
+    public void getScoreTest(){
+        GameMap map = new GameMap(15, 30);
+        Chicken chicken = map.getChicken();
+        chicken.raiseScore(3);
+        assertEquals(3, map.getScore());
+    }
+
+    @Test
+    public void getLivesTest(){
+        GameMap map = new GameMap(16, 30);
+        Chicken chicken = map.getChicken();
+        chicken.removeLife();
+        assertEquals(2, map.getLives());
 
     }
 
