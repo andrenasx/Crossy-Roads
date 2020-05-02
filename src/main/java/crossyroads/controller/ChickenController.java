@@ -9,7 +9,6 @@ import java.util.List;
 public class ChickenController {
     private GameMap map;
     private Gui gui;
-    private boolean collided;
 
     public ChickenController(Gui gui, GameMap map) {
         this.map = map;
