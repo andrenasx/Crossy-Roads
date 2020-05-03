@@ -29,11 +29,45 @@ Este projeto está a ser desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt
 - **Mensagens:** aparecerá uma mensagem de fim de jogo quando o jogador perdeu.
 
 ## Design
-(aprofundar muito mais!)
-- Factory Method: element, as subclasses especificam o objeto a criar
-- Composite: element e vehicle, representam uma parte todo , permitindo nos decompor em objetos mais complexos;
-- Observer:  gameObserver, quando um veículo ou a galinha se mexem pode-se notificar a view para desenhar~.
-- MVC: o modelo representa a data, a view mostra os dados do modelo e manda as ações para o controlador; o controlador manda os dados do modelo para a view e interpreta as ações do utilizador.
+
+### - Os objetos apesar de terem atributos em comum são todos diferentes
+
+#### Problem in Context
+
+Para a realização do jogo precisamos de vários objetos diferentes. Chegou-se à conclusão que estes teriam atributos em comum e, por isso, não fazia sentido repeti-los em todas as classes, o que levou à criação de uma classe mãe.
+Por outro lado, não faz sentido que esta classe mãe fosse realmente um objeto representado no jogo, uma vez que só teria os atributos em comum, mas sim representar os objetos criados nas suas sublasses.
+
+#### The Patterns
+
+Aplicamos o _**Factory Method**_ _pattern_. Este permite que as subclasses determinem o objeto a ser criado sem conseguir antecipar o que será esse objeto. Com isto conseguimos resolver o problema referido a cima, a classe mãe, Element, permite as suas subclasses, por exemplo Chicken, determinarem o objeto que querem criar, não interferindo ou tendo qualquer conhecimento do objeto a ser criado.
+Também foi aplicado o _**Composite**_ _pattern_. Este permite a hierarquia entre classes, quando se quer representar classes pertencendo a uma parte/todo. Assim, em vez de repetirmos os métodos em todas as classes, agora as subclasses herdam estes métodos em comum da classe mãe.
+
+#### Implementation
+O gráfico em UML seguinte demonstra como foram aplicados estes patterns nas classes.
+
+#### Consequences
+
+- não repetição de métodos comuns;
+- facilidade de acrescentar outros objetos ao jogo;
+- as subclasses ficam mais simples e legíveis.
+
+### - Notificar que houve alterações na view
+
+#### Problem in Context
+
+Quando ocorre alguma alterações durante o jogo, a Chicken ou veículos se moverem por exemplo, a view tem que ser notificado para voltar a desenhar.
+
+#### The Pattern
+
+Aplicamos o _**Observer**_ _pattern_. Este é usado entre classes com dependências de modo que quando um objeto é alterado, todos os objetos dependentes deste têm que ser notificados e atualizados. Desta forma, sempre que ocorre algum movimento ou alteração ao jogo, a view é notificada e volta a desenhar.
+
+#### Implementation
+O gráfico em UML seguinte demonstra como foi aplicado este pattern nas classes.
+
+#### Consequences
+
+- uma relação abstrata entre a view e observador;
+- permite comunicação entre os objetos;
 
 ## Known Code Smells and Refactoring Suggestions
 
@@ -53,6 +87,12 @@ Uma forma de melhorar o código seria dividir este método em vários, ficando o
 
 - _Screenshot of coverage report:_
 
-- _Link to mutation testing report:_
+[![Image from Gyazo](https://i.gyazo.com/6ea410024fbc031f7a1962c2f08905b1.png)](https://gyazo.com/6ea410024fbc031f7a1962c2f08905b1)
 
 ## Self-Evaluation
+
+Inicialmente o grupo era só de 2 elementos e o trabalho foi distribuído de forma equitativa e justa. Mais tarde, juntou-se um outro elemento e fizemos uma nova distribuição de tarefas
+
+- Ana Teresa Cruz: 
+- André Nascimento:
+- Pedro Coelho: 
