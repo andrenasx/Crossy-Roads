@@ -1,6 +1,5 @@
 package crossyroads.controller;
 
-import crossyroads.Game;
 import crossyroads.model.Car;
 import crossyroads.model.Chicken;
 import crossyroads.model.GameMap;
@@ -8,7 +7,6 @@ import crossyroads.model.Position;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 public class VehicleControllerTest {
     @Test

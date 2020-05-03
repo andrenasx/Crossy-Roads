@@ -2,7 +2,6 @@ package crossyroads.view;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import crossyroads.model.*;
 import org.junit.Test;

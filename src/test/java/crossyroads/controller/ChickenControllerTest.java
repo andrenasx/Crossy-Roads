@@ -1,6 +1,5 @@
 package crossyroads.controller;
 
-import com.googlecode.lanterna.screen.TerminalScreen;
 import crossyroads.model.*;
 import org.junit.Test;
 import crossyroads.view.Gui;

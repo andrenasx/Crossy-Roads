@@ -3,7 +3,6 @@ package crossyroads.controller;
 import crossyroads.model.*;
 import crossyroads.view.Gui;
 
-import java.io.IOException;
 import java.util.List;
 
 public class ChickenController {
