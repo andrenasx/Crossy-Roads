@@ -49,9 +49,9 @@ O gráfico em UML seguinte demonstra como foram aplicados estes patterns nas cla
 
 #### Consequences
 
-- não repetição de métodos comuns;
-- facilidade de acrescentar outros objetos ao jogo;
-- as subclasses ficam mais simples e legíveis.
+- Não repetição de métodos comuns;
+- Facilidade de acrescentar outros objetos ao jogo;
+- As subclasses ficam mais simples e legíveis.
 
 ### - Notificar que houve alterações na view
 
@@ -70,8 +70,32 @@ O gráfico em UML seguinte demonstra como foi aplicado este pattern nas classes.
 
 #### Consequences
 
-- uma relação abstrata entre a view e observador;
-- permite comunicação entre os objetos;
+- Uma relação abstrata entre a view e observador;
+- Permite comunicação entre os objetos;
+
+### - Organização de código
+
+#### Problem in Context
+
+Desde início a organização do código era um ponto fulcral, de maneira a permitir avançar e corrigir erros anteriores sem grandes alterações.
+
+#### The Pattern
+
+Como tal recorremos ao _Architectural Pattern_ _MVC (Model-View-Controller)_, sugerido pelo professor logo na primeira aula prática relacionada com o desenvolvimento do projeto, que é um padrão usado frequentemente em _GUIs_ como o caso do nosso jogo.
+Neste padrão, o _Model_ apenas é responsável por armazenar a data, a _View_ mostra a data do _Model_ e envia as ações do utilizador para o _Controller_, e o _Controller_ fornece a data do _Model_ para a _View_ e interpreta as ações do utilizador.
+
+#### Implementation
+
+No nosso caso, o _GameMap_ contém toda a informação referente ao nível que é mostrada pela _Gui_ quando há alguma alteração, a _Gui_ recebe os _inputs_ do jogador e envia-os ao _GameController_, e o _GameController_ manipula os dados consoante os inputs.
+
+[![MVC](https://i.gyazo.com/0efec72c41247b5e6ce85dabb795bb89.png)](https://gyazo.com/0efec72c41247b5e6ce85dabb795bb89)
+
+#### Consequences
+
+- O desenvolvimento da aplicação torna-se mais rápido e modular;
+- Facilita a distribuição de tarefas pelos vários elementos;
+- Requer regras específicas para a criação de classes e respetivos métodos;
+- O uso de camadas ajuda a controlar e encapsular a complexidade de programas grandes, mas adiciona complexidade a aplicações simples;
 
 ## Known Code Smells and Refactoring Suggestions
 
