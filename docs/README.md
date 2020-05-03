@@ -45,6 +45,8 @@ Também foi aplicado o _**Composite**_ _pattern_. Este permite a hierarquia entr
 #### Implementation
 O gráfico em UML seguinte demonstra como foram aplicados estes patterns nas classes.
 
+[![Image from Gyazo](https://i.gyazo.com/af6e6d09cc0b7abdb3a8862e4b31a973.png)](https://gyazo.com/af6e6d09cc0b7abdb3a8862e4b31a973)
+
 #### Consequences
 
 - não repetição de métodos comuns;
@@ -63,6 +65,8 @@ Aplicamos o _**Observer**_ _pattern_. Este é usado entre classes com dependênc
 
 #### Implementation
 O gráfico em UML seguinte demonstra como foi aplicado este pattern nas classes.
+
+[![Image from Gyazo](https://i.gyazo.com/98fc64d7ec1815f01be4c2108791a78e.png)](https://gyazo.com/98fc64d7ec1815f01be4c2108791a78e)
 
 #### Consequences
 
