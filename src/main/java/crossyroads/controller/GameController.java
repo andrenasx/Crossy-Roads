@@ -20,7 +20,7 @@ public class GameController {
     }
 
     public void start() throws IOException {
-        while(!gui.verifyFinnishLine()) {
+        while(!map.isGameFinished()) {
             Gui.COMMAND command = gui.getNextCommand();
             if(command == Gui.COMMAND.EOF) break;
             chickenController.start(command);

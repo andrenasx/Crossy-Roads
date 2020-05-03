@@ -85,9 +85,6 @@ public class Gui {
         return "000000";
     }
 
-    public boolean verifyFinnishLine() {
-        return (getBackgroundColor(gameMap.getChicken().getPosition().getY()).equals("#013220") & gameMap.getCoins().isEmpty()) || gameMap.getChicken().isDead();
-    }
 
     public COMMAND getNextCommand() throws IOException {
         KeyStroke input = screen.pollInput();
