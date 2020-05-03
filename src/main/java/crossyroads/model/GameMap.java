@@ -66,6 +66,10 @@ public class GameMap {
         }
     }
 
+    public boolean isGameFinished() {
+        return ((chicken.getPosition().getY() == 0) & coins.isEmpty()) || chicken.isDead();
+    }
+
     public int getScore() {
         return chicken.getScore();
     }

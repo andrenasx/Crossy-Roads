@@ -11,14 +11,12 @@ import java.io.IOException;
 public class Game implements GameMapObserver {
     private GameMap map;
     private Gui gui;
-    private long startTime;
 
     public static void main(String[] args) throws IOException {
         new Game().start();
     }
 
     private void start() throws IOException {
-        startTime = System.currentTimeMillis();
         GameMapCreator creator = new GameMapCreator();
         map = creator.createGameMap(40,35);
         map.addObserver(this);

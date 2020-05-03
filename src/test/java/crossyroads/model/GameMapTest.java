@@ -1,12 +1,13 @@
 package crossyroads.model;
 
+import crossyroads.Game;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class GameMapTest {
     @Test
@@ -93,6 +94,23 @@ public class GameMapTest {
         chicken.removeLife();
         assertEquals(2, map.getLives());
 
+    }
+
+    @Test
+    public void isGameFinished(){
+        GameMap map = new GameMap(35, 40);
+        Chicken chicken = map.getChicken();
+
+        assertFalse(map.isGameFinished());
+
+        chicken.setPosition(new Position(10, 0));
+
+        assertTrue(map.isGameFinished());
+
+        chicken.setPosition(new Position(10, 10));
+        while(chicken.getLives()>0) chicken.removeLife();
+
+        assertTrue(map.isGameFinished());
     }
 
 }
