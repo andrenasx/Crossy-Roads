@@ -1,5 +1,6 @@
 package crossyroads.controller;
 
+import crossyroads.model.MusicPlayer;
 import crossyroads.model.GameMap;
 import crossyroads.view.Gui;
 
@@ -20,12 +21,17 @@ public class GameController {
     }
 
     public void start() throws IOException {
+        MusicPlayer player = new MusicPlayer("src/main/resources/piu.wav");
+        player.startMusic();
+
         while(!map.isGameFinished()) {
             Gui.COMMAND command = gui.getNextCommand();
             if(command == Gui.COMMAND.EOF) break;
             chickenController.start(command);
             vehicleController.start();
         }
+
+        player.stopMusic();
         System.exit(0);
     }
 
