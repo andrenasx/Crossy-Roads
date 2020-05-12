@@ -22,18 +22,24 @@ public class VehicleController {
         for (Vehicle vehicle: vehicles) {
             if (vehicle.getDirection().equals("left")) {
                 vehicle.setPosition(vehicle.getPosition().left());
-                if(vehicle.getPosition().getX() + vehicle.getLength() == 0){ //Make another function for these verifications
-                    vehicle.setPosition(new Position(gameMap.getWidth(), vehicle.getPosition().getY()));
-                }
             } else {
                 vehicle.setPosition(vehicle.getPosition().right());
-                if(vehicle.getPosition().getX() == gameMap.getWidth()){
-                    vehicle.setPosition(new Position(-vehicle.getLength(), vehicle.getPosition().getY()));
-                }
             }
+            vehicleLeavesScreen(vehicle);
             checkChickenCollision(vehicle);
         }
         gameMap.notifyObservers();
+    }
+
+    public void vehicleLeavesScreen(Vehicle vehicle){
+        if(vehicle.getDirection().equals("left")){
+            if(vehicle.getPosition().getX() + vehicle.getLength() == 0)
+                vehicle.setPosition(new Position(gameMap.getWidth(), vehicle.getPosition().getY()));
+        }
+        else{
+            if(vehicle.getPosition().getX() == gameMap.getWidth())
+                vehicle.setPosition(new Position(-vehicle.getLength(), vehicle.getPosition().getY()));
+        }
     }
 
     public void checkChickenCollision(Vehicle vehicle) {
