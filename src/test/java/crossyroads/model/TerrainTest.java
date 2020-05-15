@@ -7,6 +7,6 @@ public class TerrainTest {
     @Test
     public void readFileTest(){
         Terrain terrain = new Terrain("test.txt", "test");
-        assertEquals("Test", terrain.getTerrainStrings());
+        assertEquals("Test", terrain.getBackgroundcolor());
     }
 }
