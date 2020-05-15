@@ -78,7 +78,11 @@ public class GameMap {
         return chicken.getLives();
     }
 
-    public String getGameTerrain(){
+    public Terrain getLevelTerrain(){
+        return terrain;
+    }
+
+    public String getLevelBackground(){
         return terrain.getBackground();
     }
 

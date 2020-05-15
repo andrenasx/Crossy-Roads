@@ -72,7 +72,7 @@ public class Gui {
     }
 
     private String getBackgroundColor(int y){
-        String color = gameMap.getGameTerrain();
+        String color = gameMap.getLevelBackground();
 
         switch (color.charAt(y)) {
             case 'g':
