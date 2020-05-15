@@ -17,16 +17,18 @@ public class VehicleController {
         this.startTime = System.currentTimeMillis();
     }
 
-    public void moveVehicles() {
+    public void moveVehicles(int step) {
         List<Vehicle> vehicles = gameMap.getVehicles();
         for (Vehicle vehicle: vehicles) {
-            if (vehicle.getDirection().equals("left")) {
-                vehicle.setPosition(vehicle.getPosition().left());
-            } else {
-                vehicle.setPosition(vehicle.getPosition().right());
+            if (step % vehicle.getSpeed() == 0) {
+                if (vehicle.getDirection().equals("left")) {
+                    vehicle.setPosition(vehicle.getPosition().left());
+                } else {
+                    vehicle.setPosition(vehicle.getPosition().right());
+                }
+                vehicleLeavesScreen(vehicle);
+                checkChickenCollision(vehicle);
             }
-            vehicleLeavesScreen(vehicle);
-            checkChickenCollision(vehicle);
         }
         gameMap.notifyObservers();
     }
@@ -52,7 +54,7 @@ public class VehicleController {
 
     public void start() {
         if ((System.currentTimeMillis() - startTime) % 200 == 0) {
-            moveVehicles();
+            moveVehicles(0);
         }
     }
 
