@@ -33,10 +33,10 @@ public class GameController {
 
             Gui.COMMAND command = gui.getNextCommand();
             if(command == Gui.COMMAND.EOF) break;
-            chickenController.start(command);
-            vehicleController.start();
 
-            vehicleController.moveVehicles(step);
+            chickenController.start(command);
+            vehicleController.start(step);
+            gui.draw();
 
             long elapsed = System.currentTimeMillis() - time;
 

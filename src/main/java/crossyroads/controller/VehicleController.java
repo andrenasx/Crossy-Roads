@@ -30,7 +30,6 @@ public class VehicleController {
                 checkChickenCollision(vehicle);
             }
         }
-        gameMap.notifyObservers();
     }
 
     public void vehicleLeavesScreen(Vehicle vehicle){
@@ -52,10 +51,7 @@ public class VehicleController {
         }
     }
 
-    public void start() {
-        if ((System.currentTimeMillis() - startTime) % 200 == 0) {
-            moveVehicles(0);
-        }
+    public void start(int step) {
+        moveVehicles(step);
     }
-
 }
