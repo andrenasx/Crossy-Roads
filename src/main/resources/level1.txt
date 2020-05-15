@@ -1,0 +1,7 @@
+dgggggggggrrrggggggggggrrrggggggggg
+C,0,10,>
+C,2,23,>
+T,2,23,<
+T,5,25,>
+M,20,15,3
+M,30,5,1
