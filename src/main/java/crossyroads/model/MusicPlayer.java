@@ -4,6 +4,7 @@ package crossyroads.model;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import java.io.File;
 
 public class MusicPlayer {
@@ -20,6 +21,8 @@ public class MusicPlayer {
                 clip = AudioSystem.getClip();
                 clip.open(audioInput);
                 clipTimePosition = 0;
+                FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                gainControl.setValue(-25.0f);
             }
 
         } catch (Exception ex) {
