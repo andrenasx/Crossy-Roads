@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Terrain {
     private String filename;
-    private String backgroundcolor;
+    private String background;
     private String directory;
     private List<Element> elements;
 
@@ -16,11 +16,10 @@ public class Terrain {
         this.filename = filename;
         this.directory = directory;
         this.elements = new ArrayList<>();
-        this.backgroundcolor = readFile(this.filename, this.directory);
+        readFile(this.filename, this.directory);
     }
 
-    private String readFile(String filename, String directory){
-        String background = "";
+    private void readFile(String filename, String directory){
         String filePath = "src/" + directory + "/resources/" + filename;
         BufferedReader br;
         List<String> allLines = new ArrayList<>();
@@ -36,15 +35,14 @@ public class Terrain {
         catch (IOException e) {
             e.printStackTrace();
         }
-        background = allLines.get(0);
+        this.background = allLines.get(0);
         for(int i = 1; i < allLines.size()-1; i++){
             addElement(allLines.get(i));
         }
-        return background;
     }
 
-    public String getBackgroundcolor() {
-        return backgroundcolor;
+    public String getBackground() {
+        return background;
     }
 
     public List<Element> getElements(){
