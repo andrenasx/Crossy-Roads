@@ -21,7 +21,7 @@ public class GameMap {
         this.gamefinished = false;
         this.observers = new ArrayList<>();
         this.coins = new ArrayList<>();
-        this.terrain = new Terrain("map.txt", "main");
+        this.terrain = new Terrain("level1.txt", "main");
     }
 
     public int getHeight() {
@@ -79,7 +79,7 @@ public class GameMap {
     }
 
     public String getGameTerrain(){
-        return terrain.getTerrainStrings();
+        return terrain.getBackgroundcolor();
     }
 
     public void resetChickenPosition(){
