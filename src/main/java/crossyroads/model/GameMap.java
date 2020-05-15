@@ -79,7 +79,7 @@ public class GameMap {
     }
 
     public String getGameTerrain(){
-        return terrain.getBackgroundcolor();
+        return terrain.getBackground();
     }
 
     public void resetChickenPosition(){
