@@ -16,7 +16,7 @@ import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
 public class ViewTest {
-    @Test
+    /*@Test
     public void drawTest() throws IOException {
         TerminalScreen screen = Mockito.mock(TerminalScreen.class);
         when(screen.newTextGraphics()).thenReturn(mock(TextGraphics.class));
@@ -70,5 +70,5 @@ public class ViewTest {
 
         verify(screen, times((5))).pollInput();
     }
-
+*/
 }

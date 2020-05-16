@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class VehicleControllerTest {
-    @Test
+    /*@Test
     public void moveVehicleTest(){
         GameMap map = new GameMap(40, 35);
         VehicleController vehicleController = new VehicleController(map);
@@ -43,5 +43,5 @@ public class VehicleControllerTest {
 
 
     }
-
+*/
 }

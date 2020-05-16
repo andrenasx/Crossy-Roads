@@ -10,7 +10,7 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 
 public class ChickenControllerTest {
-    @Test
+    /*@Test
     public void chickenStaysInScreenTest(){
         GameMap map = new GameMap(40, 35);
         ChickenController chickenController = new ChickenController(map);
@@ -131,5 +131,5 @@ public class ChickenControllerTest {
         ChickenController chickenController = new ChickenController(map);
         chickenController.start(Gui.COMMAND.NOTHING);
         Mockito.verify(map, Mockito.times(1)).getChicken();
-    }
+    }*/
 }
