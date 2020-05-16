@@ -26,7 +26,7 @@ public class GameController {
         MusicPlayer player = new MusicPlayer("src/main/resources/piu.wav");
         //player.startMusic();
 
-        while(!gameModel.getCurrentLevel().isChickenDead()) {
+        while(!gameModel.getCurrentLevel().isChickenDead() && !gameModel.isFinalLevel()) {
             long time = System.currentTimeMillis();
             step++; 
           
