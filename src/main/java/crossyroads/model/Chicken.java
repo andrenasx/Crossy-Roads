@@ -33,6 +33,14 @@ public class Chicken extends Element{
 
     public void removeLife(){this.lives-=1;}
 
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
+
     @Override
     public Position getPosition() {
         return super.getPosition();
