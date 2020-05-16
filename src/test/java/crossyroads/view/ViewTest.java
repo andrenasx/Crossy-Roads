@@ -25,7 +25,7 @@ public class ViewTest {
         when(gameMap.getHeight()).thenReturn(35);
         when(gameMap.getLives()).thenReturn(3);
         when(gameMap.getScore()).thenReturn(10);
-        when(gameMap.getGameTerrain()).thenReturn("dgggggggggrrrggggggggggrrrggggggggg");
+        when(gameMap.getLevelBackground()).thenReturn("dgggggggggrrrggggggggggrrrggggggggg");
         Gui gui = new Gui(gameMap);
         gui.setScreen(screen);
 
