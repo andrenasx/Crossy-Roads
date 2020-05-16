@@ -1,6 +1,5 @@
 package crossyroads.model;
 
-import crossyroads.Game;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -10,20 +9,20 @@ import java.util.Random;
 import static org.junit.Assert.*;
 
 public class GameMapTest {
-    /*@Test
+    @Test
     public void getGameMapSizeTest(){
         Random rand = new Random();
         int x = rand.nextInt(50);
         int y = rand.nextInt(70);
 
-        GameMap game = new GameMap(x,y);
+        GameMap game = new GameMap(1, x,y);
         assertEquals(x,game.getWidth());
         assertEquals(y,game.getHeight());
     }
 
     @Test
     public void addElementTest(){
-        GameMap game = new GameMap(30,70);
+        GameMap game = new GameMap(1, 30,70);
 
         Chicken chicken = new Chicken(15,65);
         //Test for vehicles
@@ -49,7 +48,7 @@ public class GameMapTest {
 
     @Test
     public void getAllElementsTest(){
-        GameMap game = new GameMap(30,70);
+        GameMap game = new GameMap(1, 30,70);
 
         Chicken chicken = new Chicken(15,65);
         Coin coin = new Coin(10,10,1);
@@ -72,7 +71,7 @@ public class GameMapTest {
 
     @Test
     public void resetChickenTest(){
-        GameMap map = new GameMap(14, 40);
+        GameMap map = new GameMap(1, 14, 40);
         Chicken chicken = map.getChicken();
         chicken.setPosition(new Position(1, 2));
         map.resetChickenPosition();
@@ -81,7 +80,7 @@ public class GameMapTest {
 
     @Test
     public void getScoreTest(){
-        GameMap map = new GameMap(15, 30);
+        GameMap map = new GameMap(1, 15, 30);
         Chicken chicken = map.getChicken();
         chicken.raiseScore(3);
         assertEquals(3, map.getScore());
@@ -89,7 +88,7 @@ public class GameMapTest {
 
     @Test
     public void getLivesTest(){
-        GameMap map = new GameMap(16, 30);
+        GameMap map = new GameMap(1, 16, 30);
         Chicken chicken = map.getChicken();
         chicken.removeLife();
         assertEquals(2, map.getLives());
@@ -98,7 +97,7 @@ public class GameMapTest {
 
     @Test
     public void isGameFinished(){
-        GameMap map = new GameMap(35, 40);
+        GameMap map = new GameMap(1, 35, 40);
         Chicken chicken = map.getChicken();
 
         assertFalse(map.isGameFinished());
@@ -112,5 +111,5 @@ public class GameMapTest {
 
         assertTrue(map.isGameFinished());
     }
-*/
+
 }
