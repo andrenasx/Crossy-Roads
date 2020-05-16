@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class VehicleControllerTest {
     /*@Test
     public void moveVehicleTest(){
-        GameMap map = new GameMap(40, 35);
+        GameMap map = new GameMap(1, 40, 35);
         VehicleController vehicleController = new VehicleController(map);
         Car car1 = new Car(1, 2, "left");
         Car car2 = new Car(3, 6, "right");
@@ -26,11 +26,11 @@ public class VehicleControllerTest {
         vehicleController.vehicleLeavesScreen(car4);
         assertEquals(car3.getPosition(), new Position(-car3.getLength(), car3.getPosition().getY()));
         assertEquals(car4.getPosition(), new Position(map.getWidth(), car4.getPosition().getY()));
-    }
+    }*/
 
     @Test
     public void checkChickenCollisionTest(){
-        GameMap map = new GameMap(40, 35);
+        GameMap map = new GameMap(1, 40, 35);
         VehicleController vehicleController = new VehicleController(map);
         Car car = new Car(1, 2, "right");
         int life = map.getLives();
@@ -43,5 +43,5 @@ public class VehicleControllerTest {
 
 
     }
-*/
+
 }
