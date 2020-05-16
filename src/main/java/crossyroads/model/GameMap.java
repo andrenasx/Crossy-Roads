@@ -9,7 +9,6 @@ public class GameMap {
     private int height;
     private Chicken chicken;
     private List<Vehicle> vehicles;
-    private boolean gamefinished;
     private List<Coin> coins;
     private Terrain terrain;
 
@@ -19,7 +18,6 @@ public class GameMap {
         this.height = height;
         this.chicken = new Chicken(width/2, height-1);
         this.vehicles = new ArrayList<>();
-        this.gamefinished = false;
         this.coins = new ArrayList<>();
         this.terrain = new Terrain("level" + level + ".txt", "main");
     }
@@ -31,7 +29,6 @@ public class GameMap {
     public int getWidth() {
         return width;
     }
-
 
     public List<Coin> getCoins(){ return coins; }
 
@@ -56,8 +53,12 @@ public class GameMap {
         return elements;
     }
 
-    public boolean isGameFinished() {
-        return ((chicken.getPosition().getY() == 0) & coins.isEmpty()) || chicken.isDead();
+    public boolean isChickenDead() {
+        return chicken.isDead();
+    }
+
+    public boolean isLevelFinished(){
+        return chicken.getPosition().getY() == 0 & coins.isEmpty();
     }
 
     public int getScore() {
