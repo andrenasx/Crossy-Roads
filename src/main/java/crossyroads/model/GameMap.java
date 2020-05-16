@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameMap {
+    private int level;
     private int width;
     private int height;
     private Chicken chicken;
@@ -12,14 +13,15 @@ public class GameMap {
     private List<Coin> coins;
     private Terrain terrain;
 
-    public GameMap(int width, int height) {
+    public GameMap(int level, int width, int height) {
+        this.level = level;
         this.width = width;
         this.height = height;
         this.chicken = new Chicken(width/2, height-1);
         this.vehicles = new ArrayList<>();
         this.gamefinished = false;
         this.coins = new ArrayList<>();
-        this.terrain = new Terrain("map.txt", "main");
+        this.terrain = new Terrain("level" + level + ".txt", "main");
     }
 
     public int getHeight() {
@@ -54,7 +56,6 @@ public class GameMap {
         return elements;
     }
 
-
     public boolean isGameFinished() {
         return ((chicken.getPosition().getY() == 0) & coins.isEmpty()) || chicken.isDead();
     }
@@ -67,8 +68,12 @@ public class GameMap {
         return chicken.getLives();
     }
 
-    public String getGameTerrain(){
-        return terrain.getTerrainStrings();
+    public Terrain getLevelTerrain(){
+        return terrain;
+    }
+
+    public String getLevelBackground(){
+        return terrain.getBackground();
     }
 
     public void resetChickenPosition(){

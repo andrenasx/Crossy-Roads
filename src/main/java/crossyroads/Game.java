@@ -1,14 +1,13 @@
 package crossyroads;
 
 import crossyroads.controller.GameController;
-import crossyroads.model.GameMap;
-import crossyroads.model.GameMapCreator;
+import crossyroads.model.GameModel;
 import crossyroads.view.Gui;
 
 import java.io.IOException;
 
-public class Game {
-    private GameMap map;
+public class Game{
+    private GameModel gameModel;
     private Gui gui;
 
     public static void main(String[] args) throws IOException {
@@ -16,13 +15,13 @@ public class Game {
     }
 
     private void start() throws IOException {
-        GameMapCreator creator = new GameMapCreator();
-        map = creator.createGameMap(40,35);
+        gameModel = new GameModel(40, 35, 1);
+        gameModel.createLevels();
 
-        gui = new Gui(map);
+        gui = new Gui(gameModel);
         gui.draw();
 
-        GameController controller = new GameController(gui, map);
+        GameController controller = new GameController(gui, gameModel);
 
         controller.start();
     }
