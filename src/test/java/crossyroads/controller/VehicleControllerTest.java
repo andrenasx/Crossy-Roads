@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class VehicleControllerTest {
-    /*@Test
+    @Test
     public void moveVehicleTest(){
         GameMap map = new GameMap(1, 40, 35);
         VehicleController vehicleController = new VehicleController(map);
@@ -20,13 +20,13 @@ public class VehicleControllerTest {
         map.addElement(car4);
         Position position1 = car1.getPosition();
         Position position2 = car2.getPosition();
-        vehicleController.moveVehicles();
+        vehicleController.moveVehicles(6);
         assertEquals(car1.getPosition(), new Position(position1.getX()-1, position1.getY()));
         assertEquals(car2.getPosition(), new Position(position2.getX()+1, position2.getY()));
         vehicleController.vehicleLeavesScreen(car4);
         assertEquals(car3.getPosition(), new Position(-car3.getLength(), car3.getPosition().getY()));
         assertEquals(car4.getPosition(), new Position(map.getWidth(), car4.getPosition().getY()));
-    }*/
+    }
 
     @Test
     public void checkChickenCollisionTest(){
