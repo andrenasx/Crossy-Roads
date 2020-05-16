@@ -2,8 +2,6 @@ package crossyroads.controller;
 
 import crossyroads.model.GameModel;
 import crossyroads.model.MusicPlayer;
-import crossyroads.model.GameMap;
-import crossyroads.model.Vehicle;
 import crossyroads.view.Gui;
 
 import java.io.IOException;
@@ -13,7 +11,7 @@ public class GameController {
     private VehicleController vehicleController;
     private Gui gui;
     private GameModel gameModel;
-    private final int FPS = 15;
+    private final int FPS = 10;
     private int step = 0;
 
     public GameController(Gui gui, GameModel gameModel) {
@@ -26,9 +24,9 @@ public class GameController {
 
     public void start() throws IOException {
         MusicPlayer player = new MusicPlayer("src/main/resources/piu.wav");
-        player.startMusic();
+        //player.startMusic();
 
-        while(!gameModel.getCurrentLevel().isGameFinished()) {
+        while(!gameModel.getCurrentLevel().isChickenDead()) {
             long time = System.currentTimeMillis();
             step++; 
           
@@ -46,6 +44,10 @@ public class GameController {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            //System.out.println("score: "+ gameModel.getCurrentLevel().getScore());
+            //System.out.println("life: " + gameModel.getCurrentLevel().getLives());
+            if(gameModel.getCurrentLevel().isLevelFinished())
+                gameModel.increaseLevel();
         }
 
         player.stopMusic();
