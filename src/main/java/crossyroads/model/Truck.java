@@ -11,6 +11,9 @@ public class Truck extends Vehicle {
     }
 
     @Override
+    public int getSpeed() { return 6; }
+
+    @Override
     public String getColor() {
         return "#0000FF";
     }
