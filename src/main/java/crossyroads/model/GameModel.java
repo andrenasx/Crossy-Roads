@@ -47,4 +47,8 @@ public class GameModel {
     public void setCurrentLevel(int level){
         this.currentLevel = level;
     }
+
+    public void increaseLevel(){
+        this.currentLevel++;
+    }
 }
