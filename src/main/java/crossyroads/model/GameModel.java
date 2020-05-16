@@ -51,4 +51,8 @@ public class GameModel {
     public void increaseLevel(){
         this.currentLevel++;
     }
+
+    public int getMaxLevels() {
+        return maxLevels;
+    }
 }
