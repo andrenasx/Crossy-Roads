@@ -5,14 +5,12 @@ import org.junit.Test;
 import crossyroads.view.Gui;
 import org.mockito.Mockito;
 
-import java.io.IOException;
-
 import static org.junit.Assert.*;
 
 public class ChickenControllerTest {
-    /*@Test
+    @Test
     public void chickenStaysInScreenTest(){
-        GameMap map = new GameMap(40, 35);
+        GameMap map = new GameMap(1, 40, 35);
         ChickenController chickenController = new ChickenController(map);
         Position position1 = new Position(1, 2);
         Position position2 = new Position(46, -30);
@@ -26,7 +24,7 @@ public class ChickenControllerTest {
 
     @Test
     public void moveChickenTest(){
-        GameMap map = new GameMap(40, 35);
+        GameMap map = new GameMap(1, 40, 35);
         ChickenController chickenController = new ChickenController(map);
         Chicken chicken = map.getChicken();
         Position position1 = new Position(10, 20);
@@ -40,7 +38,7 @@ public class ChickenControllerTest {
 
     @Test
     public void UpTest() {
-        GameMap map = new GameMap(40, 35);
+        GameMap map = new GameMap(1, 40, 35);
         ChickenController chickenController = new ChickenController(map);
         Chicken chicken = map.getChicken();
         Position position1 = chicken.getPosition();
@@ -54,7 +52,7 @@ public class ChickenControllerTest {
 
     @Test
     public void DownTest() {
-        GameMap map = new GameMap(40, 35);
+        GameMap map = new GameMap(1, 40, 35);
         ChickenController chickenController = new ChickenController(map);
         Chicken chicken = map.getChicken();
         Position position1 = chicken.getPosition();
@@ -67,8 +65,8 @@ public class ChickenControllerTest {
     }
 
     @Test
-    public void LeftTest() throws IOException {
-        GameMap map = new GameMap(40, 35);
+    public void LeftTest() {
+        GameMap map = new GameMap(1, 40, 35);
         ChickenController chickenController = new ChickenController(map);
         Chicken chicken = map.getChicken();
         Position position1 = chicken.getPosition();
@@ -81,8 +79,8 @@ public class ChickenControllerTest {
     }
 
     @Test
-    public void RightTest() throws IOException {
-        GameMap map = new GameMap(40, 35);
+    public void RightTest() {
+        GameMap map = new GameMap(1, 40, 35);
         ChickenController chickenController = new ChickenController(map);
         Chicken chicken = map.getChicken();
         Position position1 = chicken.getPosition();
@@ -96,7 +94,7 @@ public class ChickenControllerTest {
 
     @Test
     public void checkVehicleCollisionTest(){
-        GameMap map = new GameMap(35, 40);
+        GameMap map = new GameMap(1, 35, 40);
         ChickenController chickenController = new ChickenController(map);
         Chicken chicken = map.getChicken();
         chicken.setPosition(new Position(1, 2));
@@ -112,7 +110,7 @@ public class ChickenControllerTest {
 
    @Test
     public void checkCollisionTest(){
-        GameMap map = new GameMap(35, 40);
+        GameMap map = new GameMap(1, 35, 40);
         ChickenController chickenController = new ChickenController(map);
         Chicken chicken = map.getChicken();
         Coin coin = new Coin(1, 2, 3);
@@ -131,5 +129,5 @@ public class ChickenControllerTest {
         ChickenController chickenController = new ChickenController(map);
         chickenController.start(Gui.COMMAND.NOTHING);
         Mockito.verify(map, Mockito.times(1)).getChicken();
-    }*/
+    }
 }
