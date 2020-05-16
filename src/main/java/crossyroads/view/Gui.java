@@ -9,6 +9,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.*;
+import java.security.Key;
 
 public class Gui {
     private GameModel gameModel;
@@ -88,7 +89,13 @@ public class Gui {
 
     public COMMAND getNextCommand() throws IOException {
         KeyStroke input = screen.pollInput();
+
         if(input != null){
+            KeyStroke clear; //Clearing input
+            do {
+                clear = screen.pollInput();
+            } while (clear!=null);
+
             switch (input.getKeyType()){
                 case ArrowUp:
                     return COMMAND.UP;
