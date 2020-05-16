@@ -38,7 +38,6 @@ public class ChickenController {
         if (chickenStaysInScreen(position))
             chicken.setPosition(position);
         checkCollisions(position);
-        map.notifyObservers();
     }
 
     public void checkCollisions(Position position) {

@@ -9,7 +9,6 @@ public class GameMap {
     private Chicken chicken;
     private List<Vehicle> vehicles;
     private boolean gamefinished;
-    private List<GameMapObserver> observers;
     private List<Coin> coins;
     private Terrain terrain;
 
@@ -19,7 +18,6 @@ public class GameMap {
         this.chicken = new Chicken(width/2, height-1);
         this.vehicles = new ArrayList<>();
         this.gamefinished = false;
-        this.observers = new ArrayList<>();
         this.coins = new ArrayList<>();
         this.terrain = new Terrain("level1.txt", "main");
     }
@@ -54,16 +52,6 @@ public class GameMap {
         elements.addAll(vehicles);
         elements.addAll(coins);
         return elements;
-    }
-
-    public void addObserver(GameMapObserver observer) {
-        observers.add(observer);
-    }
-
-    public void notifyObservers() {
-        for (GameMapObserver observer : observers) {
-            observer.gameMapChanged();
-        }
     }
 
     public boolean isGameFinished() {

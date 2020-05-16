@@ -3,12 +3,12 @@ package crossyroads;
 import crossyroads.controller.GameController;
 import crossyroads.model.GameMap;
 import crossyroads.model.GameMapCreator;
-import crossyroads.model.GameMapObserver;
+import crossyroads.model.GameModel;
 import crossyroads.view.Gui;
 
 import java.io.IOException;
 
-public class Game implements GameMapObserver {
+public class Game{
     private GameMap map;
     private Gui gui;
 
@@ -19,7 +19,6 @@ public class Game implements GameMapObserver {
     private void start() throws IOException {
         GameMapCreator creator = new GameMapCreator();
         map = creator.createGameMap(40,35);
-        map.addObserver(this);
 
         gui = new Gui(map);
         gui.draw();
@@ -27,14 +26,5 @@ public class Game implements GameMapObserver {
         GameController controller = new GameController(gui, map);
 
         controller.start();
-    }
-
-    @Override
-    public void gameMapChanged() {
-        try {
-            gui.draw();
-        } catch (IOException e) {
-            // Nothing to do if drawing fails
-        }
     }
 }

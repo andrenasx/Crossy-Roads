@@ -28,7 +28,6 @@ public class VehicleController {
             vehicleLeavesScreen(vehicle);
             checkChickenCollision(vehicle);
         }
-        gameMap.notifyObservers();
     }
 
     public void vehicleLeavesScreen(Vehicle vehicle){
