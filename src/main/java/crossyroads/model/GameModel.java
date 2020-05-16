@@ -52,7 +52,7 @@ public class GameModel {
         this.currentLevel++;
     }
 
-    public int getMaxLevels() {
-        return maxLevels;
+    public boolean isFinalLevel(){
+        return maxLevels == this.currentLevel;
     }
 }
