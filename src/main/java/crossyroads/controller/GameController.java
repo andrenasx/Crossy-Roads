@@ -12,7 +12,7 @@ public class GameController {
     private VehicleController vehicleController;
     private Gui gui;
     private GameMap map;
-    private final int FPS = 30;
+    private final int FPS = 15;
     private int step = 0;
 
     public GameController(Gui gui, GameMap map) {
