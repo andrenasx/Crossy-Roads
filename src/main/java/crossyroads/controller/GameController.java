@@ -44,10 +44,16 @@ public class GameController {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            //System.out.println("score: "+ gameModel.getCurrentLevel().getScore());
-            //System.out.println("life: " + gameModel.getCurrentLevel().getLives());
-            if(gameModel.getCurrentLevel().isLevelFinished())
+
+            int score = gameModel.getCurrentLevel().getScore();
+            int lives = gameModel.getCurrentLevel().getLives();
+            if(gameModel.getCurrentLevel().isLevelFinished()){
                 gameModel.increaseLevel();
+                gameModel.getCurrentLevel().getChicken().setScore(score);
+                gameModel.getCurrentLevel().getChicken().setLives(lives);
+                step = 0;
+            }
+
         }
 
         player.stopMusic();
