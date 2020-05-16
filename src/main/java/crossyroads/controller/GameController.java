@@ -29,6 +29,7 @@ public class GameController {
             if(command == Gui.COMMAND.EOF) break;
             chickenController.start(command);
             vehicleController.start();
+            gui.draw();
         }
 
         player.stopMusic();
