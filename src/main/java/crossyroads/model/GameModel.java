@@ -55,4 +55,8 @@ public class GameModel {
     public boolean isFinalLevel(){
         return maxLevels == this.currentLevel;
     }
+
+    public int getCurrentLevelInt(){
+        return currentLevel;
+    }
 }
