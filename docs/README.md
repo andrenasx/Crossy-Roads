@@ -26,7 +26,6 @@ Este projeto está a ser desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt
 
 - **Menu inicial:** um menu que permite ao utilizador jogar, sair e ver uma tabela dos _highscores_.
 - **Registo dos _highscores_:** contabilizar o tempo de cada partida e guardar, sendo posteriormente apresentados na tabela.
-- **Níveis:** para já só existe um nível, mas futuramente existirão mais níveis com número de veículos, moedas e dificuldade crescente.
 - **Mensagens:** aparecerá uma mensagem de fim de jogo quando o jogador perdeu.
 
 ## Design
