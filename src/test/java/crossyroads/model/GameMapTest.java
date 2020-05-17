@@ -96,20 +96,20 @@ public class GameMapTest {
     }
 
     @Test
-    public void isGameFinished(){
+    public void isLevelFinished(){
         GameMap map = new GameMap(1, 35, 40);
         Chicken chicken = map.getChicken();
 
-        assertFalse(map.isGameFinished());
+        assertFalse(map.isLevelFinished());
 
-        chicken.setPosition(new Position(10, 0));
+        chicken.setPosition(new Position(0, 0));
 
-        assertTrue(map.isGameFinished());
+        assertTrue(map.isLevelFinished());
 
         chicken.setPosition(new Position(10, 10));
         while(chicken.getLives()>0) chicken.removeLife();
 
-        assertTrue(map.isGameFinished());
+        assertTrue(map.isChickenDead());
     }
 
 }
