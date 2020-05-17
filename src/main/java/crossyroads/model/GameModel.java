@@ -13,7 +13,7 @@ public class GameModel {
     public GameModel(int width, int height, int maxLevels) {
         this.width = width;
         this.height = height;
-        this.currentLevel = 0;
+        this.currentLevel = 1;
         this.maxLevels = maxLevels;
         this.levels = new ArrayList<>();
     }
@@ -41,7 +41,7 @@ public class GameModel {
     }
 
     public GameMap getCurrentLevel(){
-        return levels.get(currentLevel);
+        return levels.get(currentLevel-1);
     }
 
     public void setCurrentLevel(int level){
@@ -49,7 +49,7 @@ public class GameModel {
     }
 
     public void increaseLevel(){
-        this.currentLevel++;
+        if(!this.isFinalLevel()) this.currentLevel++;
     }
 
     public boolean isFinalLevel(){
