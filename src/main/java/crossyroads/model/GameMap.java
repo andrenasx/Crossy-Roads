@@ -7,7 +7,6 @@ public class GameMap {
     private int level;
     private int width;
     private int height;
-    private Chicken chicken;
     private List<Vehicle> vehicles;
     private List<Coin> coins;
     private Terrain terrain;
@@ -16,7 +15,6 @@ public class GameMap {
         this.level = level;
         this.width = width;
         this.height = height;
-        this.chicken = new Chicken(width/2, height-1);
         this.vehicles = new ArrayList<>();
         this.coins = new ArrayList<>();
         this.terrain = new Terrain("level" + level + ".txt", "main");
@@ -32,12 +30,9 @@ public class GameMap {
 
     public List<Coin> getCoins(){ return coins; }
 
-    public Chicken getChicken(){ return chicken;}
-
     public List<Vehicle> getVehicles(){return vehicles;}
 
     public void addElement(Element element) {
-        if (element instanceof Chicken) chicken = (Chicken) element;
         if (element instanceof Car) vehicles.add((Car) element);
         if (element instanceof Truck) vehicles.add((Truck) element);
         if (element instanceof Coin) coins.add((Coin) element);
@@ -47,26 +42,9 @@ public class GameMap {
     public List<Element> getAllElements() {
         List<Element> elements = new ArrayList<>();
 
-        elements.add(chicken);
         elements.addAll(vehicles);
         elements.addAll(coins);
         return elements;
-    }
-
-    public boolean isChickenDead() {
-        return chicken.isDead();
-    }
-
-    public boolean isLevelFinished(){
-        return chicken.getPosition().getY() == 0 & coins.isEmpty();
-    }
-
-    public int getScore() {
-        return chicken.getScore();
-    }
-
-    public int getLives() {
-        return chicken.getLives();
     }
 
     public Terrain getLevelTerrain(){
@@ -75,9 +53,5 @@ public class GameMap {
 
     public String getLevelBackground(){
         return terrain.getBackground();
-    }
-
-    public void resetChickenPosition(){
-        chicken.setPosition(new Position(width/2, height-1));
     }
 }

@@ -13,7 +13,7 @@ public class ChickenController {
     }
 
     public void execute(Gui.COMMAND command) {
-        Chicken chicken = gameModel.getCurrentLevel().getChicken();
+        Chicken chicken = gameModel.getChicken();
         if(command == Gui.COMMAND.UP)
             moveChicken(chicken.getPosition().up());
         if(command == Gui.COMMAND.DOWN)
@@ -34,7 +34,7 @@ public class ChickenController {
     }
 
     public void moveChicken(Position position){
-        Chicken chicken = gameModel.getCurrentLevel().getChicken();
+        Chicken chicken = gameModel.getChicken();
         if (chickenStaysInScreen(position))
             chicken.setPosition(position);
         checkCollisions(position);
@@ -45,7 +45,7 @@ public class ChickenController {
 
         Coin coin = (Coin) getCollidingElement(position, gameModel.getCurrentLevel().getCoins());
         if (coin != null) {
-            gameModel.getCurrentLevel().getChicken().raiseScore(coin.getValue());
+            gameModel.getChicken().raiseScore(coin.getValue());
             gameModel.getCurrentLevel().getCoins().remove(coin);
         }
     }
@@ -53,8 +53,8 @@ public class ChickenController {
     public void checkVehicleCollision(Position position){
         for (Vehicle vehicle: gameModel.getCurrentLevel().getVehicles()){
             if (vehicle.checkCollision(position)){
-                gameModel.getCurrentLevel().getChicken().removeLife();
-                gameModel.getCurrentLevel().resetChickenPosition();
+                gameModel.getChicken().removeLife();
+                gameModel.resetChickenPosition();
                 break;
             }
         }

@@ -26,7 +26,7 @@ public class GameController {
         MusicPlayer player = new MusicPlayer("src/main/resources/piu.wav");
         //player.startMusic();
 
-        while(!gameModel.getCurrentLevel().isChickenDead()) {
+        while(!gameModel.isChickenDead()) {
             long time = System.currentTimeMillis();
             step++; 
           
@@ -45,15 +45,14 @@ public class GameController {
                 e.printStackTrace();
             }
 
-            int score = gameModel.getCurrentLevel().getScore();
-            int lives = gameModel.getCurrentLevel().getLives();
-            if(gameModel.getCurrentLevel().isLevelFinished()){
+            int score = gameModel.getScore();
+            int lives = gameModel.getLives();
+            if(gameModel.isLevelFinished()){
                 if(gameModel.isFinalLevel()){
                     break;
                 }
                 gameModel.increaseLevel();
-                gameModel.getCurrentLevel().getChicken().setScore(score);
-                gameModel.getCurrentLevel().getChicken().setLives(lives);
+                gameModel.resetChickenPosition();
                 step = 0;
             }
 

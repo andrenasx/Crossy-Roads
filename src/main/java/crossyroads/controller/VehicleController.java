@@ -41,10 +41,10 @@ public class VehicleController {
     }
 
     public void checkChickenCollision(Vehicle vehicle) {
-        Chicken chicken = gameModel.getCurrentLevel().getChicken();
+        Chicken chicken = gameModel.getChicken();
         if(vehicle.checkCollision(chicken.getPosition())){
             chicken.removeLife();
-            gameModel.getCurrentLevel().resetChickenPosition();
+            gameModel.resetChickenPosition();
         }
     }
 
