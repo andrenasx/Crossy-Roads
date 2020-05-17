@@ -48,11 +48,15 @@ public class GameController {
             int score = gameModel.getCurrentLevel().getScore();
             int lives = gameModel.getCurrentLevel().getLives();
             if(gameModel.getCurrentLevel().isLevelFinished()){
+                if(gameModel.isFinalLevel()){
+                    break;
+                }
                 gameModel.increaseLevel();
                 gameModel.getCurrentLevel().getChicken().setScore(score);
                 gameModel.getCurrentLevel().getChicken().setLives(lives);
                 step = 0;
             }
+
 
         }
 
