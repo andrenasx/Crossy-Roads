@@ -15,7 +15,7 @@ public class Game{
     }
 
     private void start() throws IOException {
-        gameModel = new GameModel(40, 35, 2);
+        gameModel = new GameModel(40, 35, 5);
         gameModel.createLevels();
 
         gui = new Gui(gameModel);
