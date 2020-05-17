@@ -35,6 +35,7 @@ public class Gui {
 
         drawScoreHealthLevel();
         drawGameMap();
+        drawChicken(gameModel.getChicken());
         for (Element element: gameModel.getCurrentLevel().getAllElements()) drawElement(element);
         screen.refresh();
     }
@@ -42,7 +43,7 @@ public class Gui {
     private void drawScoreHealthLevel() {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(0, gameModel.getHeight(), "Score: " + gameModel.getCurrentLevel().getScore() + "\tHealth: " + gameModel.getCurrentLevel().getLives() + "\tLevel: " + gameModel.getCurrentLevelInt());
+        graphics.putString(0, gameModel.getHeight(), "Score: " + gameModel.getScore() + "\tHealth: " + gameModel.getLives() + "\tLevel: " + gameModel.getCurrentLevelInt());
     }
 
     private void drawGameMap() {
@@ -53,10 +54,13 @@ public class Gui {
         }
     }
 
+    private void drawChicken(Chicken chicken) {
+        drawCharacter(chicken.getPosition(), "O", chicken.getColor());
+    }
+
     private void drawElement(Element element) {
         String character="";
-        if (element instanceof Chicken) character="O";
-        else if (element instanceof Coin) character="O";
+        if (element instanceof Coin) character="O";
         else if (element instanceof Car) character="<>";
         else if (element instanceof Truck) character="<==>";
         drawCharacter(element.getPosition(), character, element.getColor());
