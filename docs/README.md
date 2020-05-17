@@ -11,7 +11,7 @@ Este projeto está a ser desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt
 - **Controlo da galinha:** a galinha é controlada através das setas do teclado.
 - **Moedas:** quando a galinha passa por cima de uma moeda, esta última desaparece e o _score_ da galinha é incrementado dependendo do valor da moeda recolhida.
 
-    [![Coin Collision](https://i.gyazo.com/be654934eaba3549434890ffb3e00fb6.gif)](https://gyazo.com/be654934eaba3549434890ffb3e00fb6)
+    [![Coin Collision](https://i.gyazo.com/05353e3bb1c16635ddc19c38356e0810.gif)](https://gyazo.com/05353e3bb1c16635ddc19c38356e0810)
 
 - **Movimento dos veículos:** os veículos deslocam-se consoante a sua direção (esquerda ou direita) a cada 200ms.
 - **Colisão entre galinha e veículos:** quando a galinha vai contra um veículo ou é atropleado por um a sua _health_ é reduzida e volta à posição inicial.
@@ -19,6 +19,7 @@ Este projeto está a ser desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt
     [![Vehicle Collision](https://i.gyazo.com/63df273c94498e994c27186b530ddefa.gif)](https://gyazo.com/63df273c94498e994c27186b530ddefa)
 
 - **Música de fundo:** o jogo tem a música de fundo "O Pintinho Piu" para proporcionar uma melhor experiência e maior divertimento.
+- **Níveis:** o jogo consiste em 5 níveis com dificuldade, número de veículos e moedas crescente.    
 - **Terminar o jogo:** a janela do jogo fecha e o jogo termina quando a galinha ganha ou perde ou quando o utilizador clica no X da janela do jogo.
 
 ## Planned Features
