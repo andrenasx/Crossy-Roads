@@ -3,13 +3,12 @@ package crossyroads.view;
 import crossyroads.model.*;
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.*;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
-import java.io.*;
-import java.security.Key;
+import java.io.IOException;
 
 public class Gui {
     private GameModel gameModel;
@@ -91,10 +90,11 @@ public class Gui {
         KeyStroke input = screen.pollInput();
 
         if(input != null){
-            KeyStroke clear; //Clearing input
-            do {
+            KeyStroke clear = screen.pollInput(); //Clearing input
+            while(clear != null){
+                if(clear.getKeyType()==KeyType.EOF) return COMMAND.EOF;
                 clear = screen.pollInput();
-            } while (clear!=null);
+            }
 
             switch (input.getKeyType()){
                 case ArrowUp:
