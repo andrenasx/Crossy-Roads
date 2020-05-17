@@ -33,16 +33,16 @@ public class Gui {
     public void draw() throws IOException {
         screen.clear();
 
-        drawScore();
+        drawScoreHealthLevel();
         drawGameMap();
         for (Element element: gameModel.getCurrentLevel().getAllElements()) drawElement(element);
         screen.refresh();
     }
 
-    private void drawScore() {
+    private void drawScoreHealthLevel() {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(0, gameModel.getHeight(), "Score: " + gameModel.getCurrentLevel().getScore() + "\tHealth: " + gameModel.getCurrentLevel().getLives());
+        graphics.putString(0, gameModel.getHeight(), "Score: " + gameModel.getCurrentLevel().getScore() + "\tHealth: " + gameModel.getCurrentLevel().getLives() + "\tLevel: " + gameModel.getCurrentLevelInt());
     }
 
     private void drawGameMap() {
