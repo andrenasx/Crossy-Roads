@@ -6,14 +6,14 @@ import crossyroads.view.Gui;
 import java.util.List;
 
 public class ChickenController {
-    private GameMap map;
+    private GameModel gameModel;
 
-    public ChickenController(GameMap map) {
-        this.map = map;
+    public ChickenController(GameModel gameModel) {
+        this.gameModel = gameModel;
     }
 
     public void execute(Gui.COMMAND command) {
-        Chicken chicken = map.getChicken();
+        Chicken chicken = gameModel.getCurrentLevel().getChicken();
         if(command == Gui.COMMAND.UP)
             moveChicken(chicken.getPosition().up());
         if(command == Gui.COMMAND.DOWN)
@@ -30,11 +30,11 @@ public class ChickenController {
     }
 
     public boolean chickenStaysInScreen(Position position){
-        return (position.getX()>=0 && position.getX()<map.getWidth() && position.getY()>=0 && position.getY()<map.getHeight());
+        return (position.getX()>=0 && position.getX()<gameModel.getWidth() && position.getY()>=0 && position.getY()<gameModel.getHeight());
     }
 
     public void moveChicken(Position position){
-        Chicken chicken = map.getChicken();
+        Chicken chicken = gameModel.getCurrentLevel().getChicken();
         if (chickenStaysInScreen(position))
             chicken.setPosition(position);
         checkCollisions(position);
@@ -43,18 +43,18 @@ public class ChickenController {
     public void checkCollisions(Position position) {
         checkVehicleCollision(position);
 
-        Coin coin = (Coin) getCollidingElement(position, map.getCoins());
+        Coin coin = (Coin) getCollidingElement(position, gameModel.getCurrentLevel().getCoins());
         if (coin != null) {
-            map.getChicken().raiseScore(coin.getValue());
-            map.getCoins().remove(coin);
+            gameModel.getCurrentLevel().getChicken().raiseScore(coin.getValue());
+            gameModel.getCurrentLevel().getCoins().remove(coin);
         }
     }
 
     public void checkVehicleCollision(Position position){
-        for (Vehicle vehicle: map.getVehicles()){
+        for (Vehicle vehicle: gameModel.getCurrentLevel().getVehicles()){
             if (vehicle.checkCollision(position)){
-                map.getChicken().removeLife();
-                map.resetChickenPosition();
+                gameModel.getCurrentLevel().getChicken().removeLife();
+                gameModel.getCurrentLevel().resetChickenPosition();
                 break;
             }
         }

@@ -18,15 +18,15 @@ public class GameController {
         this.gui = gui;
         this.gameModel = gameModel;
 
-        this.chickenController = new ChickenController(gameModel.getCurrentLevel());
-        this.vehicleController = new VehicleController(gameModel.getCurrentLevel());
+        this.chickenController = new ChickenController(gameModel);
+        this.vehicleController = new VehicleController(gameModel);
     }
 
     public void start() throws IOException {
         MusicPlayer player = new MusicPlayer("src/main/resources/piu.wav");
         //player.startMusic();
 
-        while(!gameModel.getCurrentLevel().isChickenDead() && !gameModel.isFinalLevel()) {
+        while(!gameModel.getCurrentLevel().isChickenDead()) {
             long time = System.currentTimeMillis();
             step++; 
           

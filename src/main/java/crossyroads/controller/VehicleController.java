@@ -1,24 +1,21 @@
 package crossyroads.controller;
 
-import crossyroads.model.Chicken;
-import crossyroads.model.GameMap;
-import crossyroads.model.Position;
-import crossyroads.model.Vehicle;
+import crossyroads.model.*;
 
 import java.util.List;
 
 public class VehicleController {
-    private GameMap gameMap;
+    private GameModel gameModel;
     private long startTime;
 
 
-    public VehicleController(GameMap gameMap) {
-        this.gameMap = gameMap;
+    public VehicleController(GameModel gameModel) {
+        this.gameModel = gameModel;
         this.startTime = System.currentTimeMillis();
     }
 
     public void moveVehicles(int step) {
-        List<Vehicle> vehicles = gameMap.getVehicles();
+        List<Vehicle> vehicles = gameModel.getCurrentLevel().getVehicles();
         for (Vehicle vehicle: vehicles) {
             if (step % vehicle.getSpeed() == 0) {
                 if (vehicle.getDirection().equals("left")) {
@@ -35,19 +32,19 @@ public class VehicleController {
     public void vehicleLeavesScreen(Vehicle vehicle){
         if(vehicle.getDirection().equals("left")){
             if(vehicle.getPosition().getX() + vehicle.getLength() == 0)
-                vehicle.setPosition(new Position(gameMap.getWidth(), vehicle.getPosition().getY()));
+                vehicle.setPosition(new Position(gameModel.getWidth(), vehicle.getPosition().getY()));
         }
         else{
-            if(vehicle.getPosition().getX() == gameMap.getWidth())
+            if(vehicle.getPosition().getX() == gameModel.getWidth())
                 vehicle.setPosition(new Position(-vehicle.getLength(), vehicle.getPosition().getY()));
         }
     }
 
     public void checkChickenCollision(Vehicle vehicle) {
-        Chicken chicken = gameMap.getChicken();
+        Chicken chicken = gameModel.getCurrentLevel().getChicken();
         if(vehicle.checkCollision(chicken.getPosition())){
             chicken.removeLife();
-            gameMap.resetChickenPosition();
+            gameModel.getCurrentLevel().resetChickenPosition();
         }
     }
 
