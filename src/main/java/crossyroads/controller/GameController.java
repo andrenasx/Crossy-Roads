@@ -32,6 +32,8 @@ public class GameController {
           
             Gui.COMMAND command = gui.getNextCommand();
             if(command == Gui.COMMAND.EOF) break;
+            if(command != Gui.COMMAND.NOTHING)
+                gameModel.getChicken().increaseCount();
 
             chickenController.start(command);
             vehicleController.start(step);
@@ -45,8 +47,6 @@ public class GameController {
                 e.printStackTrace();
             }
 
-            int score = gameModel.getScore();
-            int lives = gameModel.getLives();
             if(gameModel.isLevelFinished()){
                 if(gameModel.isFinalLevel()){
                     break;
@@ -58,7 +58,7 @@ public class GameController {
 
 
         }
-
+        //System.out.println("Number of commands: " + gameModel.getChicken().getCountSteps());
         player.stopMusic();
         System.exit(0);
     }

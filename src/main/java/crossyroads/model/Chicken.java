@@ -3,11 +3,13 @@ package crossyroads.model;
 public class Chicken extends Element{
     private int score;
     private int lives;
+    private int count_steps;
 
     public Chicken(int x, int y) {
         super(x, y);
         this.lives = 3;
         this.score = 0;
+        this.count_steps = 0;
     }
 
     @Override
@@ -33,12 +35,12 @@ public class Chicken extends Element{
 
     public void removeLife(){this.lives-=1;}
 
-    public void setScore(int score) {
-        this.score = score;
+    public int getCountSteps(){
+        return count_steps;
     }
 
-    public void setLives(int lives) {
-        this.lives = lives;
+    public void increaseCount(){
+        count_steps++;
     }
 
     @Override
