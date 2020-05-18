@@ -48,7 +48,7 @@ public class GuiMainMenu {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
         graphics.fillRectangle(
                 new TerminalPosition(0, 0),
-                new TerminalSize(gameModel.getWidth(), gameModel.getHeight()),
+                new TerminalSize(gameModel.getWidth(), gameModel.getHeight()+1),
                 ' '
         );
         graphics.enableModifiers(SGR.BOLD);
