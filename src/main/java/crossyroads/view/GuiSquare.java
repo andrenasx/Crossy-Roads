@@ -116,9 +116,8 @@ public class GuiSquare {
                     return COMMAND.RIGHT;
                 case ArrowLeft:
                     return COMMAND.LEFT;
-                case Character:
-                    if(input.getCharacter() == 'q')
-                        return COMMAND.EOF;
+                case Escape:
+                    return COMMAND.EOF;
                 default:
                     return COMMAND.NOTHING;
             }
