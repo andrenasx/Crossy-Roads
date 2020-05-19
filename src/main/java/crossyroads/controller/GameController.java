@@ -3,18 +3,19 @@ package crossyroads.controller;
 import crossyroads.model.GameModel;
 import crossyroads.model.MusicPlayer;
 import crossyroads.view.Gui;
+import crossyroads.view.GuiSquare;
 
 import java.io.IOException;
 
 public class GameController {
     private ChickenController chickenController;
     private VehicleController vehicleController;
-    private Gui gui;
+    private GuiSquare gui;
     private GameModel gameModel;
     private final int FPS = 10;
     private int step = 0;
 
-    public GameController(Gui gui, GameModel gameModel) {
+    public GameController(GuiSquare gui, GameModel gameModel) {
         this.gui = gui;
         this.gameModel = gameModel;
 
@@ -30,9 +31,9 @@ public class GameController {
             long time = System.currentTimeMillis();
             step++; 
           
-            Gui.COMMAND command = gui.getNextCommand();
-            if(command == Gui.COMMAND.EOF) break;
-            if(command != Gui.COMMAND.NOTHING)
+            GuiSquare.COMMAND command = gui.getNextCommand();
+            if(command == GuiSquare.COMMAND.EOF) break;
+            if(command != GuiSquare.COMMAND.NOTHING)
                 gameModel.getChicken().increaseCount();
 
             chickenController.start(command);
