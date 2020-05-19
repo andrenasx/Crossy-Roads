@@ -8,7 +8,7 @@ public class GameModel {
     private int height;
     private int currentLevel;
     private int maxLevels;
-    private List<GameMap> levels;
+    private List<Level> levels;
     private Chicken chicken;
 
     public GameModel(int width, int height, int maxLevels) {
@@ -52,7 +52,7 @@ public class GameModel {
 
     public void createLevels(){
         for(int i=1; i<=maxLevels; i++){
-            GameMap level = new GameMap(i, width, height);
+            Level level = new Level(i, width, height);
             for (Element element: level.getLevelTerrain().getElements()){
                 level.addElement(element);
             }
@@ -60,11 +60,11 @@ public class GameModel {
         }
     }
 
-    public List<GameMap> getLevels() {
+    public List<Level> getLevels() {
         return levels;
     }
 
-    public GameMap getCurrentLevel(){
+    public Level getCurrentLevel(){
         return levels.get(currentLevel-1);
     }
 

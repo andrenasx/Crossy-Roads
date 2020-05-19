@@ -3,7 +3,7 @@ package crossyroads.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameMap {
+public class Level {
     private int level;
     private int width;
     private int height;
@@ -11,7 +11,7 @@ public class GameMap {
     private List<Coin> coins;
     private Terrain terrain;
 
-    public GameMap(int level, int width, int height) {
+    public Level(int level, int width, int height) {
         this.level = level;
         this.width = width;
         this.height = height;

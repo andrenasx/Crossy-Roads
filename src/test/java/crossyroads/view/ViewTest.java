@@ -21,12 +21,12 @@ public class ViewTest {
         TerminalScreen screen = Mockito.mock(TerminalScreen.class);
         when(screen.newTextGraphics()).thenReturn(mock(TextGraphics.class));
         GameModel gameModel = Mockito.mock(GameModel.class);
-        GameMap gameMap = Mockito.mock(GameMap.class);
-        when(gameMap.getWidth()).thenReturn(40);
-        when(gameMap.getHeight()).thenReturn(35);
-        when(gameMap.getLives()).thenReturn(3);
-        when(gameMap.getScore()).thenReturn(10);
-        when(gameMap.getLevelBackground()).thenReturn("dgggggggggrrrggggggggggrrrggggggggg");
+        Level level = Mockito.mock(Level.class);
+        when(level.getWidth()).thenReturn(40);
+        when(level.getHeight()).thenReturn(35);
+        when(gameModel.getLives()).thenReturn(3);
+        when(gameModel.getScore()).thenReturn(10);
+        when(level.getLevelBackground()).thenReturn("dgggggggggrrrggggggggggrrrggggggggg");
         Gui gui = new Gui(gameModel);
         gui.setScreen(screen);
 
@@ -35,7 +35,7 @@ public class ViewTest {
         elements.add(new Coin(15,20,1));
         elements.add(new Car(10,10,"left"));
         elements.add(new Truck(10,5,"right"));
-        when(gameMap.getAllElements()).thenReturn(elements);
+        when(level.getAllElements()).thenReturn(elements);
 
         //gui.draw();
 

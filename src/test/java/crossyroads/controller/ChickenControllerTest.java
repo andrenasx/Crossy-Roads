@@ -1,8 +1,9 @@
 package crossyroads.controller;
 
 import crossyroads.model.*;
-import org.junit.Test;
 import crossyroads.view.Gui;
+import crossyroads.view.GuiSquare;
+import org.junit.Test;
 import org.mockito.Mockito;
 
 import static org.junit.Assert.*;
@@ -10,8 +11,8 @@ import static org.junit.Assert.*;
 public class ChickenControllerTest {
     @Test
     public void chickenStaysInScreenTest(){
-        GameMap map = new GameMap(1, 40, 35);
-        ChickenController chickenController = new ChickenController(map);
+        GameModel gameModel = new GameModel(40, 35, 1);
+        ChickenController chickenController = new ChickenController(gameModel);
         Position position1 = new Position(1, 2);
         Position position2 = new Position(46, -30);
         Position position3 = new Position(35, 50);
@@ -24,9 +25,9 @@ public class ChickenControllerTest {
 
     @Test
     public void moveChickenTest(){
-        GameMap map = new GameMap(1, 40, 35);
-        ChickenController chickenController = new ChickenController(map);
-        Chicken chicken = map.getChicken();
+        GameModel gameModel = new GameModel(40, 35, 1);
+        ChickenController chickenController = new ChickenController(gameModel);
+        Chicken chicken = gameModel.getChicken();
         Position position1 = new Position(10, 20);
         Position position2 = new Position(50, 15);
         chickenController.moveChicken(position1);
@@ -38,63 +39,63 @@ public class ChickenControllerTest {
 
     @Test
     public void UpTest() {
-        GameMap map = new GameMap(1, 40, 35);
-        ChickenController chickenController = new ChickenController(map);
-        Chicken chicken = map.getChicken();
+        GameModel gameModel = new GameModel(40, 35, 1);
+        ChickenController chickenController = new ChickenController(gameModel);
+        Chicken chicken = gameModel.getChicken();
         Position position1 = chicken.getPosition();
-        chickenController.execute(Gui.COMMAND.UP);
+        chickenController.execute(GuiSquare.COMMAND.UP);
         assertEquals(chicken.getPosition(), new Position(position1.getX(), position1.getY()-1));
         chicken.setPosition(new Position(chicken.getPosition().getX(), 0));
         Position position2 = chicken.getPosition();
-        chickenController.execute(Gui.COMMAND.UP);
+        chickenController.execute(GuiSquare.COMMAND.UP);
         assertEquals(chicken.getPosition(), position2);
     }
 
     @Test
     public void DownTest() {
-        GameMap map = new GameMap(1, 40, 35);
-        ChickenController chickenController = new ChickenController(map);
-        Chicken chicken = map.getChicken();
+        GameModel gameModel = new GameModel(40, 35, 1);
+        ChickenController chickenController = new ChickenController(gameModel);
+        Chicken chicken = gameModel.getChicken();
         Position position1 = chicken.getPosition();
-        chickenController.execute(Gui.COMMAND.DOWN);
+        chickenController.execute(GuiSquare.COMMAND.DOWN);
         assertEquals(chicken.getPosition(), position1);
         chicken.setPosition(new Position(chicken.getPosition().getX(), chicken.getPosition().getY()-4));
         Position position2 = chicken.getPosition();
-        chickenController.execute(Gui.COMMAND.DOWN);
+        chickenController.execute(GuiSquare.COMMAND.DOWN);
         assertEquals(chicken.getPosition(), new Position(position2.getX(), position2.getY()+1));
     }
 
     @Test
     public void LeftTest() {
-        GameMap map = new GameMap(1, 40, 35);
-        ChickenController chickenController = new ChickenController(map);
-        Chicken chicken = map.getChicken();
+        GameModel gameModel = new GameModel(40, 35, 1);
+        ChickenController chickenController = new ChickenController(gameModel);
+        Chicken chicken = gameModel.getChicken();
         Position position1 = chicken.getPosition();
-        chickenController.execute(Gui.COMMAND.LEFT);
+        chickenController.execute(GuiSquare.COMMAND.LEFT);
         assertEquals(chicken.getPosition(), new Position(position1.getX()-1, position1.getY()));
         chicken.setPosition(new Position(0, chicken.getPosition().getY()));
         Position position2 = chicken.getPosition();
-        chickenController.execute(Gui.COMMAND.LEFT);
+        chickenController.execute(GuiSquare.COMMAND.LEFT);
         assertEquals(chicken.getPosition(), position2);
     }
 
     @Test
     public void RightTest() {
-        GameMap map = new GameMap(1, 40, 35);
-        ChickenController chickenController = new ChickenController(map);
-        Chicken chicken = map.getChicken();
+        GameModel gameModel = new GameModel(40, 35, 1);
+        ChickenController chickenController = new ChickenController(gameModel);
+        Chicken chicken = gameModel.getChicken();
         Position position1 = chicken.getPosition();
-        chickenController.execute(Gui.COMMAND.RIGHT);
+        chickenController.execute(GuiSquare.COMMAND.RIGHT);
         assertEquals(chicken.getPosition(), new Position(position1.getX()+1, position1.getY()));
-        chicken.setPosition(new Position(map.getWidth(), chicken.getPosition().getY()));
+        chicken.setPosition(new Position(gameModel.getWidth(), chicken.getPosition().getY()));
         Position position2 = chicken.getPosition();
-        chickenController.execute(Gui.COMMAND.RIGHT);
+        chickenController.execute(GuiSquare.COMMAND.RIGHT);
         assertEquals(chicken.getPosition(), position2);
     }
 
     @Test
     public void checkVehicleCollisionTest(){
-        GameMap map = new GameMap(1, 35, 40);
+        Level map = new Level(1, 35, 40);
         ChickenController chickenController = new ChickenController(map);
         Chicken chicken = map.getChicken();
         chicken.setPosition(new Position(1, 2));
@@ -110,7 +111,7 @@ public class ChickenControllerTest {
 
    @Test
     public void checkCollisionTest(){
-        GameMap map = new GameMap(1, 35, 40);
+        Level map = new Level(1, 35, 40);
         ChickenController chickenController = new ChickenController(map);
         Chicken chicken = map.getChicken();
         Coin coin = new Coin(1, 2, 3);
@@ -125,7 +126,7 @@ public class ChickenControllerTest {
 
     @Test
     public void startTest(){
-        GameMap map = Mockito.mock(GameMap.class);
+        Level map = Mockito.mock(Level.class);
         ChickenController chickenController = new ChickenController(map);
         chickenController.start(Gui.COMMAND.NOTHING);
         Mockito.verify(map, Mockito.times(1)).getChicken();

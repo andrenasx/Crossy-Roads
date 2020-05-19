@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class VehicleControllerTest {
     @Test
     public void moveVehicleTest(){
-        GameMap map = new GameMap(1, 40, 35);
+        Level map = new Level(1, 40, 35);
         VehicleController vehicleController = new VehicleController(map);
         Car car1 = new Car(1, 2, "left");
         Car car2 = new Car(3, 6, "right");
@@ -30,7 +30,7 @@ public class VehicleControllerTest {
 
     @Test
     public void checkChickenCollisionTest(){
-        GameMap map = new GameMap(1, 40, 35);
+        Level map = new Level(1, 40, 35);
         VehicleController vehicleController = new VehicleController(map);
         Car car = new Car(1, 2, "right");
         int life = map.getLives();

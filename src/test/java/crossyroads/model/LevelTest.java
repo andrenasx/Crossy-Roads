@@ -8,21 +8,21 @@ import java.util.Random;
 
 import static org.junit.Assert.*;
 
-public class GameMapTest {
+public class LevelTest {
     @Test
     public void getGameMapSizeTest(){
         Random rand = new Random();
         int x = rand.nextInt(50);
         int y = rand.nextInt(70);
 
-        GameMap game = new GameMap(1, x,y);
+        Level game = new Level(1, x,y);
         assertEquals(x,game.getWidth());
         assertEquals(y,game.getHeight());
     }
 
     @Test
     public void addElementTest(){
-        GameMap game = new GameMap(1, 30,70);
+        Level game = new Level(1, 30,70);
 
         Chicken chicken = new Chicken(15,65);
         //Test for vehicles
@@ -48,7 +48,7 @@ public class GameMapTest {
 
     @Test
     public void getAllElementsTest(){
-        GameMap game = new GameMap(1, 30,70);
+        Level game = new Level(1, 30,70);
 
         Chicken chicken = new Chicken(15,65);
         Coin coin = new Coin(10,10,1);
@@ -71,7 +71,7 @@ public class GameMapTest {
 
     @Test
     public void resetChickenTest(){
-        GameMap map = new GameMap(1, 14, 40);
+        Level map = new Level(1, 14, 40);
         Chicken chicken = map.getChicken();
         chicken.setPosition(new Position(1, 2));
         map.resetChickenPosition();
@@ -80,7 +80,7 @@ public class GameMapTest {
 
     @Test
     public void getScoreTest(){
-        GameMap map = new GameMap(1, 15, 30);
+        Level map = new Level(1, 15, 30);
         Chicken chicken = map.getChicken();
         chicken.raiseScore(3);
         assertEquals(3, map.getScore());
@@ -88,7 +88,7 @@ public class GameMapTest {
 
     @Test
     public void getLivesTest(){
-        GameMap map = new GameMap(1, 16, 30);
+        Level map = new Level(1, 16, 30);
         Chicken chicken = map.getChicken();
         chicken.removeLife();
         assertEquals(2, map.getLives());
@@ -97,7 +97,7 @@ public class GameMapTest {
 
     @Test
     public void isLevelFinished(){
-        GameMap map = new GameMap(1, 35, 40);
+        Level map = new Level(1, 35, 40);
         Chicken chicken = map.getChicken();
 
         assertFalse(map.isLevelFinished());
