@@ -2,6 +2,7 @@ package crossyroads.controller;
 
 import crossyroads.model.*;
 import crossyroads.view.Gui;
+import crossyroads.view.GuiSquare;
 
 import java.util.List;
 
@@ -12,20 +13,20 @@ public class ChickenController {
         this.gameModel = gameModel;
     }
 
-    public void execute(Gui.COMMAND command) {
+    public void execute(GuiSquare.COMMAND command) {
         Chicken chicken = gameModel.getChicken();
-        if(command == Gui.COMMAND.UP)
+        if(command == GuiSquare.COMMAND.UP)
             moveChicken(chicken.getPosition().up());
-        if(command == Gui.COMMAND.DOWN)
+        if(command == GuiSquare.COMMAND.DOWN)
             moveChicken(chicken.getPosition().down());
-        if(command == Gui.COMMAND.LEFT)
+        if(command == GuiSquare.COMMAND.LEFT)
             moveChicken(chicken.getPosition().left());
-        if(command == Gui.COMMAND.RIGHT)
+        if(command == GuiSquare.COMMAND.RIGHT)
             moveChicken(chicken.getPosition().right());
 
     }
 
-    public void start(Gui.COMMAND command){
+    public void start(GuiSquare.COMMAND command){
         execute(command);
     }
 
