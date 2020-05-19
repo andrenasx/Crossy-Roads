@@ -24,25 +24,29 @@ public class LevelTest {
     public void addElementTest(){
         Level game = new Level(1, 30,70);
 
-        Chicken chicken = new Chicken(15,65);
-        //Test for vehicles
         Coin coin = new Coin(10,10,1);
         Coin coin1 = new Coin(20,20,1);
         Coin coin2 = new Coin(25,20,1);
+        Car car = new Car(30,30,"right");
+        Truck truck = new Truck (10,30, "left");
 
-        game.addElement(chicken);
-        //Test for vehicles
         game.addElement(coin);
         game.addElement(coin1);
         game.addElement(coin2);
+        game.addElement(car);
+        game.addElement(truck);
 
         List<Coin> coins = new ArrayList<>();
         coins.add(coin);
         coins.add(coin1);
         coins.add(coin2);
 
+        List<Vehicle> vehicles = new ArrayList<>();
+        vehicles.add(car);
+        vehicles.add(truck);
+
         assertEquals(coins,game.getCoins());
-        assertEquals(chicken, game.getChicken());
+        assertEquals(vehicles,game.getVehicles());
 
     }
 
@@ -50,26 +54,26 @@ public class LevelTest {
     public void getAllElementsTest(){
         Level game = new Level(1, 30,70);
 
-        Chicken chicken = new Chicken(15,65);
         Coin coin = new Coin(10,10,1);
         Coin coin1 = new Coin(20,20,1);
+        Car car = new Car(30,30,"right");
+        Truck truck = new Truck (10,30, "left");
 
-        game.addElement(chicken);
-        //Test for vehicles
         game.addElement(coin);
         game.addElement(coin1);
+        game.addElement(car);
+        game.addElement(truck);
 
         List<Element> elements = new ArrayList<>();
-        elements.add(chicken);
-        //Test for vehicles
+        elements.add(car);
+        elements.add(truck);
         elements.add(coin);
         elements.add(coin1);
 
         assertEquals(elements,game.getAllElements());
-
     }
 
-    @Test
+    /*@Test
     public void resetChickenTest(){
         Level map = new Level(1, 14, 40);
         Chicken chicken = map.getChicken();
@@ -110,6 +114,5 @@ public class LevelTest {
         while(chicken.getLives()>0) chicken.removeLife();
 
         assertTrue(map.isChickenDead());
-    }
-
+    }*/
 }
