@@ -6,22 +6,28 @@ import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import crossyroads.model.GameModel;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class GuiMainMenu {
     private GameModel gameModel;
     private TerminalScreen screen;
-    public enum COMMAND {PLAY, HELP, EXIT, HIGHSCORES, EOF, NOTHING};
+    public enum COMMAND {PLAY, HELP, EXIT, HIGHSCORES, NOTHING};
 
-    public GuiMainMenu(GameModel gameModel) throws IOException{
+    public GuiMainMenu(GameModel gameModel) throws IOException {
         TerminalSize terminalSize = new TerminalSize(gameModel.getWidth(), gameModel.getHeight() + 1);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
+        Font font = new Font("courier", Font.PLAIN, 25);
+        Font loadedFont = font.deriveFont(Font.PLAIN, 15);
+        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
+        terminalFactory.setForceAWTOverSwing(true);
+        terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
         Terminal terminal = terminalFactory.createTerminal();
         screen = new TerminalScreen(terminal);
 
@@ -32,14 +38,10 @@ public class GuiMainMenu {
         this.gameModel = gameModel;
     }
 
-    public void setScreen(TerminalScreen screen){
-        this.screen = screen;
-    }
-
     public void draw() throws IOException {
         screen.clear();
         drawMainMenu();
-        //drawButtons();
+        drawButtons();
         screen.refresh();
     }
 
@@ -52,10 +54,32 @@ public class GuiMainMenu {
                 ' '
         );
         graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(13, 9, "Crossy Roads");
+        graphics.putString(14, 5, "CROSSY ROADS");
     }
 
-    private void drawButtons(){};
+    private void drawButtons(){
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
+        int row = 10;
+        for(int i = 0; i <= 3; i++){
+            graphics.fillRectangle(
+                    new TerminalPosition(14, row),
+                    new TerminalSize(12, 2),
+                    ' ');
+            row+=5;
+        }
+        graphics.enableModifiers(SGR.BOLD);
+        graphics.setForegroundColor(TextColor.Factory.fromString("#25221e"));
+        graphics.putString(18,10,"PLAY");
+        graphics.putString(18,11,"[1]");
+        graphics.putString(18,15, "HELP");
+        graphics.putString(18,16,"[2]");
+        graphics.putString(15,20,"HIGHSCORES");
+        graphics.putString(18,21,"[3]");
+        graphics.putString(18,25,"EXIT");
+        graphics.putString(18,26,"[4]");
+
+    };
 
     public GuiMainMenu.COMMAND getNextCommand() throws IOException {
         KeyStroke input = screen.pollInput();
@@ -63,7 +87,6 @@ public class GuiMainMenu {
         if(input != null){
             KeyStroke clear = screen.pollInput(); //Clearing input
             while(clear != null){
-                if(clear.getKeyType()== KeyType.EOF) return GuiMainMenu.COMMAND.EOF;
                 clear = screen.pollInput();
             }
 
