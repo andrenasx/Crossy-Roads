@@ -58,4 +58,12 @@ import java.util.Random;
         assertEquals(y, chicken.getPosition().getY());
 
      }
+
+     @Test
+     public void chickenStepsTest(){
+        Chicken chicken = new Chicken(1, 2);
+        assertEquals(0, chicken.getCountSteps());
+        chicken.increaseCount();
+        assertEquals(1, chicken.getCountSteps());
+     }
 }

@@ -62,4 +62,10 @@ public class TruckTest {
         Position position4 = new Position(18, 15);
         assertFalse(truck.checkCollision(position4));
     }
+
+    @Test
+    public void truckGetSpeedTest(){
+        Truck truck = new Truck(12, 15, "left");
+        assertEquals(6, truck.getSpeed());
+    }
 }

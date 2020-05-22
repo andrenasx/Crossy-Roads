@@ -10,19 +10,19 @@ import static org.junit.Assert.*;
 
 public class LevelTest {
     @Test
-    public void getGameMapSizeTest(){
+    public void getLevelSizeTest(){
         Random rand = new Random();
         int x = rand.nextInt(50);
         int y = rand.nextInt(70);
 
-        Level game = new Level(1, x,y);
-        assertEquals(x,game.getWidth());
-        assertEquals(y,game.getHeight());
+        Level level = new Level(1, x,y);
+        assertEquals(x, level.getWidth());
+        assertEquals(y, level.getHeight());
     }
 
     @Test
     public void addElementTest(){
-        Level game = new Level(1, 30,70);
+        Level level = new Level(1, 30,70);
 
         Coin coin = new Coin(10,10,1);
         Coin coin1 = new Coin(20,20,1);
@@ -30,11 +30,11 @@ public class LevelTest {
         Car car = new Car(30,30,"right");
         Truck truck = new Truck (10,30, "left");
 
-        game.addElement(coin);
-        game.addElement(coin1);
-        game.addElement(coin2);
-        game.addElement(car);
-        game.addElement(truck);
+        level.addElement(coin);
+        level.addElement(coin1);
+        level.addElement(coin2);
+        level.addElement(car);
+        level.addElement(truck);
 
         List<Coin> coins = new ArrayList<>();
         coins.add(coin);
@@ -45,24 +45,24 @@ public class LevelTest {
         vehicles.add(car);
         vehicles.add(truck);
 
-        assertEquals(coins,game.getCoins());
-        assertEquals(vehicles,game.getVehicles());
+        assertEquals(coins, level.getCoins());
+        assertEquals(vehicles, level.getVehicles());
 
     }
 
     @Test
     public void getAllElementsTest(){
-        Level game = new Level(1, 30,70);
+        Level level = new Level(1, 30,70);
 
         Coin coin = new Coin(10,10,1);
         Coin coin1 = new Coin(20,20,1);
         Car car = new Car(30,30,"right");
         Truck truck = new Truck (10,30, "left");
 
-        game.addElement(coin);
-        game.addElement(coin1);
-        game.addElement(car);
-        game.addElement(truck);
+        level.addElement(coin);
+        level.addElement(coin1);
+        level.addElement(car);
+        level.addElement(truck);
 
         List<Element> elements = new ArrayList<>();
         elements.add(car);
@@ -70,49 +70,6 @@ public class LevelTest {
         elements.add(coin);
         elements.add(coin1);
 
-        assertEquals(elements,game.getAllElements());
+        assertEquals(elements, level.getAllElements());
     }
-
-    /*@Test
-    public void resetChickenTest(){
-        Level map = new Level(1, 14, 40);
-        Chicken chicken = map.getChicken();
-        chicken.setPosition(new Position(1, 2));
-        map.resetChickenPosition();
-        assertEquals(chicken.getPosition(), new Position(14/2, 40-1));
-    }
-
-    @Test
-    public void getScoreTest(){
-        Level map = new Level(1, 15, 30);
-        Chicken chicken = map.getChicken();
-        chicken.raiseScore(3);
-        assertEquals(3, map.getScore());
-    }
-
-    @Test
-    public void getLivesTest(){
-        Level map = new Level(1, 16, 30);
-        Chicken chicken = map.getChicken();
-        chicken.removeLife();
-        assertEquals(2, map.getLives());
-
-    }
-
-    @Test
-    public void isLevelFinished(){
-        Level map = new Level(1, 35, 40);
-        Chicken chicken = map.getChicken();
-
-        assertFalse(map.isLevelFinished());
-
-        chicken.setPosition(new Position(0, 0));
-
-        assertTrue(map.isLevelFinished());
-
-        chicken.setPosition(new Position(10, 10));
-        while(chicken.getLives()>0) chicken.removeLife();
-
-        assertTrue(map.isChickenDead());
-    }*/
 }
