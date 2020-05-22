@@ -39,6 +39,7 @@ public class ChickenController {
         if (chickenStaysInScreen(position))
             chicken.setPosition(position);
         checkCollisions(position);
+        chicken.increaseCount();
     }
 
     public void checkCollisions(Position position) {

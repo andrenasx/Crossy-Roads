@@ -33,8 +33,6 @@ public class GameController {
           
             GuiSquare.COMMAND command = gui.getNextCommand();
             if(command == GuiSquare.COMMAND.EOF) break;
-            if(command != GuiSquare.COMMAND.NOTHING)
-                gameModel.getChicken().increaseCount();
 
             chickenController.start(command);
             vehicleController.start(step);
