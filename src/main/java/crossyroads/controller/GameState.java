@@ -2,12 +2,12 @@ package crossyroads.controller;
 
 import crossyroads.model.GameModel;
 import crossyroads.model.MusicPlayer;
-import crossyroads.view.Gui;
 import crossyroads.view.GuiSquare;
 
 import java.io.IOException;
 
-public class GameController {
+public class GameState implements State{
+    private AppController appController;
     private ChickenController chickenController;
     private VehicleController vehicleController;
     private GuiSquare gui;
@@ -15,22 +15,30 @@ public class GameController {
     private final int FPS = 10;
     private int step = 0;
 
-    public GameController(GuiSquare gui, GameModel gameModel) {
-        this.gui = gui;
-        this.gameModel = gameModel;
+    public GameState(AppController ap) {
+        appController  = ap;
+        gameModel = new GameModel(40, 35, 5);
+        gameModel.createLevels();
+
+        try {
+            gui = new GuiSquare(gameModel);
+            gui.draw();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         this.chickenController = new ChickenController(gameModel);
         this.vehicleController = new VehicleController(gameModel);
     }
 
-    public void start() throws IOException {
+    public void step() throws IOException {
         MusicPlayer player = new MusicPlayer("src/main/resources/piu.wav");
         //player.startMusic();
 
         while(!gameModel.isChickenDead()) {
             long time = System.currentTimeMillis();
-            step++; 
-          
+            step++;
+
             GuiSquare.COMMAND command = gui.getNextCommand();
             if(command == GuiSquare.COMMAND.EOF) break;
             if(command != GuiSquare.COMMAND.NOTHING)
@@ -56,13 +64,11 @@ public class GameController {
                 gameModel.resetChickenPosition();
                 step = 0;
             }
-
-
         }
         //System.out.println("Number of commands: " + gameModel.getChicken().getCountSteps());
         player.stopMusic();
         System.exit(0);
+        appController.setCurrentState(new MenuState(appController));
     }
-
 }
 

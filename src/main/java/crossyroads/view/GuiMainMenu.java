@@ -16,12 +16,11 @@ import java.awt.*;
 import java.io.IOException;
 
 public class GuiMainMenu {
-    private GameModel gameModel;
     private TerminalScreen screen;
     public enum COMMAND {PLAY, HELP, EXIT, HIGHSCORES, NOTHING};
 
-    public GuiMainMenu(GameModel gameModel) throws IOException {
-        TerminalSize terminalSize = new TerminalSize(gameModel.getWidth(), gameModel.getHeight() + 1);
+    public GuiMainMenu() throws IOException {
+        TerminalSize terminalSize = new TerminalSize(40, 35);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
         Font font = new Font("courier", Font.PLAIN, 25);
         Font loadedFont = font.deriveFont(Font.PLAIN, 15);
@@ -34,8 +33,6 @@ public class GuiMainMenu {
         screen.setCursorPosition(null);   // we don't need a cursor
         screen.startScreen();             // screens must be started
         screen.doResizeIfNecessary();     // resize screen if necessary
-
-        this.gameModel = gameModel;
     }
 
     public void draw() throws IOException {
@@ -50,7 +47,7 @@ public class GuiMainMenu {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
         graphics.fillRectangle(
                 new TerminalPosition(0, 0),
-                new TerminalSize(gameModel.getWidth(), gameModel.getHeight()+1),
+                new TerminalSize(40, 35),
                 ' '
         );
         graphics.enableModifiers(SGR.BOLD);
@@ -82,27 +79,19 @@ public class GuiMainMenu {
     };
 
     public GuiMainMenu.COMMAND getNextCommand() throws IOException {
-        KeyStroke input = screen.pollInput();
+        KeyStroke input = screen.readInput();
 
-        if(input != null){
-            KeyStroke clear = screen.pollInput(); //Clearing input
-            while(clear != null){
-                clear = screen.pollInput();
-            }
-
-            switch (input.getCharacter()){
-                case 1:
-                    return GuiMainMenu.COMMAND.PLAY;
-                case 2:
-                    return COMMAND.HELP;
-                case 3:
-                    return COMMAND.HIGHSCORES;
-                case 4:
-                    return COMMAND.EXIT;
-                default:
-                    return GuiMainMenu.COMMAND.NOTHING;
-            }
+        switch (input.getCharacter()){
+            case '1':
+                return GuiMainMenu.COMMAND.PLAY;
+            case '2':
+                return COMMAND.HELP;
+            case '3':
+                return COMMAND.HIGHSCORES;
+            case '4':
+                return COMMAND.EXIT;
+            default:
+                return GuiMainMenu.COMMAND.NOTHING;
         }
-        return GuiMainMenu.COMMAND.NOTHING;
     }
 }
