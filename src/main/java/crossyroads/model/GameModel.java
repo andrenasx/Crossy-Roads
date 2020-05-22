@@ -68,10 +68,6 @@ public class GameModel {
         return levels.get(currentLevel-1);
     }
 
-    public void setCurrentLevel(int level){
-        this.currentLevel = level;
-    }
-
     public void increaseLevel(){
         if(!this.isFinalLevel()) this.currentLevel++;
     }
