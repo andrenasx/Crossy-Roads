@@ -18,7 +18,6 @@ public class MenuState implements State{
     public void step() throws IOException {
         gui.draw();
         GuiMainMenu.COMMAND command = gui.getNextCommand();
-        System.out.println(command);
         switch (command){
             case PLAY:
                 appController.setCurrentState(new GameState(appController));
