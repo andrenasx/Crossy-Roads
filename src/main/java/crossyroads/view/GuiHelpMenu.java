@@ -18,7 +18,7 @@ public class GuiHelpMenu {
     private TerminalScreen screen;
     public enum COMMAND {BACK, NOTHING, EOF};
 
-    public GuiHelpMenu(GameModel gameModel) throws IOException {
+    public GuiHelpMenu() throws IOException {
         this.screen = ScreenFactory.getScreen();
     }
 
@@ -76,24 +76,14 @@ public class GuiHelpMenu {
 
     public GuiHelpMenu.COMMAND getNextCommand() throws IOException {
         KeyStroke input = screen.pollInput();
+        screen.readInput();
 
-        if(input != null){
-            KeyStroke clear = screen.pollInput(); //Clearing input
-            while(clear != null){
-                if(clear.getKeyType()== KeyType.EOF) return GuiHelpMenu.COMMAND.EOF;
-                clear = screen.pollInput();
-            }
-
-            switch (input.getKeyType()){
-                case EOF:
-                    return COMMAND.EOF;
-                case Character:
-                    if(input.getCharacter() == '1')
+        switch (input.getKeyType()){
+            case Character:
+                if(input.getCharacter() == '1')
                     return COMMAND.BACK;
-                default:
-                    return GuiHelpMenu.COMMAND.NOTHING;
-            }
+            default:
+                return GuiHelpMenu.COMMAND.NOTHING;
         }
-        return GuiHelpMenu.COMMAND.NOTHING;
     }
 }
