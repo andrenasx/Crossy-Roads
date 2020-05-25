@@ -1,5 +1,8 @@
 package crossyroads.controller;
 
+import crossyroads.controller.states.MenuState;
+import crossyroads.controller.states.State;
+
 import java.io.IOException;
 
 public class AppController {

@@ -1,9 +1,11 @@
-package crossyroads.controller;
+package crossyroads.controller.states;
 
+import crossyroads.controller.AppController;
+import crossyroads.controller.ChickenController;
+import crossyroads.controller.VehicleController;
 import crossyroads.model.GameModel;
 import crossyroads.model.GameModelCreator;
 import crossyroads.model.MusicPlayer;
-import crossyroads.view.GuiHelpMenu;
 import crossyroads.view.GuiSquare;
 
 import java.io.IOException;
@@ -67,7 +69,6 @@ public class GameState implements State{
         }
         //System.out.println("Number of commands: " + gameModel.getChicken().getCountSteps());
         player.stopMusic();
-        System.exit(0);
         appController.setCurrentState(new MenuState(appController));
     }
 }

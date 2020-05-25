@@ -1,5 +1,6 @@
-package crossyroads.controller;
+package crossyroads.controller.states;
 
+import crossyroads.controller.AppController;
 import crossyroads.view.GuiMainMenu;
 
 import java.io.IOException;
@@ -18,8 +19,17 @@ public class MenuState implements State{
         gui.draw();
         GuiMainMenu.COMMAND command = gui.getNextCommand();
         System.out.println(command);
-        if (command == GuiMainMenu.COMMAND.PLAY) {
-            appController.setCurrentState(new GameState(appController));
+        switch (command){
+            case PLAY:
+                appController.setCurrentState(new GameState(appController));
+                break;
+            case HELP:
+                appController.setCurrentState(new HelpState(appController));
+                break;
+            case EXIT:
+                System.exit(0);
+            default:
+                break;
         }
     }
 }

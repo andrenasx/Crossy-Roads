@@ -1,4 +1,4 @@
-package crossyroads.controller;
+package crossyroads.controller.states;
 
 import java.io.IOException;
 
