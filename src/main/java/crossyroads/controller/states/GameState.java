@@ -44,7 +44,6 @@ public class GameState implements State{
             step++;
 
             GuiSquare.COMMAND command = gui.getNextCommand();
-            if(command == GuiSquare.COMMAND.EOF) break;
 
             chickenController.start(command);
             vehicleController.start(step);
@@ -59,17 +58,18 @@ public class GameState implements State{
             }
 
             if(gameModel.isLevelFinished()){
-                if(gameModel.isFinalLevel()){
+                if(gameModel.isFinalLevel())
                     break;
-                }
                 gameModel.increaseLevel();
                 gameModel.resetChickenPosition();
                 step = 0;
             }
         }
-        //System.out.println("Number of commands: " + gameModel.getChicken().getCountSteps());
         player.stopMusic();
-        appController.setCurrentState(new MenuState(appController));
+        if(gameModel.isChickenDead())
+            appController.setCurrentState(new LostState(appController, gameModel.getCurrentLevelInt()));
+        else
+            appController.setCurrentState(new WonState(appController, gameModel.getScore(), gameModel.getLives(), gameModel.getChicken().getCountSteps()));
     }
 }
 
