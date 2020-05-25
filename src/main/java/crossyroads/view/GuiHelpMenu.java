@@ -8,37 +8,18 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import crossyroads.model.GameModel;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GuiHelpMenu {
-    private GameModel gameModel;
     private TerminalScreen screen;
     public enum COMMAND {BACK, NOTHING, EOF};
 
     public GuiHelpMenu(GameModel gameModel) throws IOException {
-        TerminalSize terminalSize = new TerminalSize(gameModel.getWidth(), gameModel.getHeight() + 1);
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-        Font font = new Font("courier", Font.PLAIN, 25);
-        Font loadedFont = font.deriveFont(Font.PLAIN, 15);
-        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
-        terminalFactory.setForceAWTOverSwing(true);
-        terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
-        Terminal terminal = terminalFactory.createTerminal();
-        screen = new TerminalScreen(terminal);
-
-        screen.setCursorPosition(null);   // we don't need a cursor
-        screen.startScreen();             // screens must be started
-        screen.doResizeIfNecessary();     // resize screen if necessary
-
-        this.gameModel = gameModel;
+        this.screen = ScreenFactory.getScreen();
     }
 
     public void draw() throws IOException {
@@ -53,7 +34,7 @@ public class GuiHelpMenu {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
         graphics.fillRectangle(
                 new TerminalPosition(0, 0),
-                new TerminalSize(gameModel.getWidth(), gameModel.getHeight()+1),
+                new TerminalSize(40, 36),
                 ' '
         );
         graphics.enableModifiers(SGR.BOLD);

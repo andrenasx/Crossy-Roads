@@ -7,12 +7,7 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
-import crossyroads.model.GameModel;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class GuiMainMenu {
@@ -20,19 +15,7 @@ public class GuiMainMenu {
     public enum COMMAND {PLAY, HELP, EXIT, HIGHSCORES, NOTHING};
 
     public GuiMainMenu() throws IOException {
-        TerminalSize terminalSize = new TerminalSize(40, 35);
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-        Font font = new Font("courier", Font.PLAIN, 25);
-        Font loadedFont = font.deriveFont(Font.PLAIN, 15);
-        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
-        terminalFactory.setForceAWTOverSwing(true);
-        terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
-        Terminal terminal = terminalFactory.createTerminal();
-        screen = new TerminalScreen(terminal);
-
-        screen.setCursorPosition(null);   // we don't need a cursor
-        screen.startScreen();             // screens must be started
-        screen.doResizeIfNecessary();     // resize screen if necessary
+        this.screen = ScreenFactory.getScreen();
     }
 
     public void draw() throws IOException {
@@ -47,7 +30,7 @@ public class GuiMainMenu {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
         graphics.fillRectangle(
                 new TerminalPosition(0, 0),
-                new TerminalSize(40, 35),
+                new TerminalSize(40, 36),
                 ' '
         );
         graphics.enableModifiers(SGR.BOLD);

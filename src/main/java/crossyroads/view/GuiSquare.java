@@ -1,15 +1,11 @@
 package crossyroads.view;
 
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import crossyroads.model.*;
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.*;
 import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class GuiSquare {
@@ -18,30 +14,15 @@ public class GuiSquare {
     public enum COMMAND {UP, DOWN, LEFT, RIGHT, NOTHING, EOF};
 
     public GuiSquare(GameModel gameModel) throws IOException {
-        TerminalSize terminalSize = new TerminalSize(gameModel.getWidth(), gameModel.getHeight() + 1);
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-        Font font = new Font("courier", Font.PLAIN, 25);
-        Font loadedFont = font.deriveFont(Font.PLAIN, 15);
-        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
-        terminalFactory.setForceAWTOverSwing(true);
-        terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
-        Terminal terminal = terminalFactory.createTerminal();
-        screen = new TerminalScreen(terminal);
-
-        screen.setCursorPosition(null);   // we don't need a cursor
-        screen.startScreen();             // screens must be started
-        screen.doResizeIfNecessary();     // resize screen if necessary
-
+        this.screen = ScreenFactory.getScreen();
         this.gameModel = gameModel;
     }
-
-    public void setScreen(TerminalScreen screen){this.screen=screen;}
 
     public void draw() throws IOException {
         screen.clear();
 
-        drawScoreHealthLevel();
         drawGameMap();
+        drawScoreHealthLevel();
         drawChicken(gameModel.getChicken());
         for (Element element: gameModel.getCurrentLevel().getAllElements()) drawElement(element);
         screen.refresh();
