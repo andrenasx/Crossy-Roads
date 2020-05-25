@@ -18,7 +18,17 @@ public class HelpState implements State{
     @Override
     public void step() throws IOException {
         gui.draw();
-        gui.getNextCommand();
-        appController.setCurrentState(new MenuState(appController));
+        GuiHelpMenu.COMMAND command = gui.getNextCommand();
+        System.out.println(command);
+        switch (command){
+            case PLAY:
+                appController.setCurrentState(new GameState(appController));
+                break;
+            case BACK:
+                appController.setCurrentState(new MenuState(appController));
+                break;
+            default:
+                break;
+        }
     }
 }
