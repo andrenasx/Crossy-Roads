@@ -11,13 +11,13 @@ public class Level {
     private List<Coin> coins;
     private Terrain terrain;
 
-    public Level(int level, int width, int height) {
+    public Level(int level, int width, int height, Terrain terrain) {
         this.level = level;
         this.width = width;
         this.height = height;
+        this.terrain = terrain;
         this.vehicles = new ArrayList<>();
         this.coins = new ArrayList<>();
-        this.terrain = new Terrain("level" + level + ".txt", "main");
     }
 
     public int getHeight() {

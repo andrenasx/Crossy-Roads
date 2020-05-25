@@ -7,15 +7,13 @@ public class GameModel {
     private int width;
     private int height;
     private int currentLevel;
-    private int maxLevels;
     private List<Level> levels;
     private Chicken chicken;
 
-    public GameModel(int width, int height, int maxLevels) {
+    public GameModel(int width, int height) {
         this.width = width;
         this.height = height;
         this.currentLevel = 1;
-        this.maxLevels = maxLevels;
         this.levels = new ArrayList<>();
         this.chicken = new Chicken(width/2, height-1);
     }
@@ -50,14 +48,8 @@ public class GameModel {
         chicken.setPosition(new Position(width/2, height-1));
     }
 
-    public void createLevels(){
-        for(int i=1; i<=maxLevels; i++){
-            Level level = new Level(i, width, height);
-            for (Element element: level.getLevelTerrain().getElements()){
-                level.addElement(element);
-            }
-            levels.add(level);
-        }
+    public void addLevel(Level level){
+        levels.add(level);
     }
 
     public List<Level> getLevels() {
@@ -73,7 +65,7 @@ public class GameModel {
     }
 
     public boolean isFinalLevel(){
-        return maxLevels == this.currentLevel;
+        return this.currentLevel == levels.size();
     }
 
     public int getCurrentLevelInt(){

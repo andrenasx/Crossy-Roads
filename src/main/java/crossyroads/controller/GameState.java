@@ -1,7 +1,9 @@
 package crossyroads.controller;
 
 import crossyroads.model.GameModel;
+import crossyroads.model.GameModelCreator;
 import crossyroads.model.MusicPlayer;
+import crossyroads.view.GuiHelpMenu;
 import crossyroads.view.GuiSquare;
 
 import java.io.IOException;
@@ -17,8 +19,8 @@ public class GameState implements State{
 
     public GameState(AppController ap) {
         appController  = ap;
-        gameModel = new GameModel(40, 35, 5);
-        gameModel.createLevels();
+        gameModel = new GameModelCreator().createGameModel(40, 35, 5);
+
 
         try {
             gui = new GuiSquare(gameModel);
