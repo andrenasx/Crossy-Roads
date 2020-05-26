@@ -7,19 +7,33 @@ import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 
 public class ScreenFactory {
     public static TerminalScreen screen;
 
     private static TerminalScreen createScreen(int width, int height) throws IOException {
-        TerminalSize terminalSize = new TerminalSize(width, height);
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-        Font font = new Font("courier", Font.PLAIN, 25);
+        File fontfile = new File("src/main/resources/Anonymous.ttf");
+        Font font = null;
+        try {
+            font = Font.createFont(Font.TRUETYPE_FONT, fontfile);
+        } catch (FontFormatException e) {
+            e.printStackTrace();
+        }
+
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(font);
+
         Font loadedFont = font.deriveFont(Font.PLAIN, 15);
         AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
+
+        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
+        TerminalSize terminalSize = new TerminalSize(width, height);
+
         terminalFactory.setForceAWTOverSwing(true);
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
+        terminalFactory.setInitialTerminalSize(terminalSize);
         Terminal terminal = terminalFactory.createTerminal();
         TerminalScreen screen = new TerminalScreen(terminal);
 
