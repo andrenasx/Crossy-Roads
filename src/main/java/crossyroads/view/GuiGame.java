@@ -5,36 +5,24 @@ import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.*;
 import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
 
-public class Gui {
+public class GuiGame {
     private GameModel gameModel;
     private TerminalScreen screen;
-    public enum COMMAND {UP, DOWN, LEFT, RIGHT, NOTHING, EOF};
+    public enum COMMAND {UP, DOWN, LEFT, RIGHT, NOTHING, EOF}
 
-    public Gui(GameModel gameModel) throws IOException {
-        TerminalSize terminalSize = new TerminalSize(gameModel.getWidth(), gameModel.getHeight() + 1);
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-        Terminal terminal = terminalFactory.createTerminal();
-        screen = new TerminalScreen(terminal);
-
-        screen.setCursorPosition(null);   // we don't need a cursor
-        screen.startScreen();             // screens must be started
-        screen.doResizeIfNecessary();     // resize screen if necessary
-
+    public GuiGame(GameModel gameModel) throws IOException {
+        this.screen = ScreenFactory.getScreen();
         this.gameModel = gameModel;
     }
-
-    public void setScreen(TerminalScreen screen){this.screen=screen;}
 
     public void draw() throws IOException {
         screen.clear();
 
-        drawScoreHealthLevel();
         drawGameMap();
+        drawScoreHealthLevel();
         drawChicken(gameModel.getChicken());
         for (Element element: gameModel.getCurrentLevel().getAllElements()) drawElement(element);
         screen.refresh();
@@ -109,7 +97,7 @@ public class Gui {
                     return COMMAND.RIGHT;
                 case ArrowLeft:
                     return COMMAND.LEFT;
-                case EOF:
+                case Escape:
                     return COMMAND.EOF;
                 default:
                     return COMMAND.NOTHING;

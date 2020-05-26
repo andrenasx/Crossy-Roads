@@ -1,11 +1,9 @@
 package crossyroads.controller;
 
 import crossyroads.model.*;
-import crossyroads.view.Gui;
-import crossyroads.view.GuiSquare;
+import crossyroads.view.GuiGame;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.mockito.Mockito.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,11 +58,11 @@ public class ChickenControllerTest {
         ChickenController chickenController = new ChickenController(gameModel);
         Chicken chicken = gameModel.getChicken();
         Position position = chicken.getPosition();
-        chickenController.execute(GuiSquare.COMMAND.UP);
+        chickenController.execute(GuiGame.COMMAND.UP);
         assertEquals(chicken.getPosition(), new Position(position.getX(), position.getY()-1));
         chicken.setPosition(new Position(chicken.getPosition().getX(), 0));
         position = chicken.getPosition();
-        chickenController.execute(GuiSquare.COMMAND.UP);
+        chickenController.execute(GuiGame.COMMAND.UP);
         assertEquals(chicken.getPosition(), position);
     }
 
@@ -79,11 +77,11 @@ public class ChickenControllerTest {
         ChickenController chickenController = new ChickenController(gameModel);
         Chicken chicken = gameModel.getChicken();
         Position position = chicken.getPosition();
-        chickenController.execute(GuiSquare.COMMAND.DOWN);
+        chickenController.execute(GuiGame.COMMAND.DOWN);
         assertEquals(chicken.getPosition(), new Position(position.getX(), position.getY()+1));
         chicken.setPosition(new Position(chicken.getPosition().getX(), 34));
         position = chicken.getPosition();
-        chickenController.execute(GuiSquare.COMMAND.DOWN);
+        chickenController.execute(GuiGame.COMMAND.DOWN);
         assertEquals(chicken.getPosition(), position);
     }
 
@@ -98,11 +96,11 @@ public class ChickenControllerTest {
         ChickenController chickenController = new ChickenController(gameModel);
         Chicken chicken = gameModel.getChicken();
         Position position = chicken.getPosition();
-        chickenController.execute(GuiSquare.COMMAND.LEFT);
+        chickenController.execute(GuiGame.COMMAND.LEFT);
         assertEquals(chicken.getPosition(), new Position(position.getX()-1, position.getY()));
         chicken.setPosition(new Position(0, chicken.getPosition().getY()));
         position = chicken.getPosition();
-        chickenController.execute(GuiSquare.COMMAND.LEFT);
+        chickenController.execute(GuiGame.COMMAND.LEFT);
         assertEquals(chicken.getPosition(), position);
     }
 
@@ -117,11 +115,11 @@ public class ChickenControllerTest {
         ChickenController chickenController = new ChickenController(gameModel);
         Chicken chicken = gameModel.getChicken();
         Position position = chicken.getPosition();
-        chickenController.execute(GuiSquare.COMMAND.RIGHT);
+        chickenController.execute(GuiGame.COMMAND.RIGHT);
         assertEquals(chicken.getPosition(), new Position(position.getX()+1, position.getY()));
         chicken.setPosition(new Position(gameModel.getWidth(), chicken.getPosition().getY()));
         position = chicken.getPosition();
-        chickenController.execute(GuiSquare.COMMAND.RIGHT);
+        chickenController.execute(GuiGame.COMMAND.RIGHT);
         assertEquals(chicken.getPosition(), position);
     }
 
@@ -176,7 +174,7 @@ public class ChickenControllerTest {
     public void startTest(){
         GameModel gameModel = Mockito.mock(GameModel.class);
         ChickenController chickenController = new ChickenController(gameModel);
-        chickenController.start(GuiSquare.COMMAND.NOTHING);
+        chickenController.start(GuiGame.COMMAND.NOTHING);
         Mockito.verify(gameModel, Mockito.times(1)).getChicken();
     }
 }
