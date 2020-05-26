@@ -19,14 +19,14 @@ Este projeto está a ser desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt
     [![Vehicle Collision](https://i.gyazo.com/63df273c94498e994c27186b530ddefa.gif)](https://gyazo.com/63df273c94498e994c27186b530ddefa)
 
 - **Música de fundo:** o jogo tem a música de fundo "O Pintinho Piu" para proporcionar uma melhor experiência e maior divertimento.
-- **Níveis:** o jogo consiste em 5 níveis com dificuldade, número de veículos e moedas crescente.    
-- **Terminar o jogo:** a janela do jogo fecha e o jogo termina quando a galinha ganha ou perde ou quando o utilizador clica no X da janela do jogo.
-
+- **Níveis:** o jogo consiste em 5 níveis com dificuldade, número de veículos e moedas crescente.
+- **Menu Inicial:** a aplicação inicializa neste menu, onde o jogador pode escolher jogar, aceder a um Menu Help ou de Highscores, ou sair do jogo.
+- **Menu Help:** neste menu o jogador tem uma descrição breve de quais são as regras do jogo e como jogar, tendo uma opção para começar logo uma partida ou voltar ao Menu Inicial.   
+- **Mensagens da _performance_:** no final de uma partida é apresentada uma mensagem no ecrã dizendo se o jogador ganhou ou perdeu e alguns aspetos da sua partida, como por exemplo, o _score_.
+ 
 ## Planned Features
 
-- **Menu inicial:** um menu que permite ao utilizador jogar, sair e ver uma tabela dos _highscores_.
 - **Registo dos _highscores_:** contabilizar o tempo de cada partida e guardar, sendo posteriormente apresentados na tabela.
-- **Mensagens:** aparecerá uma mensagem de fim de jogo quando o jogador perdeu.
 
 ## Design
 
