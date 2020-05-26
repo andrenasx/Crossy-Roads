@@ -15,21 +15,21 @@ public class GuiLost {
     private int level;
     public enum COMMAND {MENU, EXIT, NOTHING}
 
-    public GuiLost(int level) throws IOException {
+    public GuiLost(TerminalScreen screen, int level) throws IOException {
         this.level = level;
-        this.screen = ScreenFactory.getScreen();
+        this.screen = screen;
     }
 
     public void draw() throws IOException {
         screen.clear();
-        drawLostMenu();
-        drawLevel();
-        drawButtons();
+        TextGraphics graphics = screen.newTextGraphics();
+        drawLostMenu(graphics);
+        drawLevel(graphics);
+        drawButtons(graphics);
         screen.refresh();
     }
 
-    private void drawLostMenu(){
-        TextGraphics graphics = screen.newTextGraphics();
+    private void drawLostMenu(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
         graphics.fillRectangle(
                 new TerminalPosition(0, 0),
@@ -50,8 +50,7 @@ public class GuiLost {
         graphics.putString(4, 13, "XXXXX  XXXXXX  XXXXX     XX    XXX");
     }
 
-    private void drawButtons(){
-        TextGraphics graphics = screen.newTextGraphics();
+    private void drawButtons(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
         int column = 5;
         for(int i = 0; i <= 2; i++){
@@ -70,8 +69,7 @@ public class GuiLost {
 
     }
 
-    private void drawLevel(){
-        TextGraphics graphics = screen.newTextGraphics();
+    private void drawLevel(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
         graphics.enableModifiers(SGR.BOLD);
         graphics.putString(11, 20, "Level reached: " + level);
