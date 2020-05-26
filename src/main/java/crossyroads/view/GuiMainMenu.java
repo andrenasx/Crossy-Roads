@@ -14,19 +14,19 @@ public class GuiMainMenu {
     private TerminalScreen screen;
     public enum COMMAND {PLAY, HELP, EXIT, HIGHSCORES, NOTHING}
 
-    public GuiMainMenu() throws IOException {
-        this.screen = ScreenFactory.getScreen();
+    public GuiMainMenu(TerminalScreen screen){
+        this.screen = screen;
     }
 
     public void draw() throws IOException {
         screen.clear();
-        drawMainMenu();
-        drawButtons();
+        TextGraphics graphics = screen.newTextGraphics();
+        drawMainMenu(graphics);
+        drawButtons(graphics);
         screen.refresh();
     }
 
-    private void drawMainMenu(){
-        TextGraphics graphics = screen.newTextGraphics();
+    private void drawMainMenu(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
         graphics.fillRectangle(
                 new TerminalPosition(0, 0),
@@ -47,8 +47,7 @@ public class GuiMainMenu {
         graphics.putString(2, 12, "XX   X  XXXXX XX       XX XXX   XXXXX");
     }
 
-    private void drawButtons(){
-        TextGraphics graphics = screen.newTextGraphics();
+    private void drawButtons(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
         int row = 15;
         for(int i = 0; i <= 3; i++){

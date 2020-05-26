@@ -7,6 +7,7 @@ import crossyroads.model.GameModel;
 import crossyroads.model.GameModelCreator;
 import crossyroads.model.MusicPlayer;
 import crossyroads.view.GuiGame;
+import crossyroads.view.ScreenFactory;
 
 import java.io.IOException;
 
@@ -25,7 +26,7 @@ public class GameState implements State{
 
 
         try {
-            gui = new GuiGame(gameModel);
+            gui = new GuiGame(gameModel, ScreenFactory.getScreen());
             gui.draw();
         } catch (IOException e) {
             e.printStackTrace();

@@ -13,49 +13,46 @@ public class GuiGame {
     private TerminalScreen screen;
     public enum COMMAND {UP, DOWN, LEFT, RIGHT, NOTHING, EOF}
 
-    public GuiGame(GameModel gameModel) throws IOException {
-        this.screen = ScreenFactory.getScreen();
+    public GuiGame(GameModel gameModel, TerminalScreen screen){
         this.gameModel = gameModel;
+        this.screen = screen;
     }
 
     public void draw() throws IOException {
         screen.clear();
-
-        drawGameMap();
-        drawScoreHealthLevel();
-        drawChicken(gameModel.getChicken());
-        for (Element element: gameModel.getCurrentLevel().getAllElements()) drawElement(element);
+        TextGraphics graphics = screen.newTextGraphics();
+        drawScoreHealthLevel(graphics);
+        drawGameMap(graphics);
+        drawChicken(graphics, gameModel.getChicken());
+        for (Element element: gameModel.getCurrentLevel().getAllElements()) drawElement(graphics, element);
         screen.refresh();
     }
 
-    private void drawScoreHealthLevel() {
-        TextGraphics graphics = screen.newTextGraphics();
+    private void drawScoreHealthLevel(TextGraphics graphics) {
         graphics.enableModifiers(SGR.BOLD);
         graphics.putString(0, gameModel.getHeight(), "Score: " + gameModel.getScore() + "\tHealth: " + gameModel.getLives() + "\tLevel: " + gameModel.getCurrentLevelInt());
     }
 
-    private void drawGameMap() {
-        TextGraphics graphics = screen.newTextGraphics();
+    private void drawGameMap(TextGraphics graphics) {
         for (int y=0; y<gameModel.getHeight(); y++){
             graphics.setBackgroundColor(TextColor.Factory.fromString(getBackgroundColor(y)));
             graphics.fillRectangle(new TerminalPosition(0,  y), new TerminalSize(gameModel.getWidth(), 1), ' ');
         }
     }
 
-    private void drawChicken(Chicken chicken) {
-        drawCharacter(chicken.getPosition(), "O", chicken.getColor());
+    private void drawChicken(TextGraphics graphics, Chicken chicken) {
+        drawCharacter(graphics, chicken.getPosition(), "O", chicken.getColor());
     }
 
-    private void drawElement(Element element) {
+    private void drawElement(TextGraphics graphics, Element element) {
         String character="";
         if (element instanceof Coin) character="O";
         else if (element instanceof Car) character="<>";
         else if (element instanceof Truck) character="<==>";
-        drawCharacter(element.getPosition(), character, element.getColor());
+        drawCharacter(graphics, element.getPosition(), character, element.getColor());
     }
 
-    private void drawCharacter(Position position, String character, String color){
-        TextGraphics graphics = screen.newTextGraphics();
+    private void drawCharacter(TextGraphics graphics, Position position, String character, String color){
         graphics.setForegroundColor(TextColor.Factory.fromString(color));
         graphics.setBackgroundColor(TextColor.Factory.fromString(getBackgroundColor(position.getY())));
         graphics.enableModifiers(SGR.BOLD);

@@ -2,6 +2,7 @@ package crossyroads.controller.states;
 
 import crossyroads.controller.AppController;
 import crossyroads.view.GuiMainMenu;
+import crossyroads.view.ScreenFactory;
 
 import java.io.IOException;
 
@@ -11,7 +12,7 @@ public class MenuState implements State{
 
     public MenuState(AppController ap) throws IOException {
         this.appController = ap;
-        this.gui = new GuiMainMenu();
+        this.gui = new GuiMainMenu(ScreenFactory.getScreen());
     }
 
     @Override

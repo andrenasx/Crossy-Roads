@@ -16,19 +16,19 @@ public class GuiHelpMenu {
     private TerminalScreen screen;
     public enum COMMAND {PLAY, BACK, NOTHING}
 
-    public GuiHelpMenu() throws IOException {
-        this.screen = ScreenFactory.getScreen();
+    public GuiHelpMenu(TerminalScreen screen){
+        this.screen = screen;
     }
 
     public void draw() throws IOException {
         screen.clear();
-        drawHelpMenu();
-        drawButtons();
+        TextGraphics graphics = screen.newTextGraphics();
+        drawHelpMenu(graphics);
+        drawButtons(graphics);
         screen.refresh();
     }
 
-    private void drawHelpMenu(){
-        TextGraphics graphics = screen.newTextGraphics();
+    private void drawHelpMenu(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
         graphics.fillRectangle(
                 new TerminalPosition(0, 0),
@@ -63,8 +63,7 @@ public class GuiHelpMenu {
 
     }
 
-    private void drawButtons(){
-        TextGraphics graphics = screen.newTextGraphics();
+    private void drawButtons(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
         int column = 5;
         for(int i = 0; i <= 2; i++){

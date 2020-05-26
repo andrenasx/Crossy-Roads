@@ -15,23 +15,23 @@ public class GuiWon {
     private int score, health, steps;
     public enum COMMAND {MENU, EXIT, NOTHING}
 
-    public GuiWon(int score, int health, int steps) throws IOException {
+    public GuiWon(int score, int health, int steps, TerminalScreen screen){
         this.score = score;
         this.health = health;
         this.steps = steps;
-        this.screen = ScreenFactory.getScreen();
+        this.screen = screen;
     }
 
     public void draw() throws IOException {
         screen.clear();
-        drawLostMenu();
-        drawStats();
-        drawButtons();
+        TextGraphics graphics = screen.newTextGraphics();
+        drawLostMenu(graphics);
+        drawStats(graphics);
+        drawButtons(graphics);
         screen.refresh();
     }
 
-    private void drawLostMenu(){
-        TextGraphics graphics = screen.newTextGraphics();
+    private void drawLostMenu(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
         graphics.fillRectangle(
                 new TerminalPosition(0, 0),
@@ -53,8 +53,7 @@ public class GuiWon {
 
     }
 
-    private void drawButtons(){
-        TextGraphics graphics = screen.newTextGraphics();
+    private void drawButtons(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
         int column = 5;
         for(int i = 0; i <= 2; i++){
@@ -73,8 +72,7 @@ public class GuiWon {
 
     }
 
-    private void drawStats(){
-        TextGraphics graphics = screen.newTextGraphics();
+    private void drawStats(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
         graphics.enableModifiers(SGR.BOLD);
         graphics.putString(3, 20, "Score: " + score + "\tHealth: " + health + "\tSteps: " + steps);

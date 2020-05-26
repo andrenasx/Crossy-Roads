@@ -2,6 +2,7 @@ package crossyroads.controller.states;
 
 import crossyroads.controller.AppController;
 import crossyroads.view.GuiHelpMenu;
+import crossyroads.view.ScreenFactory;
 
 import java.io.IOException;
 
@@ -11,7 +12,7 @@ public class HelpState implements State{
 
     public HelpState(AppController appController) throws IOException {
         this.appController = appController;
-        this.gui = new GuiHelpMenu();
+        this.gui = new GuiHelpMenu(ScreenFactory.getScreen());
     }
 
 

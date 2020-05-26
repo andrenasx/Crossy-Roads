@@ -2,6 +2,7 @@ package crossyroads.controller.states;
 
 import crossyroads.controller.AppController;
 import crossyroads.view.GuiWon;
+import crossyroads.view.ScreenFactory;
 
 import java.io.IOException;
 
@@ -11,7 +12,7 @@ public class WonState implements State {
 
     public WonState(AppController app, int score, int health, int steps) throws IOException {
         this.appController = app;
-        this.gui = new GuiWon(score, health, steps);
+        this.gui = new GuiWon(score, health, steps, ScreenFactory.getScreen());
     }
     @Override
     public void step() throws IOException {
