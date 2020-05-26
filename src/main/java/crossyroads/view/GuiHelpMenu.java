@@ -37,11 +37,11 @@ public class GuiHelpMenu {
         );
         graphics.enableModifiers(SGR.BOLD);
         graphics.setForegroundColor(TextColor.Factory.fromString("#C8C8C8"));
-        graphics.putString(5, 2, "HH   HH  EEEEEE  LLL     PPPPP");
-        graphics.putString(5, 3, "HH   HH  EEE     LLL     PP   P");
-        graphics.putString(5, 4, "HHHHHHH  EEEEE   LLL     PPPPP");
-        graphics.putString(5, 5, "HH   HH  EEE     LLL     PP");
-        graphics.putString(5, 6, "HH   HH  EEEEEE  LLLLLL  PP");
+        graphics.putString(5, 2, "XX   XX  XXXXXX  XXX     XXXXX");
+        graphics.putString(5, 3, "XX   XX  XXX     XXX     XX   X");
+        graphics.putString(5, 4, "XXXXXXX  XXXXX   XXX     XXXXX");
+        graphics.putString(5, 5, "XX   XX  XXX     XXX     XX");
+        graphics.putString(5, 6, "XX   XX  XXXXXX  XXXXXX  XX");
         List<String> instructions = new ArrayList<>();
         String inst1 = "-To move use the arrow of the keyboard";
         instructions.add(inst1);
@@ -77,19 +77,20 @@ public class GuiHelpMenu {
         graphics.enableModifiers(SGR.BOLD);
         graphics.setForegroundColor(TextColor.Factory.fromString("#25221e"));
         graphics.putString(26,32,"PLAY");
-        graphics.putString(27,33,"[2]");
+        graphics.putString(27,33,"[1]");
         graphics.putString(7, 32, "BACK");
-        graphics.putString(8, 33, "[1]");
+        graphics.putString(7, 33, "[ESC]");
 
     }
 
     public GuiHelpMenu.COMMAND getNextCommand() throws IOException {
         KeyStroke input = screen.readInput();
 
-        switch (input.getCharacter()){
-            case '1':
+        switch (input.getKeyType()){
+            case Escape:
                 return COMMAND.BACK;
-            case '2':
+            case Character:
+                if(input.getCharacter() == '1')
                 return COMMAND.PLAY;
             default:
                 return COMMAND.NOTHING;

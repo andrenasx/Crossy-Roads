@@ -40,10 +40,17 @@ public class GuiWon {
         );
         graphics.enableModifiers(SGR.BOLD);
         graphics.setForegroundColor(TextColor.Factory.fromString("#C8C8C8"));
-        graphics.putString(5, 2, "YYY  YYY  OOOOOO  UU   UU  ");
-        graphics.putString(5, 3, "   YY     OO  OO  UU   UU");
-        graphics.putString(5, 4, "   YY     OO  OO  UU   UU");
-        graphics.putString(5, 5, "   YY     OOOOOO  UUUUUUU");
+        graphics.putString(5, 2, "XXX  XXX  XXXXXX  XX   XX  ");
+        graphics.putString(5, 3, "XXX  XXX  XX  XX  XX   XX  ");
+        graphics.putString(5, 4, "   XX     XX  XX  XX   XX");
+        graphics.putString(5, 5, "   XX     XX  XX  XX   XX");
+        graphics.putString(5, 6, "   XX     XXXXXX  XXXXXXX");
+        graphics.putString(1, 9, "X             X XXXXXX  XXX    X   XXX");
+        graphics.putString(1, 10, " X     X     X  XX  XX  XX X   X   XXX");
+        graphics.putString(1, 11, "  X   X X   X   XX  XX  XX  X  X   XXX");
+        graphics.putString(1, 12, "   X X   X X    XX  XX  XX   X X");
+        graphics.putString(1, 13, "    X     X     XXXXXX  XX    X    XXX");
+
     }
 
     private void drawButtons(){
@@ -60,9 +67,9 @@ public class GuiWon {
         graphics.enableModifiers(SGR.BOLD);
         graphics.setForegroundColor(TextColor.Factory.fromString("#25221e"));
         graphics.putString(26,32,"EXIT");
-        graphics.putString(27,33, "[1]");
+        graphics.putString(26,33, "[ESC]");
         graphics.putString(7, 32, "MENU");
-        graphics.putString(8, 33, "[2]");
+        graphics.putString(8, 33, "[1]");
 
     }
 
@@ -76,10 +83,11 @@ public class GuiWon {
     public GuiWon.COMMAND getNextCommand() throws IOException {
         KeyStroke input = screen.readInput();
 
-        switch (input.getCharacter()){
-            case '1':
+        switch (input.getKeyType()){
+            case Escape:
                 return COMMAND.EXIT;
-            case '2':
+            case Character:
+                if(input.getCharacter() == '1')
                 return COMMAND.MENU;
             default:
                 return COMMAND.NOTHING;

@@ -38,15 +38,16 @@ public class GuiLost {
         );
         graphics.enableModifiers(SGR.BOLD);
         graphics.setForegroundColor(TextColor.Factory.fromString("#C8C8C8"));
-        graphics.putString(5, 2, "YYY  YYY  OOOOOO  UU   UU  ");
-        graphics.putString(5, 3, "   YY     OO  OO  UU   UU");
-        graphics.putString(5, 4, "   YY     OO  OO  UU   UU");
-        graphics.putString(5, 5, "   YY     OOOOOO  UUUUUUU");
-        graphics.putString(4, 8, "LL     OOOOOO  SSSSS  TTTTTTTT  |||");
-        graphics.putString(4, 9, "LL     OO  OO  SS        TT     |||");
-        graphics.putString(4, 10, "LL     OO  OO  SSSSS     TT     |||");
-        graphics.putString(4, 11, "LL     OO  OO     SS     TT         ");
-        graphics.putString(4, 12, "LLLLL  OOOOOO  SSSSS     TT     ...");
+        graphics.putString(5, 2, "XXX  XXX  XXXXXX  XX   XX  ");
+        graphics.putString(5, 3, "XXX  XXX  XX  XX  XX   XX");
+        graphics.putString(5, 4, "   XX     XX  XX  XX   XX");
+        graphics.putString(5, 5, "   XX     XX  XX  XX   XX");
+        graphics.putString(5, 6, "   XX     XXXXXX  XXXXXXX");
+        graphics.putString(4, 9, "XX     XXXXXX  XXXXX  XXXXXXX  XXX");
+        graphics.putString(4, 10, "XX     XX  XX  XX        XX    XXX");
+        graphics.putString(4, 11, "XX     XX  XX  XXXXX     XX    XXX");
+        graphics.putString(4, 12, "XX     XX  XX     XX     XX         ");
+        graphics.putString(4, 13, "XXXXX  XXXXXX  XXXXX     XX    XXX");
     }
 
     private void drawButtons(){
@@ -62,10 +63,10 @@ public class GuiLost {
         }
         graphics.enableModifiers(SGR.BOLD);
         graphics.setForegroundColor(TextColor.Factory.fromString("#25221e"));
-        graphics.putString(26,32,"EXIT");
-        graphics.putString(27,33, "[1]");
+        graphics.putString(27,32,"EXIT");
+        graphics.putString(27,33, "[ESC]");
         graphics.putString(7, 32, "MENU");
-        graphics.putString(8, 33, "[2]");
+        graphics.putString(8, 33, "[1]");
 
     }
 
@@ -79,10 +80,11 @@ public class GuiLost {
     public GuiLost.COMMAND getNextCommand() throws IOException {
         KeyStroke input = screen.readInput();
 
-        switch (input.getCharacter()){
-            case '1':
+        switch (input.getKeyType()){
+            case Escape:
                 return COMMAND.EXIT;
-            case '2':
+            case Character:
+                if(input.getCharacter() == '1')
                 return COMMAND.MENU;
             default:
                 return COMMAND.NOTHING;
