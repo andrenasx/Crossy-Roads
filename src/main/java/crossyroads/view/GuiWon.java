@@ -25,13 +25,13 @@ public class GuiWon {
     public void draw() throws IOException {
         screen.clear();
         TextGraphics graphics = screen.newTextGraphics();
-        drawLostMenu(graphics);
+        drawWonMenu(graphics);
         drawStats(graphics);
         drawButtons(graphics);
         screen.refresh();
     }
 
-    private void drawLostMenu(TextGraphics graphics){
+    private void drawWonMenu(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
         graphics.fillRectangle(
                 new TerminalPosition(0, 0),
