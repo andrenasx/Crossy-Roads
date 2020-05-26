@@ -6,7 +6,7 @@ import crossyroads.controller.VehicleController;
 import crossyroads.model.GameModel;
 import crossyroads.model.GameModelCreator;
 import crossyroads.model.MusicPlayer;
-import crossyroads.view.GuiSquare;
+import crossyroads.view.GuiGame;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ public class GameState implements State{
     private AppController appController;
     private ChickenController chickenController;
     private VehicleController vehicleController;
-    private GuiSquare gui;
+    private GuiGame gui;
     private GameModel gameModel;
     private final int FPS = 10;
     private int step = 0;
@@ -25,7 +25,7 @@ public class GameState implements State{
 
 
         try {
-            gui = new GuiSquare(gameModel);
+            gui = new GuiGame(gameModel);
             gui.draw();
         } catch (IOException e) {
             e.printStackTrace();
@@ -43,7 +43,7 @@ public class GameState implements State{
             long time = System.currentTimeMillis();
             step++;
 
-            GuiSquare.COMMAND command = gui.getNextCommand();
+            GuiGame.COMMAND command = gui.getNextCommand();
 
             chickenController.start(command);
             vehicleController.start(step);

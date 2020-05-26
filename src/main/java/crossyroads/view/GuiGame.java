@@ -8,12 +8,12 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 
 import java.io.IOException;
 
-public class GuiSquare {
+public class GuiGame {
     private GameModel gameModel;
     private TerminalScreen screen;
-    public enum COMMAND {UP, DOWN, LEFT, RIGHT, NOTHING, EOF};
+    public enum COMMAND {UP, DOWN, LEFT, RIGHT, NOTHING, EOF}
 
-    public GuiSquare(GameModel gameModel) throws IOException {
+    public GuiGame(GameModel gameModel) throws IOException {
         this.screen = ScreenFactory.getScreen();
         this.gameModel = gameModel;
     }
