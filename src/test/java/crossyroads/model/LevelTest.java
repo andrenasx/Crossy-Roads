@@ -1,6 +1,7 @@
 package crossyroads.model;
 
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +16,16 @@ public class LevelTest {
         int x = rand.nextInt(50);
         int y = rand.nextInt(70);
 
-        Level level = new Level(1, x,y);
+        Terrain terrain = Mockito.mock(Terrain.class);
+        Level level = new Level(1, x, y, terrain);
         assertEquals(x, level.getWidth());
         assertEquals(y, level.getHeight());
     }
 
     @Test
     public void addElementTest(){
-        Level level = new Level(1, 30,70);
+        Terrain terrain = Mockito.mock(Terrain.class);
+        Level level = new Level(1, 30,70, terrain);
 
         Coin coin = new Coin(10,10,1);
         Coin coin1 = new Coin(20,20,1);
@@ -52,7 +55,8 @@ public class LevelTest {
 
     @Test
     public void getAllElementsTest(){
-        Level level = new Level(1, 30,70);
+        Terrain terrain = Mockito.mock(Terrain.class);
+        Level level = new Level(1, 30,70, terrain);
 
         Coin coin = new Coin(10,10,1);
         Coin coin1 = new Coin(20,20,1);
