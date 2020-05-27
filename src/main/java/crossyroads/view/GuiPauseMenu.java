@@ -34,12 +34,13 @@ public class GuiPauseMenu {
                 ' '
         );
         graphics.enableModifiers(SGR.BOLD);
-        graphics.setForegroundColor(TextColor.Factory.fromString("#C8C8C8"));
-        graphics.putString(3, 2, "XXXXX    XX     X   X XXXXX XXXXX");
-        graphics.putString(3, 3, "X    X  X  X    X   X XX    XX");
-        graphics.putString(3, 4, "XXXXX  X XX X   X   X XXXXX XXXX");
-        graphics.putString(3, 5, "X     X      X  X   X    XX XX");
-        graphics.putString(3, 6, "X    X        X XXXXX XXXXX XXXXX");
+        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        graphics.putString(6, 5, " _____");
+        graphics.putString(6, 6, "|  __ \\");
+        graphics.putString(6, 7, "| |__) |_ _ _   _ ___  ___");
+        graphics.putString(6, 8, "|  ___/ _` | | | / __|/ _ \\");
+        graphics.putString(6, 9, "| |  | (_| | |_| \\__ \\  __/");
+        graphics.putString(6, 10, "|_|   \\__,_|\\__,_|___/\\___");
     }
 
     private void drawButtons(TextGraphics graphics){
@@ -47,17 +48,17 @@ public class GuiPauseMenu {
         int column = 5;
         for(int i = 0; i <= 2; i++){
             graphics.fillRectangle(
-                    new TerminalPosition(column, 32),
-                    new TerminalSize(9, 2),
+                    new TerminalPosition(column, 25),
+                    new TerminalSize(10, 2),
                     ' ');
             column += 20;
         }
         graphics.enableModifiers(SGR.BOLD);
         graphics.setForegroundColor(TextColor.Factory.fromString("#25221e"));
-        graphics.putString(25,32,"RESUME");
-        graphics.putString(27,33, "[2]");
-        graphics.putString(7, 32, "MENU");
-        graphics.putString(8, 33, "[1]");
+        graphics.putString(27,25,"RESUME");
+        graphics.putString(28,26, "[2]");
+        graphics.putString(8, 25, "MENU");
+        graphics.putString(8, 26, "[1]");
     }
 
     public GuiPauseMenu.COMMAND getNextCommand() throws IOException {
