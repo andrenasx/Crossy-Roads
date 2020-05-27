@@ -4,8 +4,6 @@ import crossyroads.controller.AppController;
 import crossyroads.controller.ChickenController;
 import crossyroads.controller.VehicleController;
 import crossyroads.model.GameModel;
-import crossyroads.model.GameModelCreator;
-import crossyroads.model.MusicPlayer;
 import crossyroads.view.GuiGame;
 import crossyroads.view.GuiLost;
 import crossyroads.view.GuiWon;
@@ -31,9 +29,6 @@ public class GameState implements State{
     }
 
     public void step() throws IOException {
-        //MusicPlayer player = new MusicPlayer("src/main/resources/piu.wav");
-        //player.startMusic();
-
         while(!gameModel.isChickenDead()) {
             long time = System.currentTimeMillis();
             step++;
@@ -60,7 +55,7 @@ public class GameState implements State{
                 step = 0;
             }
         }
-        //player.stopMusic();
+
         if(gameModel.isChickenDead())
             appController.setCurrentState(new LostState(appController, new GuiLost(ScreenFactory.getScreen(), gameModel.getCurrentLevelInt())));
         else
