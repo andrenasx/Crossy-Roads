@@ -15,7 +15,7 @@ public class GuiLost {
     private int level;
     public enum COMMAND {MENU, EXIT, NOTHING}
 
-    public GuiLost(TerminalScreen screen, int level) throws IOException {
+    public GuiLost(TerminalScreen screen, int level){
         this.level = level;
         this.screen = screen;
     }
