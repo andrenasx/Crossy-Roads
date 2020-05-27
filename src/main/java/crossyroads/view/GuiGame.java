@@ -70,8 +70,9 @@ public class GuiGame {
                 return "#C8C8C8";
             case 'd':   //finish line
                 return "#013220";
+            default:
+                return "#000000";
         }
-        return "000000";
     }
 
 

@@ -32,7 +32,7 @@ public class GuiGameTest {
 
         Level level = mock(Level.class);
         when(gameModel.getCurrentLevel()).thenReturn(level);
-        when(level.getLevelBackground()).thenReturn("dgggggggggrrrggggggggggrrrggggggggg");
+        when(level.getLevelBackground()).thenReturn("dgggsgggggrrrggggggggggrrrggggggggg");
 
         List<Element> elements = new ArrayList<>();
         elements.add(new Coin(15,20,1));
@@ -43,12 +43,12 @@ public class GuiGameTest {
         gui.draw();
 
         verify(graphics,times(5)).enableModifiers(SGR.BOLD);
+        verify(graphics,times(1)).setBackgroundColor(TextColor.Factory.fromString("#000000"));
         verify(screen.newTextGraphics(),times(1)).putString(0,35, "Score: 0\tHealth: 3\tLevel: 1");
         verify(graphics,times(1)).setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        verify(graphics,times(30)).setBackgroundColor(TextColor.Factory.fromString("#006600"));
+        verify(graphics,times(29)).setBackgroundColor(TextColor.Factory.fromString("#006600"));
         verify(screen.newTextGraphics(),times(1)).putString(10,10, "O");
         verify(graphics, times(1)).setForegroundColor(TextColor.Factory.fromString("#FFFF00"));
-        verify(graphics, times(30)).setBackgroundColor(TextColor.Factory.fromString("#006600"));
         verify(screen.newTextGraphics(),times(1)).putString(15,20, "O");
         verify(graphics, times(1)).setForegroundColor(TextColor.Factory.fromString("#FF0000"));
         verify(graphics,times(8)).setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
