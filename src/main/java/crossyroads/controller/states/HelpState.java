@@ -7,6 +7,7 @@ import crossyroads.model.GameModel;
 import crossyroads.model.GameModelCreator;
 import crossyroads.view.GuiGame;
 import crossyroads.view.GuiHelpMenu;
+import crossyroads.view.GuiMainMenu;
 import crossyroads.view.ScreenFactory;
 
 import java.io.IOException;
@@ -15,9 +16,9 @@ public class HelpState implements State{
     private AppController appController;
     private GuiHelpMenu gui;
 
-    public HelpState(AppController appController) throws IOException {
+    public HelpState(AppController appController, GuiHelpMenu gui) {
         this.appController = appController;
-        this.gui = new GuiHelpMenu(ScreenFactory.getScreen());
+        this.gui = gui;
     }
 
 
@@ -32,7 +33,7 @@ public class HelpState implements State{
                 appController.setCurrentState(new GameState(appController, new GuiGame(gameModel, ScreenFactory.getScreen()), gameModel, new ChickenController(gameModel), new VehicleController(gameModel)));
                 break;
             case BACK:
-                appController.setCurrentState(new MenuState(appController));
+                appController.setCurrentState(new MenuState(appController, new GuiMainMenu(ScreenFactory.getScreen())));
                 break;
             default:
                 break;

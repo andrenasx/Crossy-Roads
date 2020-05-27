@@ -1,6 +1,7 @@
 package crossyroads.controller.states;
 
 import crossyroads.controller.AppController;
+import crossyroads.view.GuiMainMenu;
 import crossyroads.view.GuiWon;
 import crossyroads.view.ScreenFactory;
 
@@ -10,9 +11,9 @@ public class WonState implements State {
     private AppController appController;
     private GuiWon gui;
 
-    public WonState(AppController app, int score, int health, int steps) throws IOException {
+    public WonState(AppController app, GuiWon gui){
         this.appController = app;
-        this.gui = new GuiWon(score, health, steps, ScreenFactory.getScreen());
+        this.gui = gui;
     }
     @Override
     public void step() throws IOException {
@@ -23,7 +24,7 @@ public class WonState implements State {
                 System.exit(0);
                 break;
             case MENU:
-                appController.setCurrentState(new MenuState(appController));
+                appController.setCurrentState(new MenuState(appController, new GuiMainMenu(ScreenFactory.getScreen())));
                 break;
             default:
                 break;

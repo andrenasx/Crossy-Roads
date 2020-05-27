@@ -2,6 +2,7 @@ package crossyroads.controller.states;
 
 import crossyroads.controller.AppController;
 import crossyroads.view.GuiLost;
+import crossyroads.view.GuiMainMenu;
 import crossyroads.view.ScreenFactory;
 
 import java.io.IOException;
@@ -10,9 +11,9 @@ public class LostState implements State{
     private AppController appController;
     private GuiLost gui;
 
-    public LostState(AppController app, int level) throws IOException {
+    public LostState(AppController app, GuiLost gui){
         this.appController = app;
-        this.gui = new GuiLost(ScreenFactory.getScreen(), level);
+        this.gui = gui;
     }
 
     @Override
@@ -24,7 +25,7 @@ public class LostState implements State{
                 System.exit(0);
                 break;
             case MENU:
-                appController.setCurrentState(new MenuState(appController));
+                appController.setCurrentState(new MenuState(appController, new GuiMainMenu(ScreenFactory.getScreen())));
                 break;
             default:
                 break;

@@ -7,6 +7,8 @@ import crossyroads.model.GameModel;
 import crossyroads.model.GameModelCreator;
 import crossyroads.model.MusicPlayer;
 import crossyroads.view.GuiGame;
+import crossyroads.view.GuiLost;
+import crossyroads.view.GuiWon;
 import crossyroads.view.ScreenFactory;
 
 import java.io.IOException;
@@ -60,9 +62,9 @@ public class GameState implements State{
         }
         //player.stopMusic();
         if(gameModel.isChickenDead())
-            appController.setCurrentState(new LostState(appController, gameModel.getCurrentLevelInt()));
+            appController.setCurrentState(new LostState(appController, new GuiLost(ScreenFactory.getScreen(), gameModel.getCurrentLevelInt())));
         else
-            appController.setCurrentState(new WonState(appController, gameModel.getScore(), gameModel.getLives(), gameModel.getChicken().getCountSteps()));
+            appController.setCurrentState(new WonState(appController, new GuiWon(gameModel.getScore(), gameModel.getLives(), gameModel.getChicken().getCountSteps(), ScreenFactory.getScreen())));
     }
 }
 

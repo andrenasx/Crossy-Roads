@@ -6,6 +6,7 @@ import crossyroads.controller.VehicleController;
 import crossyroads.model.GameModel;
 import crossyroads.model.GameModelCreator;
 import crossyroads.view.GuiGame;
+import crossyroads.view.GuiHelpMenu;
 import crossyroads.view.GuiMainMenu;
 import crossyroads.view.ScreenFactory;
 
@@ -15,9 +16,9 @@ public class MenuState implements State{
     private AppController appController;
     private GuiMainMenu gui;
 
-    public MenuState(AppController ap) throws IOException {
+    public MenuState(AppController ap, GuiMainMenu gui) {
         this.appController = ap;
-        this.gui = new GuiMainMenu(ScreenFactory.getScreen());
+        this.gui = gui;
     }
 
     @Override
@@ -30,7 +31,7 @@ public class MenuState implements State{
                 appController.setCurrentState(new GameState(appController, new GuiGame(gameModel, ScreenFactory.getScreen()), gameModel, new ChickenController(gameModel), new VehicleController(gameModel)));
                 break;
             case HELP:
-                appController.setCurrentState(new HelpState(appController));
+                appController.setCurrentState(new HelpState(appController, new GuiHelpMenu(ScreenFactory.getScreen())));
                 break;
             case EXIT:
                 System.exit(0);
