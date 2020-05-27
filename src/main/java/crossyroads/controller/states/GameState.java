@@ -20,24 +20,16 @@ public class GameState implements State{
     private final int FPS = 10;
     private int step = 0;
 
-    public GameState(AppController ap) {
-        appController  = ap;
-        gameModel = new GameModelCreator().createGameModel(40, 35, 5);
-
-
-        try {
-            gui = new GuiGame(gameModel, ScreenFactory.getScreen());
-            gui.draw();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        this.chickenController = new ChickenController(gameModel);
-        this.vehicleController = new VehicleController(gameModel);
+    public GameState(AppController appController, GuiGame gui, GameModel gameModel, ChickenController chickenController, VehicleController vehicleController) {
+        this.appController = appController;
+        this.gameModel = gameModel;
+        this.gui = gui;
+        this.chickenController = chickenController;
+        this.vehicleController = vehicleController;
     }
 
     public void step() throws IOException {
-        MusicPlayer player = new MusicPlayer("src/main/resources/piu.wav");
+        //MusicPlayer player = new MusicPlayer("src/main/resources/piu.wav");
         //player.startMusic();
 
         while(!gameModel.isChickenDead()) {
@@ -66,7 +58,7 @@ public class GameState implements State{
                 step = 0;
             }
         }
-        player.stopMusic();
+        //player.stopMusic();
         if(gameModel.isChickenDead())
             appController.setCurrentState(new LostState(appController, gameModel.getCurrentLevelInt()));
         else

@@ -1,6 +1,11 @@
 package crossyroads.controller.states;
 
 import crossyroads.controller.AppController;
+import crossyroads.controller.ChickenController;
+import crossyroads.controller.VehicleController;
+import crossyroads.model.GameModel;
+import crossyroads.model.GameModelCreator;
+import crossyroads.view.GuiGame;
 import crossyroads.view.GuiMainMenu;
 import crossyroads.view.ScreenFactory;
 
@@ -21,7 +26,8 @@ public class MenuState implements State{
         GuiMainMenu.COMMAND command = gui.getNextCommand();
         switch (command){
             case PLAY:
-                appController.setCurrentState(new GameState(appController));
+                GameModel gameModel = new GameModelCreator().createGameModel(40, 35, 5);
+                appController.setCurrentState(new GameState(appController, new GuiGame(gameModel, ScreenFactory.getScreen()), gameModel, new ChickenController(gameModel), new VehicleController(gameModel)));
                 break;
             case HELP:
                 appController.setCurrentState(new HelpState(appController));
