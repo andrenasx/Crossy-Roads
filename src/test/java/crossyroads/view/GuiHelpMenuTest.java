@@ -48,20 +48,21 @@ public class GuiHelpMenuTest {
         //drawHelpMenu
         verify(graphics,times(1)).setBackgroundColor(TextColor.Factory.fromString("#006600"));
         verify(graphics,times(1)).fillRectangle(new TerminalPosition(0, 0), new TerminalSize(40, 36), ' ');
-        verify(graphics,times(1)).setForegroundColor(TextColor.Factory.fromString("#C8C8C8"));
-        verify(graphics,times(1)).setForegroundColor(TextColor.Factory.fromString("#C8C8C8"));
-        verify(graphics,times(1)).putString(5, 2, "XX   XX  XXXXXX  XXX     XXXXX");
-        verify(graphics,times(1)).putString(5, 3, "XX   XX  XXX     XXX     XX   X");
-        verify(graphics,times(1)).putString(5, 4, "XXXXXXX  XXXXX   XXX     XXXXX");
-        verify(graphics,times(1)).putString(5, 5, "XX   XX  XXX     XXX     XX");
-        verify(graphics,times(1)).putString(5, 6, "XX   XX  XXXXXX  XXXXXX  XX");
+        verify(graphics,times(1)).putString(9, 2, " _    _      _");
+        verify(graphics,times(1)).putString(9, 3, "| |  | |    | |");
+        verify(graphics,times(1)).putString(9, 4, "| |__| | ___| |_ __");
+        verify(graphics,times(1)).putString(9, 5, "|  __  |/ _ \\ | '_ \\");
+        verify(graphics,times(1)).putString(9, 6, "| |  | |  __/ | |_) |");
+        verify(graphics,times(1)).putString(9, 7, "|_|  |_|\\___|_| .__/");
+        verify(graphics,times(1)).putString(9, 8, "              | |");
+        verify(graphics,times(1)).putString(9, 9, "              |_|");
 
         //drawButtons
         verify(graphics,times(1)).setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
         verify(graphics,times(1)).setForegroundColor(TextColor.Factory.fromString("#25221e"));
-        verify(graphics,times(1)).putString(26,32,"PLAY");
-        verify(graphics,times(1)).putString(27,33,"[1]");
-        verify(graphics,times(1)).putString(7, 32, "BACK");
-        verify(graphics,times(1)).putString(7, 33, "[ESC]");
+        verify(graphics,times(1)).putString(28,32,"PLAY");
+        verify(graphics,times(1)).putString(28,33,"[1]");
+        verify(graphics,times(1)).putString(8, 32, "BACK");
+        verify(graphics,times(1)).putString(8, 33, "[ESC]");
     }
 }

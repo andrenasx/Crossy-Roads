@@ -34,17 +34,18 @@ public class GuiMainMenu {
                 ' '
         );
         graphics.enableModifiers(SGR.BOLD);
-        graphics.setForegroundColor(TextColor.Factory.fromString("#C8C8C8"));
-        graphics.putString(1, 1, "XXXX XXXXX  XXXX XXXXX XXXXX XXX  XXX");
-        graphics.putString(1, 2, "X    XX  X  X  X XX    XX    XXX  XXX  ");
-        graphics.putString(1, 3, "X    XXXX   X  X XXXXX XXXXX    XX  ");
-        graphics.putString(1, 4, "X    XX  X  X  X    XX    XX    XX ");
-        graphics.putString(1, 5, "XXXX XX   X XXXX XXXXX XXXXX    XX");
-        graphics.putString(2, 8, "XXXXX   XXXXX     XXX     XXXX  XXXXX");
-        graphics.putString(2, 9, "XX  X   X   X    X   X    X  X  XX");
-        graphics.putString(2, 10, "XXXX    X   X   X XXX X   X  X  XXXXX");
-        graphics.putString(2, 11, "XX  X   X   X  XX     XX  X  X     XX");
-        graphics.putString(2, 12, "XX   X  XXXXX XX       XX XXX   XXXXX");
+        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        graphics.putString(4, 1, "  _____");
+        graphics.putString(4, 2, " / ____|");
+        graphics.putString(4, 3, "| |     _ __ ___  ___ ___ _   _ ");
+        graphics.putString(4, 4, "| |    | '__/ _ \\/ __/ __| | | |");
+        graphics.putString(4, 5, "| |____| | | (_) \\__ \\__ \\ |_| |");
+        graphics.putString(4, 6, " \\_____|_|  \\___/|___/___/\\__, |");
+        graphics.putString(4, 7, "|  __ \\               | |  __/ |");
+        graphics.putString(4, 8, "| |__) |___   __ _  __| |_|___/ ");
+        graphics.putString(4, 9, "|  _  // _ \\ / _` |/ _` / __|   ");
+        graphics.putString(4, 10, "| | \\ \\ (_) | (_| | (_| \\__ \\");
+        graphics.putString(4, 11, "|_|  \\_\\___/ \\__,_|\\__,_|___/");
     }
 
     private void drawButtons(TextGraphics graphics){
@@ -60,13 +61,13 @@ public class GuiMainMenu {
         graphics.enableModifiers(SGR.BOLD);
         graphics.setForegroundColor(TextColor.Factory.fromString("#25221e"));
         graphics.putString(18,15,"PLAY");
-        graphics.putString(19,16,"[1]");
+        graphics.putString(18,16,"[1]");
         graphics.putString(18,20, "HELP");
-        graphics.putString(19,21,"[2]");
+        graphics.putString(18,21,"[2]");
         graphics.putString(15,25,"HIGHSCORES");
-        graphics.putString(19,26,"[3]");
+        graphics.putString(18,26,"[3]");
         graphics.putString(18,30,"EXIT");
-        graphics.putString(17,31,"[ESC]");
+        graphics.putString(18,31,"[ESC]");
 
     }
 

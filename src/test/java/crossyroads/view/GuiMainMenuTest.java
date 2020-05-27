@@ -57,27 +57,28 @@ public class GuiMainMenuTest {
         verify(graphics,times(1)).setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
         verify(graphics,times(1)).setForegroundColor(TextColor.Factory.fromString("#25221e"));
         verify(graphics,times(1)).putString(18,15, "PLAY");
-        verify(graphics,times(1)).putString(19,16, "[1]");
+        verify(graphics,times(1)).putString(18,16,"[1]");
         verify(graphics,times(1)).putString(18,20, "HELP");
-        verify(graphics,times(1)).putString(19,21, "[2]");
+        verify(graphics,times(1)).putString(18,21, "[2]");
         verify(graphics,times(1)).putString(15,25, "HIGHSCORES");
-        verify(graphics,times(1)).putString(19,26, "[3]");
+        verify(graphics,times(1)).putString(18,26, "[3]");
         verify(graphics,times(1)).putString(18,30, "EXIT");
-        verify(graphics,times(1)).putString(17,31, "[ESC]");
+        verify(graphics,times(1)).putString(18,31, "[ESC]");
 
         //DrawMainMenu
         verify(graphics,times(1)).fillRectangle(new TerminalPosition(0, 0), new TerminalSize(40, 36), ' ');
-        verify(graphics,times(1)).setForegroundColor(TextColor.Factory.fromString("#C8C8C8"));
-        verify(graphics,times(1)).putString(1, 1, "XXXX XXXXX  XXXX XXXXX XXXXX XXX  XXX");
-        verify(graphics,times(1)).putString(1, 2, "X    XX  X  X  X XX    XX    XXX  XXX  ");
-        verify(graphics,times(1)).putString(1, 3, "X    XXXX   X  X XXXXX XXXXX    XX  ");
-        verify(graphics,times(1)).putString(1, 4, "X    XX  X  X  X    XX    XX    XX ");
-        verify(graphics,times(1)).putString(1, 5, "XXXX XX   X XXXX XXXXX XXXXX    XX");
-        verify(graphics,times(1)).putString(2, 8, "XXXXX   XXXXX     XXX     XXXX  XXXXX");
-        verify(graphics,times(1)).putString(2, 9, "XX  X   X   X    X   X    X  X  XX");
-        verify(graphics,times(1)).putString(2, 10, "XXXX    X   X   X XXX X   X  X  XXXXX");
-        verify(graphics,times(1)).putString(2, 11, "XX  X   X   X  XX     XX  X  X     XX");
-        verify(graphics,times(1)).putString(2, 12, "XX   X  XXXXX XX       XX XXX   XXXXX");
+        verify(graphics,times(1)).setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        verify(graphics,times(1)).putString(4, 1, "  _____");
+        verify(graphics,times(1)).putString(4, 2, " / ____|");
+        verify(graphics,times(1)).putString(4, 3, "| |     _ __ ___  ___ ___ _   _ ");
+        verify(graphics,times(1)).putString(4, 4, "| |    | '__/ _ \\/ __/ __| | | |");
+        verify(graphics,times(1)).putString(4, 5, "| |____| | | (_) \\__ \\__ \\ |_| |");
+        verify(graphics,times(1)).putString(4, 6, " \\_____|_|  \\___/|___/___/\\__, |");
+        verify(graphics,times(1)).putString(4, 7, "|  __ \\               | |  __/ |");
+        verify(graphics,times(1)).putString(4, 8, "| |__) |___   __ _  __| |_|___/ ");
+        verify(graphics,times(1)).putString(4, 9, "|  _  // _ \\ / _` |/ _` / __|   ");
+        verify(graphics,times(1)).putString(4, 10, "| | \\ \\ (_) | (_| | (_| \\__ \\");
+        verify(graphics,times(1)).putString(4, 11, "|_|  \\_\\___/ \\__,_|\\__,_|___/");
 
     }
 }
