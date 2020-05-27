@@ -34,7 +34,7 @@ public class MenuState implements State{
                 appController.setCurrentState(new HelpState(appController, new GuiHelpMenu(ScreenFactory.getScreen())));
                 break;
             case EXIT:
-                System.exit(0);
+                appController.setEnd();
             default:
                 break;
         }

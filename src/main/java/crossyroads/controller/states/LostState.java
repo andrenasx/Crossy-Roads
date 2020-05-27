@@ -22,7 +22,7 @@ public class LostState implements State{
         GuiLost.COMMAND command = gui.getNextCommand();
         switch (command){
             case EXIT:
-                System.exit(0);
+                appController.setEnd();
                 break;
             case MENU:
                 appController.setCurrentState(new MenuState(appController, new GuiMainMenu(ScreenFactory.getScreen())));
