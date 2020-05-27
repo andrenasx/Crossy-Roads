@@ -11,7 +11,7 @@ import java.io.IOException;
 public class GuiGame {
     private GameModel gameModel;
     private TerminalScreen screen;
-    public enum COMMAND {UP, DOWN, LEFT, RIGHT, NOTHING, EOF}
+    public enum COMMAND {UP, DOWN, LEFT, RIGHT, NOTHING, PAUSE}
 
     public GuiGame(GameModel gameModel, TerminalScreen screen){
         this.gameModel = gameModel;
@@ -81,7 +81,7 @@ public class GuiGame {
         if(input != null){
             KeyStroke clear = screen.pollInput(); //Clearing input
             while(clear != null){
-                if(clear.getKeyType()==KeyType.EOF) return COMMAND.EOF;
+                if(clear.getKeyType()==KeyType.Escape) return COMMAND.PAUSE;
                 clear = screen.pollInput();
             }
 
@@ -95,7 +95,7 @@ public class GuiGame {
                 case ArrowLeft:
                     return COMMAND.LEFT;
                 case Escape:
-                    return COMMAND.EOF;
+                    return COMMAND.PAUSE;
                 default:
                     return COMMAND.NOTHING;
             }

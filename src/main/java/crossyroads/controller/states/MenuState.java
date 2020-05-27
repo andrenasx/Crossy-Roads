@@ -35,6 +35,7 @@ public class MenuState implements State{
                 break;
             case EXIT:
                 appController.setEnd();
+                break;
             default:
                 break;
         }
