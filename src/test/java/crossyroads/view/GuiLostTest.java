@@ -12,7 +12,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.Random;
 
-import static com.googlecode.lanterna.input.KeyType.Escape;
+import static com.googlecode.lanterna.input.KeyType.*;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -24,12 +24,16 @@ public class GuiLostTest {
         int level = rand.nextInt(10);
         GuiLost gui = new GuiLost(screen, level);
 
-        //TODO : acrescentar o command NOTHING
+        when(screen.readInput()).thenReturn(new KeyStroke(Enter));
+        assertEquals(GuiLost.COMMAND.NOTHING, gui.getNextCommand());
+
         when(screen.readInput()).thenReturn(new KeyStroke(Escape));
         assertEquals(GuiLost.COMMAND.EXIT, gui.getNextCommand());
 
         when(screen.readInput()).thenReturn(KeyStroke.fromString("1"));
         assertEquals(GuiLost.COMMAND.MENU, gui.getNextCommand());
+
+        verify(screen, times((3))).readInput();
     }
 
     @Test

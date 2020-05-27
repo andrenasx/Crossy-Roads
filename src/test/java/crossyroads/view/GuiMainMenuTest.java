@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
+import static com.googlecode.lanterna.input.KeyType.Enter;
 import static com.googlecode.lanterna.input.KeyType.Escape;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
@@ -21,7 +22,9 @@ public class GuiMainMenuTest {
         TerminalScreen screen = mock(TerminalScreen.class);
         GuiMainMenu gui = new GuiMainMenu(screen);
 
-        //TODO : acrescentar o command NOTHING
+        when(screen.readInput()).thenReturn(new KeyStroke(Enter));
+        assertEquals(GuiMainMenu.COMMAND.NOTHING, gui.getNextCommand());
+
         when(screen.readInput()).thenReturn(new KeyStroke(Escape));
         assertEquals(GuiMainMenu.COMMAND.EXIT, gui.getNextCommand());
 
@@ -33,6 +36,8 @@ public class GuiMainMenuTest {
 
         when(screen.readInput()).thenReturn(KeyStroke.fromString("3"));
         assertEquals(GuiMainMenu.COMMAND.HIGHSCORES, gui.getNextCommand());
+
+        verify(screen, times((5))).readInput();
     }
 
     @Test

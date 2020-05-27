@@ -12,6 +12,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.Random;
 
+import static com.googlecode.lanterna.input.KeyType.Enter;
 import static com.googlecode.lanterna.input.KeyType.Escape;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
@@ -27,7 +28,8 @@ public class GuiWonTest {
         int steps = rand.nextInt(50);
         GuiWon gui = new GuiWon(score, health, steps, screen);
 
-        //TODO : acrescentar o command NOTHING
+        when(screen.readInput()).thenReturn(new KeyStroke(Enter));
+        assertEquals(GuiWon.COMMAND.NOTHING, gui.getNextCommand());
 
         when(screen.readInput()).thenReturn(new KeyStroke(Escape));
         assertEquals(GuiWon.COMMAND.EXIT, gui.getNextCommand());
@@ -35,7 +37,7 @@ public class GuiWonTest {
         when(screen.readInput()).thenReturn(KeyStroke.fromString("1"));
         assertEquals(GuiWon.COMMAND.MENU, gui.getNextCommand());
 
-        verify(screen, times((2))).readInput();
+        verify(screen, times((3))).readInput();
     }
 
     @Test
