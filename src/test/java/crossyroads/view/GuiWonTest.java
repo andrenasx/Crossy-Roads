@@ -39,7 +39,7 @@ public class GuiWonTest {
     }
 
     @Test
-    public void drawStatsTest() throws IOException {
+    public void drawTest() throws IOException {
         TerminalScreen screen = mock(TerminalScreen.class);
         Random rand = new Random();
         int score = rand.nextInt(30);
@@ -54,7 +54,28 @@ public class GuiWonTest {
 
         verify(graphics,times(2)).setBackgroundColor(TextColor.Factory.fromString("#006600"));
         verify(graphics,times(3)).enableModifiers(SGR.BOLD);
+
+        //drawWonMenu
         verify(graphics,times(1)).fillRectangle(new TerminalPosition(0, 0), new TerminalSize(40, 36), ' ');
+        verify(graphics,times(1)).setForegroundColor(TextColor.Factory.fromString("#C8C8C8"));
+        verify(graphics,times(1)).putString(5, 2, "XXX  XXX  XXXXXX  XX   XX  ");
+        verify(graphics,times(1)).putString(5, 3, "XXX  XXX  XX  XX  XX   XX  ");
+        verify(graphics,times(1)).putString(5, 4, "   XX     XX  XX  XX   XX");
+        verify(graphics,times(1)).putString(5, 5, "   XX     XX  XX  XX   XX");
+        verify(graphics,times(1)).putString(5, 6, "   XX     XXXXXX  XXXXXXX");
+        verify(graphics,times(1)).putString(1, 9, "X             X XXXXXX  XXX    X   XXX");
+        verify(graphics,times(1)).putString(1, 10, " X     X     X  XX  XX  XX X   X   XXX");
+        verify(graphics,times(1)).putString(1, 11, "  X   X X   X   XX  XX  XX  X  X   XXX");
+        verify(graphics,times(1)).putString(1, 12, "   X X   X X    XX  XX  XX   X X");
+        verify(graphics,times(1)).putString(1, 13, "    X     X     XXXXXX  XX    X    XXX");
+
+        //drawButton
+        verify(graphics,times(1)).setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
+        verify(graphics,times(1)).setForegroundColor(TextColor.Factory.fromString("#25221e"));
+        verify(graphics,times(1)).putString(26,32,"EXIT");
+        verify(graphics,times(1)).putString(26,33, "[ESC]");
+        verify(graphics,times(1)).putString(7, 32, "MENU");
+        verify(graphics,times(1)).putString(8, 33, "[1]");
 
         verify(graphics,times(1)).putString(3, 20, "Score: " + score + "\tHealth: " + health + "\tSteps: " + steps);
     }
