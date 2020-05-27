@@ -4,10 +4,7 @@ import crossyroads.controller.AppController;
 import crossyroads.controller.ChickenController;
 import crossyroads.controller.VehicleController;
 import crossyroads.model.GameModel;
-import crossyroads.view.GuiGame;
-import crossyroads.view.GuiLost;
-import crossyroads.view.GuiWon;
-import crossyroads.view.ScreenFactory;
+import crossyroads.view.*;
 
 import java.io.IOException;
 
@@ -34,6 +31,10 @@ public class GameState implements State{
             step++;
 
             GuiGame.COMMAND command = gui.getNextCommand();
+            if(command == GuiGame.COMMAND.PAUSE){
+                appController.setCurrentState(new PauseState(appController, new GuiPauseMenu(ScreenFactory.getScreen()), this));
+                return;
+            }
 
             chickenController.start(command);
             vehicleController.start(step);
