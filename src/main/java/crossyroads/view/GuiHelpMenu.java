@@ -36,12 +36,16 @@ public class GuiHelpMenu {
                 ' '
         );
         graphics.enableModifiers(SGR.BOLD);
-        graphics.setForegroundColor(TextColor.Factory.fromString("#C8C8C8"));
-        graphics.putString(5, 2, "XX   XX  XXXXXX  XXX     XXXXX");
-        graphics.putString(5, 3, "XX   XX  XXX     XXX     XX   X");
-        graphics.putString(5, 4, "XXXXXXX  XXXXX   XXX     XXXXX");
-        graphics.putString(5, 5, "XX   XX  XXX     XXX     XX");
-        graphics.putString(5, 6, "XX   XX  XXXXXX  XXXXXX  XX");
+        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        graphics.putString(9, 2, " _    _      _");
+        graphics.putString(9, 3, "| |  | |    | |");
+        graphics.putString(9, 4, "| |__| | ___| |_ __");
+        graphics.putString(9, 5, "|  __  |/ _ \\ | '_ \\");
+        graphics.putString(9, 6, "| |  | |  __/ | |_) |");
+        graphics.putString(9, 7, "|_|  |_|\\___|_| .__/");
+        graphics.putString(9, 8, "              | |");
+        graphics.putString(9, 9, "              |_|");
+
         List<String> instructions = new ArrayList<>();
         String inst1 = "-To move use the arrow of the keyboard";
         instructions.add(inst1);
@@ -55,7 +59,7 @@ public class GuiHelpMenu {
         instructions.add(inst5);
         String inst6 = "------------>Have fun!!!!!!<------------";
         instructions.add(inst6);
-        int row = 11;
+        int row = 13;
         for (String instruction : instructions) {
             graphics.putString(0, row, instruction);
             row += 2;
@@ -69,16 +73,16 @@ public class GuiHelpMenu {
         for(int i = 0; i <= 2; i++){
             graphics.fillRectangle(
                     new TerminalPosition(column, 32),
-                    new TerminalSize(9, 2),
+                    new TerminalSize(10, 2),
                     ' ');
             column += 20;
         }
         graphics.enableModifiers(SGR.BOLD);
         graphics.setForegroundColor(TextColor.Factory.fromString("#25221e"));
-        graphics.putString(26,32,"PLAY");
-        graphics.putString(27,33,"[1]");
-        graphics.putString(7, 32, "BACK");
-        graphics.putString(7, 33, "[ESC]");
+        graphics.putString(28,32,"PLAY");
+        graphics.putString(28,33,"[1]");
+        graphics.putString(8, 32, "BACK");
+        graphics.putString(8, 33, "[ESC]");
 
     }
 

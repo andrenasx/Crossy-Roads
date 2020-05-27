@@ -54,25 +54,26 @@ public class GuiLostTest {
         //DrawButtons and level
         verify(graphics,times(1)).setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
         verify(graphics,times(1)).setForegroundColor(TextColor.Factory.fromString("#25221e"));
-        verify(graphics,times(1)).putString(27,32, "EXIT");
-        verify(graphics,times(1)).putString(27,33, "[ESC]");
-        verify(graphics,times(1)).putString(7, 32, "MENU");
+        verify(graphics,times(1)).putString(28,32, "EXIT");
+        verify(graphics,times(1)).putString(28,33, "[ESC]");
+        verify(graphics,times(1)).putString(8, 32, "MENU");
         verify(graphics,times(1)).putString(8, 33, "[1]");
         verify(graphics,times(1)).putString(11,20, "Level reached: " + level);
 
         //DrawLostMenu
 
         verify(graphics,times(1)).fillRectangle(new TerminalPosition(0, 0), new TerminalSize(40, 36), ' ');
-        verify(graphics,times(1)).setForegroundColor(TextColor.Factory.fromString("#C8C8C8"));
-        verify(graphics,times(1)).putString(5, 2, "XXX  XXX  XXXXXX  XX   XX  ");
-        verify(graphics,times(1)).putString(5, 3, "XXX  XXX  XX  XX  XX   XX");
-        verify(graphics,times(1)).putString(5, 4, "   XX     XX  XX  XX   XX");
-        verify(graphics,times(1)).putString(5, 5, "   XX     XX  XX  XX   XX");
-        verify(graphics,times(1)).putString(5, 6, "   XX     XXXXXX  XXXXXXX");
-        verify(graphics,times(1)).putString(4, 9, "XX     XXXXXX  XXXXX  XXXXXXX  XXX");
-        verify(graphics,times(1)).putString(4, 10, "XX     XX  XX  XX        XX    XXX");
-        verify(graphics,times(1)).putString(4, 11, "XX     XX  XX  XXXXX     XX    XXX");
-        verify(graphics,times(1)).putString(4, 12, "XX     XX  XX     XX     XX         ");
-        verify(graphics,times(1)).putString(4, 13, "XXXXX  XXXXXX  XXXXX     XX    XXX");
+        verify(graphics,times(1)).setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        verify(graphics,times(1)).putString(7, 2, " __     __");
+        verify(graphics,times(1)).putString(7, 3, " \\ \\   / /");
+        verify(graphics,times(1)).putString(7, 4, "  \\ \\_/ /__  _   _ ");
+        verify(graphics,times(1)).putString(7, 5, "   \\   / _ \\| | | |");
+        verify(graphics,times(1)).putString(7, 6, "    | | (_) | |_| |");
+        verify(graphics,times(1)).putString(7, 7, " _  |_|\\___/ \\__,_|    _");
+        verify(graphics,times(1)).putString(7, 8, "| |             | |   | |");
+        verify(graphics,times(1)).putString(7, 9, "| |     ___  ___| |_  | |");
+        verify(graphics,times(1)).putString(7, 10, "| |    / _ \\/ __| __| | |");
+        verify(graphics,times(1)).putString(7, 11, "| |___| (_) \\__ \\ |_  |_|");
+        verify(graphics,times(1)).putString(7, 12, "|______\\___/|___/\\__| (_)");
     }
 }

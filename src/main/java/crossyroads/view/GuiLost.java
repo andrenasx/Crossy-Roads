@@ -37,17 +37,18 @@ public class GuiLost {
                 ' '
         );
         graphics.enableModifiers(SGR.BOLD);
-        graphics.setForegroundColor(TextColor.Factory.fromString("#C8C8C8"));
-        graphics.putString(5, 2, "XXX  XXX  XXXXXX  XX   XX  ");
-        graphics.putString(5, 3, "XXX  XXX  XX  XX  XX   XX");
-        graphics.putString(5, 4, "   XX     XX  XX  XX   XX");
-        graphics.putString(5, 5, "   XX     XX  XX  XX   XX");
-        graphics.putString(5, 6, "   XX     XXXXXX  XXXXXXX");
-        graphics.putString(4, 9, "XX     XXXXXX  XXXXX  XXXXXXX  XXX");
-        graphics.putString(4, 10, "XX     XX  XX  XX        XX    XXX");
-        graphics.putString(4, 11, "XX     XX  XX  XXXXX     XX    XXX");
-        graphics.putString(4, 12, "XX     XX  XX     XX     XX         ");
-        graphics.putString(4, 13, "XXXXX  XXXXXX  XXXXX     XX    XXX");
+        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        graphics.putString(7, 2, " __     __");
+        graphics.putString(7, 3, " \\ \\   / /");
+        graphics.putString(7, 4, "  \\ \\_/ /__  _   _ ");
+        graphics.putString(7, 5, "   \\   / _ \\| | | |");
+        graphics.putString(7, 6, "    | | (_) | |_| |");
+        graphics.putString(7, 7, " _  |_|\\___/ \\__,_|    _");
+        graphics.putString(7, 8, "| |             | |   | |");
+        graphics.putString(7, 9, "| |     ___  ___| |_  | |");
+        graphics.putString(7, 10, "| |    / _ \\/ __| __| | |");
+        graphics.putString(7, 11, "| |___| (_) \\__ \\ |_  |_|");
+        graphics.putString(7, 12, "|______\\___/|___/\\__| (_)");
     }
 
     private void drawButtons(TextGraphics graphics){
@@ -56,17 +57,16 @@ public class GuiLost {
         for(int i = 0; i <= 2; i++){
             graphics.fillRectangle(
                     new TerminalPosition(column, 32),
-                    new TerminalSize(9, 2),
+                    new TerminalSize(10, 2),
                     ' ');
             column += 20;
         }
         graphics.enableModifiers(SGR.BOLD);
         graphics.setForegroundColor(TextColor.Factory.fromString("#25221e"));
-        graphics.putString(27,32,"EXIT");
-        graphics.putString(27,33, "[ESC]");
-        graphics.putString(7, 32, "MENU");
+        graphics.putString(28,32,"EXIT");
+        graphics.putString(28,33, "[ESC]");
+        graphics.putString(8, 32, "MENU");
         graphics.putString(8, 33, "[1]");
-
     }
 
     private void drawLevel(TextGraphics graphics){
