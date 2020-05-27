@@ -26,7 +26,6 @@ public class HelpState implements State{
     public void step() throws IOException {
         gui.draw();
         GuiHelpMenu.COMMAND command = gui.getNextCommand();
-        System.out.println(command);
         switch (command){
             case PLAY:
                 GameModel gameModel = new GameModelCreator().createGameModel(40, 35, 5);
