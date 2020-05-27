@@ -1,7 +1,5 @@
 package crossyroads.model;
 
-import crossyroads.Game;
-
 public class GameModelCreator {
 
     public GameModelCreator() {
