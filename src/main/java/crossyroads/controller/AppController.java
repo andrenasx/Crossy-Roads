@@ -11,14 +11,15 @@ import java.io.IOException;
 public class AppController {
     private State currentState;
     private boolean end;
+    private MusicPlayer player;
 
     public AppController() throws IOException {
         this.currentState = new MenuState(this, new GuiMainMenu(ScreenFactory.getScreen()));
         this.end = false;
+        this.player = new MusicPlayer("src/main/resources/music.wav");
     }
 
     public void start() throws IOException {
-        MusicPlayer player = new MusicPlayer("src/main/resources/music.wav");
         player.startMusic();
 
         while(!end){
@@ -34,4 +35,6 @@ public class AppController {
     }
 
     public void setEnd(){end = true;}
+
+    public MusicPlayer getPlayer() { return player; }
 }
