@@ -52,10 +52,6 @@ public class GameModel {
         levels.add(level);
     }
 
-    public List<Level> getLevels() {
-        return levels;
-    }
-
     public Level getCurrentLevel(){
         return levels.get(currentLevel-1);
     }
