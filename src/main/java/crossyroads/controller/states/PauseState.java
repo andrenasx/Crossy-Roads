@@ -35,4 +35,11 @@ public class PauseState implements State{
         }
         appController.getPlayer().resumeMusic();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        return getClass() == obj.getClass();
+    }
 }
