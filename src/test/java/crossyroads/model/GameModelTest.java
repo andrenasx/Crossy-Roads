@@ -1,11 +1,11 @@
 package crossyroads.model;
 
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.util.Random;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 public class GameModelTest {
     @Test
@@ -59,8 +59,8 @@ public class GameModelTest {
     @Test
     public void getCurrentLevelIntTest(){
         GameModel gameModel = new GameModel(35, 40);
-        Level level1 = Mockito.mock(Level.class);
-        Level level2 = Mockito.mock(Level.class);
+        Level level1 = mock(Level.class);
+        Level level2 = mock(Level.class);
         gameModel.addLevel(level1);
         gameModel.addLevel(level2);
         assertEquals(1, gameModel.getCurrentLevelInt());
@@ -71,12 +71,22 @@ public class GameModelTest {
     @Test
     public void isFinalLevelTest(){
         GameModel gameModel = new GameModel(35, 40);
-        Level level1 = Mockito.mock(Level.class);
-        Level level2 = Mockito.mock(Level.class);
+        Level level1 = mock(Level.class);
+        Level level2 = mock(Level.class);
         gameModel.addLevel(level1);
         gameModel.addLevel(level2);
         assertFalse(gameModel.isFinalLevel());
         gameModel.increaseLevel();
         assertTrue(gameModel.isFinalLevel());
+    }
+
+    @Test
+    public void getCurrentLevelTest(){
+        GameModel gameModel = new GameModel(35, 40);
+        Level level1 = mock(Level.class);
+        Level level2 = mock(Level.class);
+        gameModel.addLevel(level1);
+        gameModel.addLevel(level2);
+        assertEquals(level1, gameModel.getCurrentLevel());
     }
 }
