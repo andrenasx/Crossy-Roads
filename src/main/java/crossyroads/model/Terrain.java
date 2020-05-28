@@ -76,7 +76,7 @@ public class Terrain {
                 elements.add(truck);
                 break;
             case "M":
-                Coin coin = new Coin(x, y, Integer.parseInt(array_of_strings[3]));
+                Coin coin = new Coin(x, y);
                 elements.add(coin);
                 break;
             default:

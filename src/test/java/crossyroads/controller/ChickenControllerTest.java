@@ -149,7 +149,7 @@ public class ChickenControllerTest {
    @Test
     public void checkCoinCollisionTest(){
         List<Coin> coins = new ArrayList<>();
-        Coin coin = new Coin(1, 2, 3);
+        Coin coin = new Coin(1, 2);
         coins.add(coin);
         Level level = Mockito.mock(Level.class);
         Mockito.when(level.getCoins()).thenReturn(coins);
@@ -165,7 +165,7 @@ public class ChickenControllerTest {
         //chicken.setPosition(new Position(1, 2));
         int score = chicken.getScore();
         chickenController.checkCollisions(chicken.getPosition());
-        assertEquals(score+coin.getValue(), chicken.getScore());
+        assertEquals(score+ 1, chicken.getScore());
         assertTrue(gameModel.getCurrentLevel().getCoins().isEmpty());
 
     }

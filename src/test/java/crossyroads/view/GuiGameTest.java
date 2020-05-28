@@ -35,7 +35,7 @@ public class GuiGameTest {
         when(level.getLevelBackground()).thenReturn("dgggsgggggrrrggggggggggrrrggggggggg");
 
         List<Element> elements = new ArrayList<>();
-        elements.add(new Coin(15,20,1));
+        elements.add(new Coin(15,20));
         elements.add(new Car(10,10,"left"));
         elements.add(new Truck(10,5,"right"));
         when(level.getAllElements()).thenReturn(elements);

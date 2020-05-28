@@ -27,9 +27,9 @@ public class LevelTest {
         Terrain terrain = Mockito.mock(Terrain.class);
         Level level = new Level(1, 30,70, terrain);
 
-        Coin coin = new Coin(10,10,1);
-        Coin coin1 = new Coin(20,20,1);
-        Coin coin2 = new Coin(25,20,1);
+        Coin coin = new Coin(10,10);
+        Coin coin1 = new Coin(20,20);
+        Coin coin2 = new Coin(25,20);
         Car car = new Car(30,30,"right");
         Truck truck = new Truck (10,30, "left");
 
@@ -58,8 +58,8 @@ public class LevelTest {
         Terrain terrain = Mockito.mock(Terrain.class);
         Level level = new Level(1, 30,70, terrain);
 
-        Coin coin = new Coin(10,10,1);
-        Coin coin1 = new Coin(20,20,1);
+        Coin coin = new Coin(10,10);
+        Coin coin1 = new Coin(20,20);
         Car car = new Car(30,30,"right");
         Truck truck = new Truck (10,30, "left");
 

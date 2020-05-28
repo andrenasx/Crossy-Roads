@@ -58,7 +58,7 @@ public class ChickenController {
     public void checkCoinCollision(Position position){
         Coin coin = (Coin) getCollidingElement(position, gameModel.getCurrentLevel().getCoins());
         if (coin != null) {
-            gameModel.getChicken().raiseScore(coin.getValue());
+            gameModel.getChicken().raiseScore(1);
             gameModel.getCurrentLevel().getCoins().remove(coin);
         }
     }

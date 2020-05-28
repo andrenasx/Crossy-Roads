@@ -1,14 +1,8 @@
 package crossyroads.model;
 
 public class Coin extends Element {
-    private int value;
-    public Coin(int x, int y, int value) {
+    public Coin(int x, int y) {
         super(x, y);
-        this.value = value;
-    }
-
-    public int getValue() {
-        return value;
     }
 
     @Override

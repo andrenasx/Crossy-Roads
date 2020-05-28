@@ -13,29 +13,20 @@ public class CoinTest {
         int x = rand.nextInt(40);
         int y = rand.nextInt(35);
 
-        Coin coin = new Coin(x, y, 1);
+        Coin coin = new Coin(x, y);
         assertEquals(x, coin.getPosition().getX());
         assertEquals(y, coin.getPosition().getY());
     }
 
     @Test
-    public void coinValueTest(){
-        Random rand =  new Random();
-        int value = rand.nextInt(10);
-        Coin coin = new Coin(1,1, value);
-
-        assertEquals(value, coin.getValue());
-    }
-
-    @Test
     public void coinColorTest(){
-        Coin coin = new Coin(1,1,1);
+        Coin coin = new Coin(1,1);
         assertEquals("#FFFF00", coin.getColor());
     }
 
      @Test
     public void coinSetPosition(){
-        Coin coin = new Coin(1, 2, 1);
+        Coin coin = new Coin(1, 2);
         Random rand = new Random();
         int x = rand.nextInt(40);
         int y = rand.nextInt(35);
