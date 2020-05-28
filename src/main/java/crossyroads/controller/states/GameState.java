@@ -62,5 +62,12 @@ public class GameState implements State{
         else
             appController.setCurrentState(new WonState(appController, new GuiWon(gameModel.getScore(), gameModel.getLives(), gameModel.getChicken().getCountSteps(), ScreenFactory.getScreen())));
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        return getClass() == obj.getClass();
+    }
 }
 
