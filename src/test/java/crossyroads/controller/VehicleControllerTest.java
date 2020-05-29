@@ -65,4 +65,14 @@ public class VehicleControllerTest {
         assertEquals(life-1, chicken.getLives());
         //assertEquals(chicken.getPosition(), new Position(gameModel.getWidth()/2, gameModel.getHeight()-1));
     }
+
+    @Test
+    public void startTest(){
+        GameModel gameModel = Mockito.mock(GameModel.class);
+        Level level = Mockito.mock(Level.class);
+        Mockito.when(gameModel.getCurrentLevel()).thenReturn(level);
+        VehicleController vehicleController = new VehicleController(gameModel);
+        vehicleController.start(1);
+        Mockito.verify(gameModel, Mockito.times(1)).getCurrentLevel();
+    }
 }
