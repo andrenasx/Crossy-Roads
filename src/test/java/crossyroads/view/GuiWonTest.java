@@ -76,6 +76,7 @@ public class GuiWonTest {
         verify(graphics,times(1)).setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
         verify(graphics,times(1)).setForegroundColor(TextColor.Factory.fromString("#25221e"));
         verify(graphics,times(1)).putString(28,32,"EXIT");
+        verify(graphics,times(1)).putString(28,33, "[ESC]");
         verify(graphics,times(1)).putString(8, 32, "MENU");
         verify(graphics,times(1)).putString(8, 33, "[1]");
 
