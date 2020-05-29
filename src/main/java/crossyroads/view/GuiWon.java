@@ -22,6 +22,10 @@ public class GuiWon {
         this.screen = screen;
     }
 
+    public TerminalScreen getScreen() {
+        return screen;
+    }
+
     public void draw() throws IOException {
         screen.clear();
         TextGraphics graphics = screen.newTextGraphics();

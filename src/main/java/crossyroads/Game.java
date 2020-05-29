@@ -1,6 +1,9 @@
 package crossyroads;
 
+import com.googlecode.lanterna.screen.TerminalScreen;
 import crossyroads.controller.AppController;
+import crossyroads.view.ScreenFactory;
+
 import java.io.IOException;
 
 public class Game{
@@ -9,7 +12,8 @@ public class Game{
     }
 
     private void start() throws IOException {
-        AppController controller = new AppController();
+        TerminalScreen screen = new ScreenFactory().createScreen(40, 36);
+        AppController controller = new AppController(screen);
         controller.start();
     }
 }

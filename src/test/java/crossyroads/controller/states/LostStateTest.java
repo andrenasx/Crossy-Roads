@@ -1,5 +1,6 @@
 package crossyroads.controller.states;
 
+import com.googlecode.lanterna.screen.TerminalScreen;
 import crossyroads.controller.AppController;
 import crossyroads.view.GuiLost;
 import crossyroads.view.GuiMainMenu;
@@ -15,6 +16,8 @@ public class LostStateTest {
     public void stepTest() throws IOException {
         AppController appController = mock(AppController.class);
         GuiLost gui = mock(GuiLost.class);
+        TerminalScreen screen = mock(TerminalScreen.class);
+        when(gui.getScreen()).thenReturn(screen);
 
         LostState lostState = new LostState(appController, gui);
 
@@ -26,6 +29,6 @@ public class LostStateTest {
         //Menu Command
         when(gui.getNextCommand()).thenReturn(GuiLost.COMMAND.MENU);
         lostState.step();
-        verify(appController, times(1)).setCurrentState(new MenuState(appController, new GuiMainMenu(ScreenFactory.getScreen())));
+        verify(appController, times(1)).setCurrentState(new MenuState(appController, new GuiMainMenu(screen)));
     }
 }

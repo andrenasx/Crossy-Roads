@@ -11,9 +11,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class ScreenFactory {
-    public static TerminalScreen screen;
 
-    private static TerminalScreen createScreen(int width, int height) throws IOException {
+    public ScreenFactory() {}
+
+    public TerminalScreen createScreen(int width, int height) throws IOException {
         File fontfile = new File("src/main/resources/Anonymous.ttf");
         Font font = null;
         try {
@@ -40,11 +41,6 @@ public class ScreenFactory {
         screen.setCursorPosition(null);   // we don't need a cursor
         screen.startScreen();             // screens must be started
         screen.doResizeIfNecessary();     // resize screen if necessary
-        return screen;
-    }
-
-    public static TerminalScreen getScreen() throws IOException {
-        if(screen == null) screen = createScreen(40, 36);
         return screen;
     }
 }

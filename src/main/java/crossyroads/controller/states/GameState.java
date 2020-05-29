@@ -33,7 +33,7 @@ public class GameState implements State{
 
             GuiGame.COMMAND command = gui.getNextCommand();
             if(command == GuiGame.COMMAND.PAUSE){
-                appController.setCurrentState(new PauseState(appController, new GuiPauseMenu(ScreenFactory.getScreen()), this));
+                appController.setCurrentState(new PauseState(appController, new GuiPauseMenu(gui.getScreen()), this));
                 return;
             }
 
@@ -63,9 +63,9 @@ public class GameState implements State{
         highscore.writeFile("highscores.txt", "main");
 
         if(gameModel.isChickenDead())
-            appController.setCurrentState(new LostState(appController, new GuiLost(ScreenFactory.getScreen(), gameModel.getCurrentLevelInt())));
+            appController.setCurrentState(new LostState(appController, new GuiLost(gui.getScreen(), gameModel.getCurrentLevelInt())));
         else {
-            appController.setCurrentState(new WonState(appController, new GuiWon(gameModel.getScore(), gameModel.getLives(), gameModel.getChicken().getCountSteps(), ScreenFactory.getScreen())));
+            appController.setCurrentState(new WonState(appController, new GuiWon(gameModel.getScore(), gameModel.getLives(), gameModel.getChicken().getCountSteps(), gui.getScreen())));
         }
     }
 

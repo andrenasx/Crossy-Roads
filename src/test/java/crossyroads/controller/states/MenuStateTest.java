@@ -1,5 +1,6 @@
 package crossyroads.controller.states;
 
+import com.googlecode.lanterna.screen.TerminalScreen;
 import crossyroads.controller.AppController;
 import crossyroads.controller.ChickenController;
 import crossyroads.controller.VehicleController;
@@ -17,6 +18,8 @@ public class MenuStateTest {
     public void stepTest() throws IOException {
         AppController appController = mock(AppController.class);
         GuiMainMenu gui = mock(GuiMainMenu.class);
+        TerminalScreen screen = mock(TerminalScreen.class);
+        when(gui.getScreen()).thenReturn(screen);
 
         MenuState menuState = new MenuState(appController, gui);
 
@@ -28,17 +31,17 @@ public class MenuStateTest {
         //HighScore Command
         when(gui.getNextCommand()).thenReturn(GuiMainMenu.COMMAND.HIGHSCORES);
         menuState.step();
-        verify(appController, times(1)).setCurrentState(new HighscoreState(appController, new GuiHighscoreMenu(ScreenFactory.getScreen())));
+        verify(appController, times(1)).setCurrentState(new HighscoreState(appController, new GuiHighscoreMenu(screen)));
 
         //Help Command
         when(gui.getNextCommand()).thenReturn(GuiMainMenu.COMMAND.HELP);
         menuState.step();
-        verify(appController, times(1)).setCurrentState(new HelpState(appController, new GuiHelpMenu(ScreenFactory.getScreen())));
+        verify(appController, times(1)).setCurrentState(new HelpState(appController, new GuiHelpMenu(screen)));
 
         //Play Command
         when(gui.getNextCommand()).thenReturn(GuiMainMenu.COMMAND.PLAY);
         menuState.step();
         GameModel gameModel = new GameModelCreator().createGameModel(40, 35, 5);
-        verify(appController, times(1)).setCurrentState(new GameState(appController, new GuiGame(gameModel, ScreenFactory.getScreen()), gameModel, new ChickenController(gameModel), new VehicleController(gameModel)));
+        verify(appController, times(1)).setCurrentState(new GameState(appController, new GuiGame(gameModel, screen), gameModel, new ChickenController(gameModel), new VehicleController(gameModel)));
     }
 }

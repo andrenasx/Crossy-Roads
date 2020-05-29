@@ -25,7 +25,7 @@ public class LostState implements State{
                 appController.setEnd();
                 break;
             case MENU:
-                appController.setCurrentState(new MenuState(appController, new GuiMainMenu(ScreenFactory.getScreen())));
+                appController.setCurrentState(new MenuState(appController, new GuiMainMenu(gui.getScreen())));
                 break;
             default:
                 break;

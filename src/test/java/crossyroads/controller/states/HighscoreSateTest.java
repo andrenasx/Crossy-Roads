@@ -1,5 +1,6 @@
 package crossyroads.controller.states;
 
+import com.googlecode.lanterna.screen.TerminalScreen;
 import crossyroads.controller.AppController;
 import crossyroads.controller.ChickenController;
 import crossyroads.controller.VehicleController;
@@ -19,20 +20,22 @@ public class HighscoreSateTest {
     @Test
     public void stepTest() throws IOException {
         AppController appController = mock(AppController.class);
-        GuiHighscoreMenu guiHighscoreMenu = mock(GuiHighscoreMenu.class);
+        GuiHighscoreMenu gui = mock(GuiHighscoreMenu.class);
+        TerminalScreen screen = mock(TerminalScreen.class);
+        when(gui.getScreen()).thenReturn(screen);
 
-        HighscoreState highscoreState = new HighscoreState(appController, guiHighscoreMenu);
+        HighscoreState highscoreState = new HighscoreState(appController, gui);
 
         //Play command
-        when(guiHighscoreMenu.getNextCommand()).thenReturn(GuiHighscoreMenu.COMMAND.PLAY);
+        when(gui.getNextCommand()).thenReturn(GuiHighscoreMenu.COMMAND.PLAY);
         highscoreState.step();
         GameModel gameModel = new GameModelCreator().createGameModel(40, 35, 5);
-        verify(appController,times(1)).setCurrentState(new GameState(appController, new GuiGame(gameModel, ScreenFactory.getScreen()), gameModel, new ChickenController(gameModel), new VehicleController(gameModel)));
+        verify(appController,times(1)).setCurrentState(new GameState(appController, new GuiGame(gameModel, screen), gameModel, new ChickenController(gameModel), new VehicleController(gameModel)));
 
         //Back command
-        when(guiHighscoreMenu.getNextCommand()).thenReturn(GuiHighscoreMenu.COMMAND.BACK);
+        when(gui.getNextCommand()).thenReturn(GuiHighscoreMenu.COMMAND.BACK);
         highscoreState.step();
-        verify(appController,times(1)).setCurrentState(new MenuState(appController, new GuiMainMenu(ScreenFactory.getScreen())));
+        verify(appController,times(1)).setCurrentState(new MenuState(appController, new GuiMainMenu(screen)));
 
     }
 }
