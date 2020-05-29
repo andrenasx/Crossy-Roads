@@ -26,6 +26,7 @@ public class GuiHighscoreMenu {
         screen.clear();
         TextGraphics graphics = screen.newTextGraphics();
         drawHighscoreMenu(graphics);
+        drawHighscores(graphics);
         drawButtons(graphics);
         screen.refresh();
     }
@@ -37,31 +38,27 @@ public class GuiHighscoreMenu {
                 new TerminalSize(40, 36),
                 ' '
         );
-        //Make this say Highscores in pretty mode
+
         graphics.enableModifiers(SGR.BOLD);
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        graphics.putString(9, 2, " _    _      _");
-        graphics.putString(9, 3, "| |  | |    | |");
-        graphics.putString(9, 4, "| |__| | ___| |_ __");
-        graphics.putString(9, 5, "|  __  |/ _ \\ | '_ \\");
-        graphics.putString(9, 6, "| |  | |  __/ | |_) |");
-        graphics.putString(9, 7, "|_|  |_|\\___|_| .__/");
-        graphics.putString(9, 8, "              | |");
-        graphics.putString(9, 9, "              |_|");
-        graphics.putString(5, 11, "Level   |   Coins   |   Steps");
+        graphics.putString(0, 3, " _  _ _      _");
+        graphics.putString(0, 4, "| || (_)__ _| |_  ___ __ ___ _ _ ___ ___");
+        graphics.putString(0, 5, "| __ | / _` | ' \\(_-</ _/ _ \\ '_/ -_|_-<");
+        graphics.putString(0, 6, "|_||_|_\\__, |_||_/__/\\__\\___/_| \\___/__/");
+        graphics.putString(0, 7, "       |___/");
+    }
 
-
-        //Add highscores
+    private void drawHighscores(TextGraphics graphics) {
+        graphics.putString(5, 13, "Level   |   Coins   |   Steps");
         Highscore highscore = new Highscore("highscores.txt", "main");
         List<Score> highscores = highscore.getHighscores();
-        int row = 13;
-        for (int i = 0; i < 7; i++){
-            graphics.putString(7, row, Integer.toString(highscores.get(i).getLevel()));
-            graphics.putString(18, row, Integer.toString(highscores.get(i).getCoins()));
-            graphics.putString(30, row, Integer.toString(highscores.get(i).getSteps()));
+        int row = 15;
+        for (Score score: highscores){
+            graphics.putString(7, row, Integer.toString(score.getLevel()));
+            graphics.putString(18, row, Integer.toString(score.getCoins()));
+            graphics.putString(30, row, Integer.toString(score.getSteps()));
             row += 2;
         }
-
     }
 
     private void drawButtons(TextGraphics graphics){
