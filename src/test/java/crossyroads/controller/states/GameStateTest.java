@@ -38,6 +38,8 @@ public class GameStateTest {
     public void stepLostTest() throws IOException {
         AppController appController = mock(AppController.class);
         GuiGame gui = mock(GuiGame.class);
+        TerminalScreen screen = mock(TerminalScreen.class);
+        when(gui.getScreen()).thenReturn(screen);
         GameModel gameModel = mock(GameModel.class);
         ChickenController chickenController = mock(ChickenController.class);
         VehicleController vehicleController = mock(VehicleController.class);
@@ -58,6 +60,8 @@ public class GameStateTest {
     public void stepWonTest() throws IOException {
         AppController appController = mock(AppController.class);
         GuiGame gui = mock(GuiGame.class);
+        TerminalScreen screen = mock(TerminalScreen.class);
+        when(gui.getScreen()).thenReturn(screen);
         GameModel gameModel = mock(GameModel.class);
         ChickenController chickenController = mock(ChickenController.class);
         VehicleController vehicleController = mock(VehicleController.class);
