@@ -5,10 +5,7 @@ import crossyroads.controller.ChickenController;
 import crossyroads.controller.VehicleController;
 import crossyroads.model.GameModel;
 import crossyroads.model.GameModelCreator;
-import crossyroads.view.GuiGame;
-import crossyroads.view.GuiHelpMenu;
-import crossyroads.view.GuiMainMenu;
-import crossyroads.view.ScreenFactory;
+import crossyroads.view.*;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -27,6 +24,11 @@ public class MenuStateTest {
         when(gui.getNextCommand()).thenReturn(GuiMainMenu.COMMAND.EXIT);
         menuState.step();
         verify(appController, times(1)).setEnd();
+
+        //HighScore Command
+        when(gui.getNextCommand()).thenReturn(GuiMainMenu.COMMAND.HIGHSCORES);
+        menuState.step();
+        verify(appController, times(1)).setCurrentState(new HighscoreState(appController, new GuiHighscoreMenu(ScreenFactory.getScreen())));
 
         //Help Command
         when(gui.getNextCommand()).thenReturn(GuiMainMenu.COMMAND.HELP);
