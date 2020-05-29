@@ -47,9 +47,9 @@ public class GuiHelpMenu {
         graphics.putString(9, 9, "              |_|");
 
         List<String> instructions = new ArrayList<>();
-        String inst1 = "-To move use the arrow of the keyboard";
+        String inst1 = "-To move use the keyboard arrows";
         instructions.add(inst1);
-        String inst2 = "-To exit the game click ESCAPE";
+        String inst2 = "-To pause the game click ESCAPE";
         instructions.add(inst2);
         String inst3 = "-Collect all the coins";
         instructions.add(inst3);
