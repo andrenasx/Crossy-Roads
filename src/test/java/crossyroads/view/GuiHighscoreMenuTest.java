@@ -60,5 +60,8 @@ public class GuiHighscoreMenuTest {
         verify(graphics,times(1)).putString(28,33,"[1]");
         verify(graphics,times(1)).putString(8, 32, "BACK");
         verify(graphics,times(1)).putString(8, 33, "[ESC]");
+
+        //drawHighscores
+        verify(graphics,times(1)).putString(5, 13, "Level   |   Coins   |   Steps");
     }
 }

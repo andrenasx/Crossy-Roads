@@ -5,8 +5,6 @@ public class Score {
     private int coins;
     private int steps;
 
-    public Score(){}
-
     public Score(int level, int coins, int steps){
         this.level = level;
         this.coins = coins;
