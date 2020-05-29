@@ -1,13 +1,13 @@
 package crossyroads.model;
 
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
 
 public class LevelTest {
     @Test
@@ -16,7 +16,7 @@ public class LevelTest {
         int x = rand.nextInt(50);
         int y = rand.nextInt(70);
 
-        Terrain terrain = Mockito.mock(Terrain.class);
+        Terrain terrain = mock(Terrain.class);
         Level level = new Level(1, x, y, terrain);
         assertEquals(x, level.getWidth());
         assertEquals(y, level.getHeight());
@@ -24,7 +24,7 @@ public class LevelTest {
 
     @Test
     public void addElementTest(){
-        Terrain terrain = Mockito.mock(Terrain.class);
+        Terrain terrain = mock(Terrain.class);
         Level level = new Level(1, 30,70, terrain);
 
         Coin coin = new Coin(10,10);
@@ -55,7 +55,7 @@ public class LevelTest {
 
     @Test
     public void getAllElementsTest(){
-        Terrain terrain = Mockito.mock(Terrain.class);
+        Terrain terrain = mock(Terrain.class);
         Level level = new Level(1, 30,70, terrain);
 
         Coin coin = new Coin(10,10);
@@ -75,5 +75,13 @@ public class LevelTest {
         elements.add(coin1);
 
         assertEquals(elements, level.getAllElements());
+    }
+
+    @Test
+    public void getLevelBackgroundTest(){
+        Terrain terrain = mock(Terrain.class);
+        Level level = new Level(1, 30, 45, terrain);
+        level.getLevelBackground();
+        verify(terrain,times(1)).getBackground();
     }
 }
