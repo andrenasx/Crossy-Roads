@@ -49,13 +49,12 @@ public class Highscore {
             text += "\n";
             text += score.getLevel() + ",";
             text += score.getCoins() + ",";
-            text += score.getSteps() + ",";
+            text += score.getSteps();
             //text.substring(0, text.length() - 1);
         }
 
         try {
             bw = new BufferedWriter(new FileWriter(filePath));
-            String st;
             bw.write(text);
             bw.close();
         }
@@ -75,12 +74,10 @@ public class Highscore {
     }
 
     public void addNewScore(int level, int coins, int steps){
-        Score result = new Score();
-        result.setLevel(level);
-        result.setCoins(coins);
-        result.setSteps(steps);
+        Score result = new Score(level, coins, steps);
         highscores.add(result);
-        Collections.sort(highscores, new ScoreComparator());
+        highscores.sort(new ScoreComparator());
+        highscores = new ArrayList<Score>(highscores.subList(0, 7));
     }
 
     public List<Score> getHighscores(){ return highscores;}
