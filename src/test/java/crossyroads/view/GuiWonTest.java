@@ -20,6 +20,14 @@ import static org.mockito.Mockito.times;
 
 public class GuiWonTest {
     @Test
+    public void getScreen() {
+        TerminalScreen screen = mock(TerminalScreen.class);
+        GuiWon gui = new GuiWon(1,1,1, screen);
+
+        assertEquals(screen, gui.getScreen());
+    }
+
+    @Test
     public void commandWonTest() throws IOException {
         TerminalScreen screen = mock(TerminalScreen.class);
         Random rand = new Random();

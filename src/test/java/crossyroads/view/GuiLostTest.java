@@ -18,6 +18,14 @@ import static org.mockito.Mockito.*;
 
 public class GuiLostTest {
     @Test
+    public void getScreen() {
+        TerminalScreen screen = mock(TerminalScreen.class);
+        GuiLost gui = new GuiLost(screen, 1);
+
+        assertEquals(screen, gui.getScreen());
+    }
+
+    @Test
     public void commandLostTest() throws IOException {
         TerminalScreen screen = mock(TerminalScreen.class);
         Random rand = new Random();
