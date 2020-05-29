@@ -4,6 +4,7 @@ import crossyroads.controller.AppController;
 import crossyroads.controller.ChickenController;
 import crossyroads.controller.VehicleController;
 import crossyroads.model.GameModel;
+import crossyroads.model.Highscore;
 import crossyroads.view.*;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ public class GameState implements State{
     private VehicleController vehicleController;
     private GuiGame gui;
     private GameModel gameModel;
-    private final int FPS = 10;
+    private final int FPS = 5;
     private int step = 0;
 
     public GameState(AppController appController, GuiGame gui, GameModel gameModel, ChickenController chickenController, VehicleController vehicleController) {
@@ -57,10 +58,15 @@ public class GameState implements State{
             }
         }
 
+        Highscore highscore = new Highscore("highscores.txt", "main");
+        highscore.addNewScore(gameModel.getCurrentLevelInt(), gameModel.getScore(), gameModel.getChicken().getCountSteps());
+        highscore.writeFile("highscores.txt", "main");
+
         if(gameModel.isChickenDead())
             appController.setCurrentState(new LostState(appController, new GuiLost(ScreenFactory.getScreen(), gameModel.getCurrentLevelInt())));
-        else
+        else {
             appController.setCurrentState(new WonState(appController, new GuiWon(gameModel.getScore(), gameModel.getLives(), gameModel.getChicken().getCountSteps(), ScreenFactory.getScreen())));
+        }
     }
 
     @Override

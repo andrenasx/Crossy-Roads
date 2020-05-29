@@ -5,10 +5,7 @@ import crossyroads.controller.ChickenController;
 import crossyroads.controller.VehicleController;
 import crossyroads.model.GameModel;
 import crossyroads.model.GameModelCreator;
-import crossyroads.view.GuiGame;
-import crossyroads.view.GuiHelpMenu;
-import crossyroads.view.GuiMainMenu;
-import crossyroads.view.ScreenFactory;
+import crossyroads.view.*;
 
 import java.io.IOException;
 
@@ -32,6 +29,9 @@ public class MenuState implements State{
                 break;
             case HELP:
                 appController.setCurrentState(new HelpState(appController, new GuiHelpMenu(ScreenFactory.getScreen())));
+                break;
+            case HIGHSCORES:
+                appController.setCurrentState(new HighscoreState(appController, new GuiHighscoreMenu(ScreenFactory.getScreen())));
                 break;
             case EXIT:
                 appController.setEnd();
