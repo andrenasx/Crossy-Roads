@@ -28,7 +28,7 @@ public class PauseState implements State{
                 appController.setCurrentState(gameState);
                 break;
             case MENU:
-                appController.setCurrentState(new MenuState(appController, new GuiMainMenu(ScreenFactory.getScreen())));
+                appController.setCurrentState(new MenuState(appController, new GuiMainMenu(gui.getScreen())));
                 break;
             default:
                 break;

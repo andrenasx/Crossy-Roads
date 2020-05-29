@@ -1,5 +1,6 @@
 package crossyroads.controller.states;
 
+import com.googlecode.lanterna.screen.TerminalScreen;
 import crossyroads.controller.AppController;
 import crossyroads.controller.ChickenController;
 import crossyroads.controller.VehicleController;
@@ -21,6 +22,8 @@ public class GameStateTest {
     public void stepTest() throws IOException {
         AppController appController = mock(AppController.class);
         GuiGame gui = mock(GuiGame.class);
+        TerminalScreen screen = mock(TerminalScreen.class);
+        when(gui.getScreen()).thenReturn(screen);
         GameModel gameModel = mock(GameModel.class);
         ChickenController chickenController = mock(ChickenController.class);
         VehicleController vehicleController = mock(VehicleController.class);
@@ -32,7 +35,7 @@ public class GameStateTest {
 
         gameState.step();
 
-        verify(appController, times(1)).setCurrentState(new PauseState(appController, new GuiPauseMenu(ScreenFactory.getScreen()), gameState));
+        verify(appController, times(1)).setCurrentState(new PauseState(appController, new GuiPauseMenu(screen), gameState));
 
 
         when(gameModel.isChickenDead()).thenReturn(true);
@@ -42,6 +45,6 @@ public class GameStateTest {
         when(chicken.getCountSteps()).thenReturn(1);
         when(gameModel.getChicken()).thenReturn(chicken);
         gameState.step();
-        verify(appController, times(1)).setCurrentState(new LostState(appController, new GuiLost(ScreenFactory.getScreen(), 1)));
+        verify(appController, times(1)).setCurrentState(new LostState(appController, new GuiLost(screen, 1)));
     }
 }

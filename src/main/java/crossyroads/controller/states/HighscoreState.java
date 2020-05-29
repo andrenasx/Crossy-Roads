@@ -24,10 +24,10 @@ public class HighscoreState implements State {
         switch (command){
             case PLAY:
                 GameModel gameModel = new GameModelCreator().createGameModel(40, 35, 5);
-                appController.setCurrentState(new GameState(appController, new GuiGame(gameModel, ScreenFactory.getScreen()), gameModel, new ChickenController(gameModel), new VehicleController(gameModel)));
+                appController.setCurrentState(new GameState(appController, new GuiGame(gameModel, gui.getScreen()), gameModel, new ChickenController(gameModel), new VehicleController(gameModel)));
                 break;
             case BACK:
-                appController.setCurrentState(new MenuState(appController, new GuiMainMenu(ScreenFactory.getScreen())));
+                appController.setCurrentState(new MenuState(appController, new GuiMainMenu(gui.getScreen())));
                 break;
             default:
                 break;

@@ -25,13 +25,13 @@ public class MenuState implements State{
         switch (command){
             case PLAY:
                 GameModel gameModel = new GameModelCreator().createGameModel(40, 35, 5);
-                appController.setCurrentState(new GameState(appController, new GuiGame(gameModel, ScreenFactory.getScreen()), gameModel, new ChickenController(gameModel), new VehicleController(gameModel)));
+                appController.setCurrentState(new GameState(appController, new GuiGame(gameModel, gui.getScreen()), gameModel, new ChickenController(gameModel), new VehicleController(gameModel)));
                 break;
             case HELP:
-                appController.setCurrentState(new HelpState(appController, new GuiHelpMenu(ScreenFactory.getScreen())));
+                appController.setCurrentState(new HelpState(appController, new GuiHelpMenu(gui.getScreen())));
                 break;
             case HIGHSCORES:
-                appController.setCurrentState(new HighscoreState(appController, new GuiHighscoreMenu(ScreenFactory.getScreen())));
+                appController.setCurrentState(new HighscoreState(appController, new GuiHighscoreMenu(gui.getScreen())));
                 break;
             case EXIT:
                 appController.setEnd();

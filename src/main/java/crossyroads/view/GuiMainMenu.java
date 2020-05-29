@@ -26,6 +26,10 @@ public class GuiMainMenu {
         screen.refresh();
     }
 
+    public TerminalScreen getScreen() {
+        return screen;
+    }
+
     private void drawMainMenu(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
         graphics.fillRectangle(
@@ -68,7 +72,6 @@ public class GuiMainMenu {
         graphics.putString(18,26,"[3]");
         graphics.putString(18,30,"EXIT");
         graphics.putString(18,31,"[ESC]");
-
     }
 
     public GuiMainMenu.COMMAND getNextCommand() throws IOException {

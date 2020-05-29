@@ -1,5 +1,7 @@
 package crossyroads.controller;
 
+import com.googlecode.lanterna.screen.TerminalScreen;
+import com.googlecode.lanterna.terminal.Terminal;
 import crossyroads.controller.states.MenuState;
 import crossyroads.controller.states.State;
 import crossyroads.model.MusicPlayer;
@@ -13,8 +15,8 @@ public class AppController {
     private boolean end;
     private MusicPlayer player;
 
-    public AppController() throws IOException {
-        this.currentState = new MenuState(this, new GuiMainMenu(ScreenFactory.getScreen()));
+    public AppController(TerminalScreen screen){
+        this.currentState = new MenuState(this, new GuiMainMenu(screen));
         this.end = false;
         this.player = new MusicPlayer("src/main/resources/music.wav");
     }
