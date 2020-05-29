@@ -75,6 +75,8 @@ public class GuiMainMenu {
         KeyStroke input = screen.readInput();
 
         switch (input.getKeyType()){
+            case Escape:
+                return COMMAND.EXIT;
             case Character:
                 if(input.getCharacter() == '1')
                     return GuiMainMenu.COMMAND.PLAY;
@@ -82,8 +84,6 @@ public class GuiMainMenu {
                     return COMMAND.HELP;
                 else if (input.getCharacter() == '3')
                     return COMMAND.HIGHSCORES;
-            case Escape:
-                return COMMAND.EXIT;
             default:
                 return GuiMainMenu.COMMAND.NOTHING;
         }
