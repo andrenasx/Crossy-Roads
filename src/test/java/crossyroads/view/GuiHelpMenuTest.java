@@ -17,6 +17,14 @@ import static org.mockito.Mockito.*;
 
 public class GuiHelpMenuTest {
     @Test
+    public void getScreen() {
+        TerminalScreen screen = mock(TerminalScreen.class);
+        GuiHelpMenu gui = new GuiHelpMenu(screen);
+
+        assertEquals(screen, gui.getScreen());
+    }
+
+    @Test
     public void commandTest() throws IOException {
         TerminalScreen screen = mock(TerminalScreen.class);
         GuiHelpMenu gui = new GuiHelpMenu(screen);

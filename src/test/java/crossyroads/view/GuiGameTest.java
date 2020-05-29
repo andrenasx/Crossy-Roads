@@ -12,9 +12,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class GuiGameTest {
+    @Test
+    public void getScreen() {
+        GameModel gameModel = Mockito.mock(GameModel.class);
+        TerminalScreen screen = mock(TerminalScreen.class);
+        GuiGame gui = new GuiGame(gameModel, screen);
+
+        assertEquals(screen, gui.getScreen());
+    }
+
     @Test
     public void drawTest() throws IOException {
         TerminalScreen screen = Mockito.mock(TerminalScreen.class);
