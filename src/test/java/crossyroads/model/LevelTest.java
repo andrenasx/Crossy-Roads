@@ -84,4 +84,11 @@ public class LevelTest {
         level.getLevelBackground();
         verify(terrain,times(1)).getBackground();
     }
+
+    @Test
+    public void getTerrain(){
+        Terrain terrain = mock(Terrain.class);
+        Level level = new Level(1, 30, 35, terrain);
+        assertEquals(terrain, level.getLevelTerrain());
+    }
 }
