@@ -12,6 +12,7 @@ import org.junit.Test;
 import java.io.IOException;
 
 import static com.googlecode.lanterna.input.KeyType.Enter;
+import static com.googlecode.lanterna.input.KeyType.Escape;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -35,7 +36,7 @@ public class GuiPauseMenuTest {
         when(screen.readInput()).thenReturn(KeyStroke.fromString("1"));
         assertEquals(GuiPauseMenu.COMMAND.MENU, gui.getNextCommand());
 
-        when(screen.readInput()).thenReturn(KeyStroke.fromString("2"));
+        when(screen.readInput()).thenReturn(new KeyStroke(Escape));
         assertEquals(GuiPauseMenu.COMMAND.RESUME, gui.getNextCommand());
     }
 
@@ -54,10 +55,10 @@ public class GuiPauseMenuTest {
         //DrawButtons
         verify(graphics,times(1)).setBackgroundColor(TextColor.Factory.fromString("#C8C8C8"));
         verify(graphics,times(1)).setForegroundColor(TextColor.Factory.fromString("#25221e"));
-        verify(graphics,times(1)).putString(27,25,"RESUME");
-        verify(graphics,times(1)).putString(28,26, "[2]");
-        verify(graphics,times(1)).putString(8, 25, "MENU");
-        verify(graphics,times(1)).putString(8, 26, "[1]");
+        verify(graphics,times(1)).putString(7, 25, "RESUME");
+        verify(graphics,times(1)).putString(7, 26, "[ESC]");
+        verify(graphics,times(1)).putString(28,25,"MENU");
+        verify(graphics,times(1)).putString(28,26, "[1]");
 
         //DrawPauseMenu
         verify(graphics,times(1)).fillRectangle(new TerminalPosition(0, 0), new TerminalSize(40, 36), ' ');

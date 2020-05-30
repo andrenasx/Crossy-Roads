@@ -59,20 +59,22 @@ public class GuiPauseMenu {
         }
         graphics.enableModifiers(SGR.BOLD);
         graphics.setForegroundColor(TextColor.Factory.fromString("#25221e"));
-        graphics.putString(27,25,"RESUME");
-        graphics.putString(28,26, "[2]");
-        graphics.putString(8, 25, "MENU");
-        graphics.putString(8, 26, "[1]");
+        graphics.putString(7, 25, "RESUME");
+        graphics.putString(7, 26, "[ESC]");
+        graphics.putString(28,25,"MENU");
+        graphics.putString(28,26, "[1]");
+
     }
 
     public GuiPauseMenu.COMMAND getNextCommand() throws IOException {
         KeyStroke input = screen.readInput();
 
-        switch (input.getCharacter()){
-            case '1':
-                return COMMAND.MENU;
-            case '2':
+        switch (input.getKeyType()){
+            case Escape:
                 return COMMAND.RESUME;
+            case Character:
+                if(input.getCharacter() == '1')
+                    return COMMAND.MENU;
             default:
                 return COMMAND.NOTHING;
         }
