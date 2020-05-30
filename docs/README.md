@@ -7,26 +7,30 @@ Cuidado! Não achavas que ia ser assim tão fácil pois não? Se fores contra os
 Este projeto está a ser desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt), André Nascimento (up201806461@fe.up.pt) e Pedro Coelho (up201806802@fe.up.pt) no âmbito da cadeira LPOO 2019/20.
 
 ## Implemented Features 
+- **Menu Inicial:** a aplicação inicializa neste menu, onde o jogador pode escolher jogar, aceder a um Menu Help ou de Highscores, ou sair do jogo.
 
+[![Image from Gyazo](https://i.gyazo.com/d7403de3e9baecddc34d5f1185573e32.png)](https://gyazo.com/d7403de3e9baecddc34d5f1185573e32)
+
+- **Menu Help:** neste menu o jogador tem uma descrição breve de quais são as regras do jogo e como jogar, tendo uma opção para começar logo uma partida ou voltar ao Menu Inicial.
+
+[![Image from Gyazo](https://i.gyazo.com/3b049be2bc4be52055405e49a43670aa.png)](https://gyazo.com/3b049be2bc4be52055405e49a43670aa)
+- **Menu Highscores:** neste menu apresentam-se os 7 melhores resultados, sendo demonstrado qual o último nível atingido, o score e a quantidade de movimentos efetuados durante a partida.
+
+[![Image from Gyazo](https://i.gyazo.com/94cfaced021bdd099397c17805f5be8b.png)](https://gyazo.com/94cfaced021bdd099397c17805f5be8b)
 - **Controlo da galinha:** a galinha é controlada através das setas do teclado.
 - **Moedas:** quando a galinha passa por cima de uma moeda, esta última desaparece e o _score_ da galinha é incrementado dependendo do valor da moeda recolhida.
-
-    [![Coin Collision](https://i.gyazo.com/05353e3bb1c16635ddc19c38356e0810.gif)](https://gyazo.com/05353e3bb1c16635ddc19c38356e0810)
-
 - **Movimento dos veículos:** os veículos deslocam-se consoante a sua direção (esquerda ou direita) a cada 200ms.
 - **Colisão entre galinha e veículos:** quando a galinha vai contra um veículo ou é atropleado por um a sua _health_ é reduzida e volta à posição inicial.
+- **Música de fundo:** o jogo tem a música de fundo para proporcionar uma melhor experiência e maior divertimento.
+- **Pausa:** ao carregar no ESC o jogador pode pausar o jogo, podendo depois retomá-lo ou sair do jogo.
 
-    [![Vehicle Collision](https://i.gyazo.com/63df273c94498e994c27186b530ddefa.gif)](https://gyazo.com/63df273c94498e994c27186b530ddefa)
-
-- **Música de fundo:** o jogo tem a música de fundo "O Pintinho Piu" para proporcionar uma melhor experiência e maior divertimento.
+[![Image from Gyazo](https://i.gyazo.com/ef9bdd8d4491d54f86d990337ca7f512.png)](https://gyazo.com/ef9bdd8d4491d54f86d990337ca7f512)
 - **Níveis:** o jogo consiste em 5 níveis com dificuldade, número de veículos e moedas crescente.
-- **Menu Inicial:** a aplicação inicializa neste menu, onde o jogador pode escolher jogar, aceder a um Menu Help ou de Highscores, ou sair do jogo.
-- **Menu Help:** neste menu o jogador tem uma descrição breve de quais são as regras do jogo e como jogar, tendo uma opção para começar logo uma partida ou voltar ao Menu Inicial.   
 - **Mensagens da _performance_:** no final de uma partida é apresentada uma mensagem no ecrã dizendo se o jogador ganhou ou perdeu e alguns aspetos da sua partida, como por exemplo, o _score_.
+
+[![Image from Gyazo](https://i.gyazo.com/9566abc8260a0d6bd99258140bd741c9.png)](https://gyazo.com/9566abc8260a0d6bd99258140bd741c9)
  
 ## Planned Features
-
-- **Registo dos _highscores_:** contabilizar o tempo de cada partida e guardar, sendo posteriormente apresentados na tabela.
 
 ## Design
 
@@ -114,8 +118,6 @@ Uma forma de melhorar o código seria dividir este método em vários, ficando o
 ## Testing
 
 - _Screenshot of coverage report:_
-
-[![Image from Gyazo](https://i.gyazo.com/6ea410024fbc031f7a1962c2f08905b1.png)](https://gyazo.com/6ea410024fbc031f7a1962c2f08905b1)
 
 ## Self-Evaluation
 

@@ -61,7 +61,7 @@ public class GuiHelpMenu {
         instructions.add(inst4);
         String inst5 = "-You lose health when hitting a vehicle";
         instructions.add(inst5);
-        String inst6 = "------------>Have fun!!!!!!<------------";
+        String inst6 = "             Have fun!!!!!!";
         instructions.add(inst6);
         int row = 13;
         for (String instruction : instructions) {

@@ -3,7 +3,6 @@ package crossyroads.controller.states;
 import crossyroads.controller.AppController;
 import crossyroads.view.GuiMainMenu;
 import crossyroads.view.GuiWon;
-import crossyroads.view.ScreenFactory;
 
 import java.io.IOException;
 
