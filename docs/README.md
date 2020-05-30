@@ -42,7 +42,7 @@ Por outro lado, não faz sentido que esta classe mãe fosse realmente um objeto 
 #### Implementation
 O gráfico em UML seguinte demonstra como foram aplicados estes patterns nas classes.
 
-[![Image from Gyazo](https://i.gyazo.com/af6e6d09cc0b7abdb3a8862e4b31a973.png)](https://gyazo.com/af6e6d09cc0b7abdb3a8862e4b31a973)
+[![Image from Gyazo](https://i.gyazo.com/94181cdc5c406c9f0458182b22901864.png)](https://gyazo.com/94181cdc5c406c9f0458182b22901864)
 
 #### Consequences
 
@@ -68,6 +68,10 @@ O gráfico em UML seguinte demonstra como, inicialmente, foi aplicado o padrão 
 [![Image from Gyazo](https://i.gyazo.com/98fc64d7ec1815f01be4c2108791a78e.png)](https://gyazo.com/98fc64d7ec1815f01be4c2108791a78e)
 
 O gráfico em UML seguinte demonstra como foi implementada esta mudança.
+
+[![Image from Gyazo](https://i.gyazo.com/827b0b2690c462fc7e29bbf58ac0c7a5.png)](https://gyazo.com/827b0b2690c462fc7e29bbf58ac0c7a5)
+
+*Notar que apenas está representado um State e a sua Gui respetiva
 
 ### - Mudanças de estado
 
