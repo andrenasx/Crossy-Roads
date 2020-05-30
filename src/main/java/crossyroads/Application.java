@@ -6,9 +6,9 @@ import crossyroads.view.ScreenFactory;
 
 import java.io.IOException;
 
-public class Game{
+public class Application {
     public static void main(String[] args) throws IOException {
-        new Game().start();
+        new Application().start();
     }
 
     private void start() throws IOException {
