@@ -36,7 +36,7 @@ Este projeto está a ser desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt
 
 #### Problem in Context
 
-Para a realização do jogo precisamos de vários objetos diferentes. Chegou-se à conclusão que estes teriam atributos em comum e, por isso, não fazia sentido repeti-los em todas as classes, o que levou à criação de uma classe mãe.
+Para a realização do jogo precisamos de vários objetos diferentes. Chegou-se à conclusão que estes teriam atributos em comum e, por isso, não fazia sentido repeti-los em todas as classes, o que levou à criação de uma classe mãe ([Element.java](../src/main/java/crossyroads/model/Element.java))
 Por outro lado, não faz sentido que esta classe mãe fosse realmente um objeto representado no jogo, uma vez que só teria os atributos em comum. Fazendo mais sentido representar os objetos criados nas suas sublasses.
 
 #### Implementation
@@ -73,15 +73,15 @@ O gráfico em UML seguinte demonstra como foi implementada esta mudança.
 
 #### Problem in Context
 
-Ter controlo sobre o estado atual e lidar com as mudanças de estado, sendo que cada parte do jogo terá o seu pro´rio estado correspondente, como por exemplo, o Menu Inicial tem o estado MainMenuState.
+Ter controlo sobre o estado atual e lidar com as mudanças de estado, sendo que cada parte do jogo terá o seu próprio estado correspondente, como por exemplo, o Menu Inicial tem o estado MainMenuState.
 
 #### The Pattern
 
-Recorremos ao _State Pattern_ que permite alterar o comportamento de um objeto quando o seu estado sofre alguma alteração. Foi criada uma interface State e depois classes para cada estado nas quais são implementados os métodos definidos na interface.
+Recorremos ao _State Pattern_ que permite alterar o comportamento de um objeto quando o seu estado sofre alguma alteração. Foi criada uma interface [State.java](../src/main/java/crossyroads/controller/states/State.java) e depois classes para cada estado nas quais são implementados os métodos definidos na interface.
 
 #### The Implementation
 
-Implementamos um AppController que guarda o estado atual e 'corre'. Dentro de cada estado, dependendo do comando que recebe passa a outro estado.
+Implementamos um controlador ([AppController.java](../src/main/java/crossyroads/controller/AppController.java)) que guarda o estado atual e 'corre'. Dentro de cada estado, dependendo do comando que recebe passa a outro estado.
 
 O gráfico UML seguinte demostra este padrão.
 
@@ -102,7 +102,7 @@ Após a implementação dos estados veio o problema da criação do TerminalScre
 
 Inicialmente foi implementado o _Singleton Pattern_ que permitia criar apenas uma vez a janela, caso esta não existisse, e devolvê-la, resolvendo assim o nosso problema. No entanto, criou outro problema, a impossibilidade de testar o código sem abrir uma janela do terminal.
 
-Deste modo, foi retirado este padrão. Aproveitando a classe já criada ScreenFactory que cria o terminal, este método passou a ser chamado uma única vez pela Aplicação principal, a Game, que, por sua vez passou o screen criado à AppController. Assim, todos os estados passaram a receber o screen permitindo cada uma das suas gui fazer alterações no screen já existente.
+Deste modo, foi retirado este padrão. Aproveitando a classe, já criada, [ScreenFactory.java](../src/main/java/crossyroads/view/ScreenFactory.java) que cria o terminal, este método passou a ser chamado uma única vez pela Aplicação principal ([Application.java](../src/main/java/crossyroads/Application.java)) que, por sua vez passou o screen criado à [AppController.java](../src/main/java/crossyroads/controller/AppController.java). Assim, todos os estados passaram a receber o screen permitindo cada uma das suas gui fazer alterações no screen já existente.
 
 O gráfico UML seguinte demonstra esta implementação.
 
@@ -134,17 +134,17 @@ No nosso caso, o _GameMap_ contém toda a informação referente ao nível que �
 
 - _Lazy Class_ e _Data Class_
 
-As classes Truck e Car implementam apenas 3 métodos, a obtenção do comprimento do veículo, a sua cor e velocidade. Não têm grande utilidade.
+As classes [Truck.java](../src/main/java/crossyroads/model/Truck.java) e [Car.java](../src/main/java/crossyroads/model/Car.java) implementam apenas 3 métodos, a obtenção do comprimento do veículo, a sua cor e velocidade. Não têm grande utilidade.
 
 Uma das formas de eliminar este code smell seria eliminar as subclasses e os seus atributos e métodos passarem a fazer parte da classe mãe.
 
-Outra classe que também é _Data Class_ é a Score, uma vez que é uma classe que apenas contém getters e setters. Esta apenas guarda a informação a ser utilizada pela classe Highscore.
+Outra classe que também é _Data Class_ é a [Score.java](../src/main/java/crossyroads/model/Score.java), uma vez que é uma classe que apenas contém getters e setters. Esta apenas guarda a informação a ser utilizada pela classe [Highscore.java](../src/main/java/crossyroads/model/Highscore.java).
 
 Para eliminar este code smell podiam ser pensadas outras funcionalidades, ou até mesmo analisar as funcionalidades da Highscore e ver se estas não estariam melhor localizadas na Data Class.
 
 - _Duplicate Code_
 
-Todas as classes _Gui_ têm o método _drawButtons_ no qual existem algumas linhas de código comuns em todas estas classes.
+Todas as classes [Gui](../src/main/java/crossyroads/view) têm o método _drawButtons_ no qual existem algumas linhas de código comuns em todas estas classes.
 
 Uma forma de eliminar este smell seria criar uma classe chamada _DrawButtons_ que desenharia um número de botões e uma lista de intruções passadas por argumento e cada classe chamaria este método. Uma vez que este método só seria implementado uma vez, eliminaria as linhas de código duplicadas.
 
