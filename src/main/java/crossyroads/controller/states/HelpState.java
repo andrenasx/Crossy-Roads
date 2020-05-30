@@ -28,7 +28,7 @@ public class HelpState implements State{
         GuiHelpMenu.COMMAND command = gui.getNextCommand();
         switch (command){
             case PLAY:
-                GameModel gameModel = new GameModelCreator().createGameModel(40, 35, 5);
+                GameModel gameModel = new GameModelCreator().createGameModel(40, 35);
                 appController.setCurrentState(new GameState(appController, new GuiGame(gameModel, gui.getScreen()), gameModel, new ChickenController(gameModel), new VehicleController(gameModel)));
                 break;
             case BACK:

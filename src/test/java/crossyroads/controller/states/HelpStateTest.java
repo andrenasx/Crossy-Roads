@@ -34,7 +34,7 @@ public class HelpStateTest {
         //Play Command
         when(gui.getNextCommand()).thenReturn(GuiHelpMenu.COMMAND.PLAY);
         helpState.step();
-        GameModel gameModel = new GameModelCreator().createGameModel(40, 35, 5);
+        GameModel gameModel = new GameModelCreator().createGameModel(40, 35);
         verify(appController, times(1)).setCurrentState(new GameState(appController, new GuiGame(gameModel, screen), gameModel, new ChickenController(gameModel), new VehicleController(gameModel)));
     }
 }

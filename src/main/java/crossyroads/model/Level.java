@@ -4,15 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Level {
-    private int level;
     private int width;
     private int height;
     private List<Vehicle> vehicles;
     private List<Coin> coins;
     private Terrain terrain;
 
-    public Level(int level, int width, int height, Terrain terrain) {
-        this.level = level;
+    public Level(int width, int height, Terrain terrain) {
         this.width = width;
         this.height = height;
         this.terrain = terrain;

@@ -29,7 +29,7 @@ public class HighscoreSateTest {
         //Play command
         when(gui.getNextCommand()).thenReturn(GuiHighscoreMenu.COMMAND.PLAY);
         highscoreState.step();
-        GameModel gameModel = new GameModelCreator().createGameModel(40, 35, 5);
+        GameModel gameModel = new GameModelCreator().createGameModel(40, 35);
         verify(appController,times(1)).setCurrentState(new GameState(appController, new GuiGame(gameModel, screen), gameModel, new ChickenController(gameModel), new VehicleController(gameModel)));
 
         //Back command

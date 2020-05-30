@@ -1,6 +1,7 @@
 package crossyroads.model;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,29 +13,26 @@ public class Terrain {
     private String directory;
     private List<Element> elements;
 
-    public Terrain(String filename, String directory) {
+    public Terrain(String filename, String directory) throws IOException {
         this.filename = filename;
         this.directory = directory;
         this.elements = new ArrayList<>();
         readFile(this.filename, this.directory);
     }
 
-    private void readFile(String filename, String directory){
+    private void readFile(String filename, String directory) throws IOException {
         String filePath = "src/" + directory + "/resources/" + filename;
         BufferedReader br;
         List<String> allLines = new ArrayList<>();
-        try {
-            br = new BufferedReader(new FileReader(filePath));
-            String st;
-            while ((st = br.readLine()) != null){
-                allLines.add(st);
 
-            }
-            br.close();
+        br = new BufferedReader(new FileReader(filePath));
+        String st;
+        while ((st = br.readLine()) != null){
+            allLines.add(st);
+
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        br.close();
+
         this.background = allLines.get(0);
         for(int i = 1; i < allLines.size(); i++){
             addElement(allLines.get(i));

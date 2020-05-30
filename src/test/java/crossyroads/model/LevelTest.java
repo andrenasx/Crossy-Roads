@@ -17,7 +17,7 @@ public class LevelTest {
         int y = rand.nextInt(70);
 
         Terrain terrain = mock(Terrain.class);
-        Level level = new Level(1, x, y, terrain);
+        Level level = new Level(x, y, terrain);
         assertEquals(x, level.getWidth());
         assertEquals(y, level.getHeight());
     }
@@ -25,7 +25,7 @@ public class LevelTest {
     @Test
     public void addElementTest(){
         Terrain terrain = mock(Terrain.class);
-        Level level = new Level(1, 30,70, terrain);
+        Level level = new Level(30,70, terrain);
 
         Coin coin = new Coin(10,10);
         Coin coin1 = new Coin(20,20);
@@ -56,7 +56,7 @@ public class LevelTest {
     @Test
     public void getAllElementsTest(){
         Terrain terrain = mock(Terrain.class);
-        Level level = new Level(1, 30,70, terrain);
+        Level level = new Level(30,70, terrain);
 
         Coin coin = new Coin(10,10);
         Coin coin1 = new Coin(20,20);
@@ -80,7 +80,7 @@ public class LevelTest {
     @Test
     public void getLevelBackgroundTest(){
         Terrain terrain = mock(Terrain.class);
-        Level level = new Level(1, 30, 45, terrain);
+        Level level = new Level(30, 45, terrain);
         level.getLevelBackground();
         verify(terrain,times(1)).getBackground();
     }
@@ -88,7 +88,7 @@ public class LevelTest {
     @Test
     public void getTerrain(){
         Terrain terrain = mock(Terrain.class);
-        Level level = new Level(1, 30, 35, terrain);
+        Level level = new Level(30, 35, terrain);
         assertEquals(terrain, level.getLevelTerrain());
     }
 }
