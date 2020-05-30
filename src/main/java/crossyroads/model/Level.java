@@ -48,8 +48,4 @@ public class Level {
     public Terrain getLevelTerrain(){
         return terrain;
     }
-
-    public String getLevelBackground(){
-        return terrain.getBackground();
-    }
 }

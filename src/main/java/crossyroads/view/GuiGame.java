@@ -65,7 +65,7 @@ public class GuiGame {
     }
 
     private String getBackgroundColor(int y){
-        String color = gameModel.getCurrentLevel().getLevelBackground();
+        String color = gameModel.getCurrentLevel().getLevelTerrain().getBackground();
 
         switch (color.charAt(y)) {
             case 'g':

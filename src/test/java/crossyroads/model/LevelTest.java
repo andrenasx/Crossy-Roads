@@ -78,14 +78,6 @@ public class LevelTest {
     }
 
     @Test
-    public void getLevelBackgroundTest(){
-        Terrain terrain = mock(Terrain.class);
-        Level level = new Level(30, 45, terrain);
-        level.getLevelBackground();
-        verify(terrain,times(1)).getBackground();
-    }
-
-    @Test
     public void getTerrain(){
         Terrain terrain = mock(Terrain.class);
         Level level = new Level(30, 35, terrain);

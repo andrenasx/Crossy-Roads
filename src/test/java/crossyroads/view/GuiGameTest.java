@@ -41,8 +41,10 @@ public class GuiGameTest {
         when(gameModel.getHeight()).thenReturn(35);
 
         Level level = mock(Level.class);
+        Terrain terrain = mock(Terrain.class);
+        when(terrain.getBackground()).thenReturn("dgggsgggggrrrggggggggggrrrggggggggg");
         when(gameModel.getCurrentLevel()).thenReturn(level);
-        when(level.getLevelBackground()).thenReturn("dgggsgggggrrrggggggggggrrrggggggggg");
+        when(level.getLevelTerrain()).thenReturn(terrain);
 
         List<Element> elements = new ArrayList<>();
         elements.add(new Coin(15,20));
