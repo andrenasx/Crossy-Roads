@@ -17,7 +17,11 @@ Este projeto está a ser desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt
 - **Música de fundo:** o jogo tem a música de fundo para proporcionar uma melhor experiência e maior divertimento.
 - **Pausa:** ao carregar no ESC o jogador pode pausar o jogo, podendo depois retomá-lo ou voltar ao Menu Inicial.
 - **Níveis:** o jogo consiste em 5 níveis com dificuldade, número de veículos e moedas crescente.
-- **Mensagens da _performance_:** no final de uma partida é apresentada uma mensagem no ecrã dizendo se o jogador ganhou ou perdeu e alguns aspetos da sua partida, como por exemplo, o _score_. 
+- **Mensagens da _performance_:** no final de uma partida é apresentada uma mensagem no ecrã dizendo se o jogador ganhou ou perdeu e alguns aspetos da sua partida, como por exemplo, o _score_.
+
+### Project Demo
+
+
 
 ## Planned Features
 
@@ -65,10 +69,42 @@ O gráfico em UML seguinte demonstra como, inicialmente, foi aplicado o padrão 
 
 O gráfico em UML seguinte demonstra como foi implementada esta mudança.
 
+### - Mudanças de estado
+
+#### Problem in Context
+
+Ter controlo sobre o estado atual e lidar com as mudanças de estado, sendo que cada parte do jogo terá o seu pro´rio estado correspondente, como por exemplo, o Menu Inicial tem o estado MainMenuState.
+
+#### The Pattern
+
+Recorremos ao _State Pattern_ que permite alterar o comportamento de um objeto quando o seu estado sofre alguma alteração. Foi criada uma interface State e depois classes para cada estado nas quais são implementados os métodos definidos na interface.
+
+#### The Implementation
+
+Implementamos um AppController que guarda o estado atual e 'corre'. Dentro de cada estado, dependendo do comando que recebe passa a outro estado.
+
+O gráfico UML seguinte demostra este padrão.
+
 #### Consequences
 
-- Uma relação abstrata entre a view e observador;
-- Permite comunicação entre os objetos;
+- Facilidade em acrescentar mais estados uma vez que, não se tem que alterar os estados já existentes.
+- A independência entre cada estado permite que cada um tenha o seu comportamento;
+- O comportamento de um objeto é o resultado de uma função do próprio estado, e a alteração ocorre em _runtime_ dependendo do estado.
+- Maior número de classes, uma para cada estado.
+
+### - Criação do TerminalScreen
+
+#### Problem in Context
+
+Após a implementação dos estados veio o problema da criação do TerminalScreen, uma vez que o objetivo era que o terminal fosse criado uma única vez, mas permitindo as alterações da view dependendo de cada estado.
+
+#### Implementation
+
+Inicialmente foi implementado o _Singleton Pattern_ que permitia criar apenas uma vez a janela, caso esta não existisse, e devolvê-la, resolvendo assim o nosso problema. No entanto, criou outro problema, a impossibilidade de testar o código sem abrir uma janela do terminal.
+
+Deste modo, foi retirado este padrão. Aproveitando a classe já criada ScreenFactory que cria o terminal, este método passou a ser chamado uma única vez pela Aplicação principal, a Game, que, por sua vez passou o screen criado à AppController. Assim, todos os estados passaram a receber o screen permitindo cada uma das suas gui fazer alterações no screen já existente.
+
+O gráfico UML seguinte demonstra esta implementação.
 
 ### - Organização de código
 
@@ -98,19 +134,26 @@ No nosso caso, o _GameMap_ contém toda a informação referente ao nível que �
 
 - _Lazy Class_ e _Data Class_
 
-As classes Truck e Car implementam apenas 2 métodos, a obtenção do comprimento do veículo e a sua cor. Não têm grande utilidade.
+As classes Truck e Car implementam apenas 3 métodos, a obtenção do comprimento do veículo, a sua cor e velocidade. Não têm grande utilidade.
 
 Uma das formas de eliminar este code smell seria eliminar as subclasses e os seus atributos e métodos passarem a fazer parte da classe mãe.
 
-- _Long Method_
+Outra classe que também é _Data Class_ é a Score, uma vez que é uma classe que apenas contém getters e setters. Esta apenas guarda a informação a ser utilizada pela classe Highscore.
 
-Na classe VehicleController, o método moveVehicles() é demasiado extenso tornando-se a leitura do código difícil.
+Para eliminar este code smell podiam ser pensadas outras funcionalidades, ou até mesmo analisar as funcionalidades da Highscore e ver se estas não estariam melhor localizadas na Data Class.
 
-Uma forma de melhorar o código seria dividir este método em vários, ficando o código mais distribuído e legível.
+- _Duplicate Code_
+
+Todas as classes _Gui_ têm o método _drawButtons_ no qual existem algumas linhas de código comuns em todas estas classes.
+
+Uma forma de eliminar este smell seria criar uma classe chamada _DrawButtons_ que desenharia um número de botões e uma lista de intruções passadas por argumento e cada classe chamaria este método. Uma vez que este método só seria implementado uma vez, eliminaria as linhas de código duplicadas.
+
 
 ## Testing
 
 - _Screenshot of coverage report:_
+
+[![Image from Gyazo](https://i.gyazo.com/9095eeaf56fbb2874fc05e357c575a04.png)](https://gyazo.com/9095eeaf56fbb2874fc05e357c575a04)
 
 ## Self-Evaluation
 
