@@ -8,29 +8,23 @@ Este projeto está a ser desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt
 
 ## Implemented Features 
 - **Menu Inicial:** a aplicação inicializa neste menu, onde o jogador pode escolher jogar, aceder a um Menu Help ou de Highscores, ou sair do jogo.
-
-[![Image from Gyazo](https://i.gyazo.com/d7403de3e9baecddc34d5f1185573e32.png)](https://gyazo.com/d7403de3e9baecddc34d5f1185573e32)
-
-- **Menu Help:** neste menu o jogador tem uma descrição breve de quais são as regras do jogo e como jogar, tendo uma opção para começar logo uma partida ou voltar ao Menu Inicial.
-
-[![Image from Gyazo](https://i.gyazo.com/3b049be2bc4be52055405e49a43670aa.png)](https://gyazo.com/3b049be2bc4be52055405e49a43670aa)
+- **Menu Help:** neste menu o jogador tem uma breve descrição de quais são as regras do jogo e como jogar, tendo uma opção para começar logo uma partida ou voltar ao Menu Inicial.
 - **Menu Highscores:** neste menu apresentam-se os 7 melhores resultados, sendo demonstrado qual o último nível atingido, o score e a quantidade de movimentos efetuados durante a partida.
-
-[![Image from Gyazo](https://i.gyazo.com/94cfaced021bdd099397c17805f5be8b.png)](https://gyazo.com/94cfaced021bdd099397c17805f5be8b)
 - **Controlo da galinha:** a galinha é controlada através das setas do teclado.
-- **Moedas:** quando a galinha passa por cima de uma moeda, esta última desaparece e o _score_ da galinha é incrementado dependendo do valor da moeda recolhida.
-- **Movimento dos veículos:** os veículos deslocam-se consoante a sua direção (esquerda ou direita) a cada 200ms.
-- **Colisão entre galinha e veículos:** quando a galinha vai contra um veículo ou é atropleado por um a sua _health_ é reduzida e volta à posição inicial.
+- **Moedas:** quando a galinha passa por cima de uma moeda, esta última desaparece e o _score_ da galinha é incrementado.
+- **Movimento dos veículos:** os veículos deslocam-se consoante a sua direção (esquerda ou direita) e velocidade, sendo que os carros se deslocam a maior velocidade que os camiões.
+- **Colisão entre galinha e veículos:** quando a galinha vai contra um veículo ou é atropelado por um a sua _health_ é reduzida e volta à posição inicial. Após três colisões o jogador perde.
 - **Música de fundo:** o jogo tem a música de fundo para proporcionar uma melhor experiência e maior divertimento.
-- **Pausa:** ao carregar no ESC o jogador pode pausar o jogo, podendo depois retomá-lo ou sair do jogo.
-
-[![Image from Gyazo](https://i.gyazo.com/ef9bdd8d4491d54f86d990337ca7f512.png)](https://gyazo.com/ef9bdd8d4491d54f86d990337ca7f512)
+- **Pausa:** ao carregar no ESC o jogador pode pausar o jogo, podendo depois retomá-lo ou voltar ao Menu Inicial.
 - **Níveis:** o jogo consiste em 5 níveis com dificuldade, número de veículos e moedas crescente.
-- **Mensagens da _performance_:** no final de uma partida é apresentada uma mensagem no ecrã dizendo se o jogador ganhou ou perdeu e alguns aspetos da sua partida, como por exemplo, o _score_.
+- **Mensagens da _performance_:** no final de uma partida é apresentada uma mensagem no ecrã dizendo se o jogador ganhou ou perdeu e alguns aspetos da sua partida, como por exemplo, o _score_. 
 
-[![Image from Gyazo](https://i.gyazo.com/9566abc8260a0d6bd99258140bd741c9.png)](https://gyazo.com/9566abc8260a0d6bd99258140bd741c9)
- 
 ## Planned Features
+
+- **Efeitos sonoros:** apanhar uma moeda ou ir contra um carro seria sinalizado com um efeito sonoro correspondente.
+- **Pausar a música:** quando o jogo está em pausa, a música também pausa e depois quando o jogo é retomado a música também continua.
+- **Power-ups:** se fossem acrescentados mais níveis seriam disponibilizados power-ups distribuídos pelo nível, como por exemplo, uma vida.
+
 
 ## Design
 
@@ -40,11 +34,6 @@ Este projeto está a ser desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt
 
 Para a realização do jogo precisamos de vários objetos diferentes. Chegou-se à conclusão que estes teriam atributos em comum e, por isso, não fazia sentido repeti-los em todas as classes, o que levou à criação de uma classe mãe.
 Por outro lado, não faz sentido que esta classe mãe fosse realmente um objeto representado no jogo, uma vez que só teria os atributos em comum. Fazendo mais sentido representar os objetos criados nas suas sublasses.
-
-#### The Patterns
-
-Aplicamos o _**Factory Method**_ _pattern_. Este permite que as subclasses determinem o objeto a ser criado sem conseguir antecipar o que será esse objeto. Com isto conseguimos resolver o problema referido a cima, a classe mãe, Element, permite as suas subclasses, por exemplo Chicken, determinarem o objeto que querem criar, não interferindo ou tendo qualquer conhecimento do objeto a ser criado.
-Também foi aplicado o _**Composite**_ _pattern_. Este permite a hierarquia entre classes, quando se quer representar classes pertencendo a uma parte/todo. Assim, em vez de repetirmos os métodos em todas as classes, agora as subclasses herdam estes métodos em comum da classe mãe.
 
 #### Implementation
 O gráfico em UML seguinte demonstra como foram aplicados estes patterns nas classes.
@@ -61,16 +50,20 @@ O gráfico em UML seguinte demonstra como foram aplicados estes patterns nas cla
 
 #### Problem in Context
 
-Quando ocorre alguma alterações durante o jogo, a Chicken ou veículos se moverem por exemplo, a view tem que ser notificada para voltar a desenhar.
+Quando ocorre alguma alteração durante o jogo, a Chicken ou veículos se moverem, por exemplo, a view tem que ser notificada para voltar a desenhar.
 
 #### The Pattern
 
-Aplicamos o _**Observer**_ _pattern_. Este é usado entre classes com dependências de modo que quando um objeto é alterado, todos os objetos dependentes deste têm que ser notificados e atualizados. Desta forma, sempre que ocorre algum movimento ou alteração ao jogo, a view é notificada e volta a desenhar.
+Inicialmente foi aplicado o _**Observer**_ _pattern_. Este é usado entre classes com dependências de modo que quando um objeto é alterado, todos os objetos dependentes deste têm que ser notificados e atualizados. Desta forma, sempre que ocorre algum movimento ou alteração ao jogo, a view é notificada e volta a desenhar.
+
+No entanto, chegamos à conclusão que o uso deste padrão é desnecessário para o jogo. Deste modo, retirou-se a classe Observer e agora é dentro do próprio estado que é desenhada a view correspondente.
 
 #### Implementation
-O gráfico em UML seguinte demonstra como foi aplicado este pattern nas classes.
+O gráfico em UML seguinte demonstra como, inicialmente, foi aplicado o padrão nas classes.
 
 [![Image from Gyazo](https://i.gyazo.com/98fc64d7ec1815f01be4c2108791a78e.png)](https://gyazo.com/98fc64d7ec1815f01be4c2108791a78e)
+
+O gráfico em UML seguinte demonstra como foi implementada esta mudança.
 
 #### Consequences
 
