@@ -135,7 +135,7 @@ Deste modo, foi retirado este padrão. Aproveitando a classe, já criada, [Scree
 
 O gráfico UML seguinte demonstra esta implementação.
 
-
+[![Image from Gyazo](https://i.gyazo.com/8599b08a3e90101bbe6a385f44bc7d41.png)](https://gyazo.com/8599b08a3e90101bbe6a385f44bc7d41)
 
 ### - Organização de código
 
