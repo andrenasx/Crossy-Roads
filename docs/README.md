@@ -157,7 +157,7 @@ No nosso caso, o _GameModel_ contém toda a informação referente aos níveis e
 
 O gráfico em UML seguinte representa este padrão.
 
-[![MVC](https://i.gyazo.com/0efec72c41247b5e6ce85dabb795bb89.png)](https://gyazo.com/0efec72c41247b5e6ce85dabb795bb89)
+[![Image from Gyazo](https://i.gyazo.com/9cd60216aab77a381048b3ff7c60e840.png)](https://gyazo.com/9cd60216aab77a381048b3ff7c60e840)
 
 #### Consequences
 
