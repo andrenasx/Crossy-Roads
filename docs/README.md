@@ -8,15 +8,36 @@ Este projeto foi desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt), Andr�
 
 ## Implemented Features 
 - **Menu Inicial:** a aplicação inicializa neste menu, onde o jogador pode escolher jogar, aceder a um Menu Help ou de Highscores, ou sair do jogo.
+
+    [![Image from Gyazo](https://i.gyazo.com/64fedd52a04a48c96ab45fe18cca1550.png)](https://gyazo.com/64fedd52a04a48c96ab45fe18cca1550)
+    
 - **Menu Help:** neste menu o jogador tem uma breve descrição de quais são as regras do jogo e como jogar, tendo uma opção para começar logo uma partida ou voltar ao Menu Inicial.
+
+    [![Image from Gyazo](https://i.gyazo.com/fb485a9ff6a133849a548a5a2665226e.png)](https://gyazo.com/fb485a9ff6a133849a548a5a2665226e)
+    
 - **Menu Highscores:** neste menu apresentam-se os 7 melhores resultados, sendo demonstrado qual o último nível atingido, o score e a quantidade de movimentos efetuados durante a partida.
+
+    [![Image from Gyazo](https://i.gyazo.com/8fab964708944e9b17fd9588e507870e.png)](https://gyazo.com/8fab964708944e9b17fd9588e507870e)
+    
 - **Controlo da galinha:** a galinha é controlada através das setas do teclado.
 - **Moedas:** quando a galinha passa por cima de uma moeda, esta última desaparece e o _score_ da galinha é incrementado.
+
+    [![Image from Gyazo](https://i.gyazo.com/08ba9edbcf6815657c36a15f39b658f4.gif)](https://gyazo.com/08ba9edbcf6815657c36a15f39b658f4)
+    
 - **Movimento dos veículos:** os veículos deslocam-se consoante a sua direção (esquerda ou direita) e velocidade, sendo que os carros se deslocam a maior velocidade que os camiões.
 - **Colisão entre galinha e veículos:** quando a galinha vai contra um veículo ou é atropelado por um a sua _health_ é reduzida e volta à posição inicial. Após três colisões o jogador perde.
+
+    [![Image from Gyazo](https://i.gyazo.com/2b4efbe03299cc45b212da4ab42e6655.gif)](https://gyazo.com/2b4efbe03299cc45b212da4ab42e6655)
+    
 - **Música de fundo:** o jogo tem a música de fundo para proporcionar uma melhor experiência e maior divertimento.
 - **Pausa:** ao carregar no ESC o jogador pode pausar o jogo, podendo depois retomá-lo ou voltar ao Menu Inicial.
+
+    [![Image from Gyazo](https://i.gyazo.com/ddfe232c4707db6445c6b465c591ba2f.png)](https://gyazo.com/ddfe232c4707db6445c6b465c591ba2f)
+    
 - **Níveis:** o jogo consiste em 5 níveis com dificuldade, número de veículos e moedas crescente.
+
+    [![Image from Gyazo](https://i.gyazo.com/02c2b3ea39ff5c4141b46e27d7e9cf93.gif)](https://gyazo.com/02c2b3ea39ff5c4141b46e27d7e9cf93)
+    
 - **Mensagens da _performance_:** no final de uma partida é apresentada uma mensagem no ecrã dizendo se o jogador ganhou ou perdeu e alguns aspetos da sua partida, como por exemplo, o _score_.
 
 ### Project Demo
@@ -40,7 +61,7 @@ Para a realização do jogo precisamos de vários objetos diferentes. Chegou-se 
 Por outro lado, não faz sentido que esta classe mãe fosse realmente um objeto representado no jogo, uma vez que só teria os atributos em comum. Fazendo mais sentido representar os objetos criados nas suas sublasses.
 
 #### Implementation
-O gráfico em UML seguinte demonstra como foram aplicados estes patterns nas classes.
+O gráfico em UML seguinte demonstra como foi a implementação nas classes.
 
 [![Image from Gyazo](https://i.gyazo.com/94181cdc5c406c9f0458182b22901864.png)](https://gyazo.com/94181cdc5c406c9f0458182b22901864)
 

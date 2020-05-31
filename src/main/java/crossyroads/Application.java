@@ -12,7 +12,7 @@ public class Application {
     }
 
     private void start() throws IOException {
-        TerminalScreen screen = new ScreenFactory().createScreen(40, 36);
+        TerminalScreen screen = new ScreenFactory(40, 36).getScreen();
         AppController controller = new AppController(screen);
         controller.start();
     }

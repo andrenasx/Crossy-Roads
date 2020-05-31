@@ -11,10 +11,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class ScreenFactory {
+    private TerminalScreen screen;
 
-    public ScreenFactory() {}
-
-    public TerminalScreen createScreen(int width, int height) throws IOException {
+    public ScreenFactory(int width, int height) throws IOException {
         File fontfile = new File("src/main/resources/Anonymous.ttf");
         Font font = null;
         try {
@@ -26,6 +25,7 @@ public class ScreenFactory {
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
 
+        assert font != null;
         Font loadedFont = font.deriveFont(Font.PLAIN, 15);
         AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
 
@@ -36,11 +36,14 @@ public class ScreenFactory {
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
         terminalFactory.setInitialTerminalSize(terminalSize);
         Terminal terminal = terminalFactory.createTerminal();
-        TerminalScreen screen = new TerminalScreen(terminal);
+        screen = new TerminalScreen(terminal);
 
         screen.setCursorPosition(null);   // we don't need a cursor
         screen.startScreen();             // screens must be started
         screen.doResizeIfNecessary();     // resize screen if necessary
+    }
+
+    public TerminalScreen getScreen(){
         return screen;
     }
 }
