@@ -99,6 +99,6 @@ public class GuiWonTest {
         verify(graphics,times(1)).putString(8, 32, "MENU");
         verify(graphics,times(1)).putString(8, 33, "[1]");
 
-        verify(graphics,times(1)).putString(3, 20, "Score: " + score + "\tHealth: " + health + "\tSteps: " + steps);
+        verify(graphics,times(1)).putString(4, 20, "Score: " + score + "\tHealth: " + health + "\tSteps: " + steps);
     }
 }

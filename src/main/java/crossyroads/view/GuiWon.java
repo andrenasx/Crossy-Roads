@@ -63,7 +63,7 @@ public class GuiWon implements Gui{
         for(int i = 0; i <= 2; i++){
             graphics.fillRectangle(
                     new TerminalPosition(column, 32),
-                    new TerminalSize(9, 2),
+                    new TerminalSize(10, 2),
                     ' ');
             column += 20;
         }
@@ -79,7 +79,7 @@ public class GuiWon implements Gui{
     private void drawStats(TextGraphics graphics){
         graphics.setBackgroundColor(TextColor.Factory.fromString("#006600"));
         graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(3, 20, "Score: " + score + "\tHealth: " + health + "\tSteps: " + steps);
+        graphics.putString(4, 20, "Score: " + score + "\tHealth: " + health + "\tSteps: " + steps);
     }
 
     public COMMAND getNextCommand() throws IOException {
