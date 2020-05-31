@@ -90,7 +90,7 @@ O gráfico em UML seguinte demonstra como, inicialmente, foi aplicado o padrão 
 
 O gráfico em UML seguinte demonstra como foi implementada esta mudança.
 
-[![Image from Gyazo](https://i.gyazo.com/cbee8d646bbdb2f787266536f277005c.png)](https://gyazo.com/cbee8d646bbdb2f787266536f277005c)
+[![Image from Gyazo](https://i.gyazo.com/3d5ef8fb9af47c90fdc622a02f2ff02a.png)](https://gyazo.com/3d5ef8fb9af47c90fdc622a02f2ff02a)
 
 *Notar que apenas está representado um State e a sua Gui respetiva
 
