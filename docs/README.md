@@ -69,7 +69,7 @@ O gráfico em UML seguinte demonstra como, inicialmente, foi aplicado o padrão 
 
 O gráfico em UML seguinte demonstra como foi implementada esta mudança.
 
-[![Image from Gyazo](https://i.gyazo.com/827b0b2690c462fc7e29bbf58ac0c7a5.png)](https://gyazo.com/827b0b2690c462fc7e29bbf58ac0c7a5)
+[![Image from Gyazo](https://i.gyazo.com/cbee8d646bbdb2f787266536f277005c.png)](https://gyazo.com/cbee8d646bbdb2f787266536f277005c)
 
 *Notar que apenas está representado um State e a sua Gui respetiva
 
@@ -109,6 +109,8 @@ Inicialmente foi implementado o _Singleton Pattern_ que permitia criar apenas um
 Deste modo, foi retirado este padrão. Aproveitando a classe, já criada, [ScreenFactory.java](../src/main/java/crossyroads/view/ScreenFactory.java) que cria o terminal, este método passou a ser chamado uma única vez pela Aplicação principal ([Application.java](../src/main/java/crossyroads/Application.java)) que, por sua vez passou o screen criado à [AppController.java](../src/main/java/crossyroads/controller/AppController.java). Assim, todos os estados passaram a receber o screen permitindo cada uma das suas gui fazer alterações no screen já existente.
 
 O gráfico UML seguinte demonstra esta implementação.
+
+
 
 ### - Organização de código
 
