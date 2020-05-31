@@ -44,14 +44,13 @@ Este projeto foi desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt), Andr�
 
 ### Project Demo
 
-
+   ![demo](./project_demo/demo.gif)
 
 ## Planned Features
 
 - **Efeitos sonoros:** apanhar uma moeda ou ir contra um carro seria sinalizado com um efeito sonoro correspondente.
 - **Pausar a música:** quando o jogo está em pausa, a música também pausa e depois quando o jogo é retomado a música também continua.
 - **Power-ups:** se fossem acrescentados mais níveis seriam disponibilizados power-ups distribuídos pelo nível, como por exemplo, uma vida.
-
 
 ## Design
 
