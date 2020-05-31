@@ -40,8 +40,8 @@ public class Level {
     public List<Element> getAllElements() {
         List<Element> elements = new ArrayList<>();
 
-        elements.addAll(vehicles);
         elements.addAll(coins);
+        elements.addAll(vehicles);
         return elements;
     }
 
