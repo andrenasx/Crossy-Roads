@@ -1,9 +1,9 @@
 package crossyroads.controller.states;
 
 import crossyroads.controller.AppController;
+import crossyroads.view.Gui;
 import crossyroads.view.GuiLost;
 import crossyroads.view.GuiMainMenu;
-import crossyroads.view.ScreenFactory;
 
 import java.io.IOException;
 
@@ -19,7 +19,7 @@ public class LostState implements State{
     @Override
     public void step() throws IOException {
         gui.draw();
-        GuiLost.COMMAND command = gui.getNextCommand();
+        Gui.COMMAND command = gui.getNextCommand();
         switch (command){
             case EXIT:
                 appController.setEnd();

@@ -10,10 +10,9 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 
 import java.io.IOException;
 
-public class GuiLost {
+public class GuiLost implements Gui{
     private TerminalScreen screen;
     private int level;
-    public enum COMMAND {MENU, EXIT, NOTHING}
 
     public GuiLost(TerminalScreen screen, int level){
         this.level = level;

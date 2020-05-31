@@ -21,7 +21,7 @@ public class MenuState implements State{
     @Override
     public void step() throws IOException {
         gui.draw();
-        GuiMainMenu.COMMAND command = gui.getNextCommand();
+        Gui.COMMAND command = gui.getNextCommand();
         switch (command){
             case PLAY:
                 GameModel gameModel = new GameModelCreator().createGameModel(40, 35);

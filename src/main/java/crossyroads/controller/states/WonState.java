@@ -1,6 +1,7 @@
 package crossyroads.controller.states;
 
 import crossyroads.controller.AppController;
+import crossyroads.view.Gui;
 import crossyroads.view.GuiMainMenu;
 import crossyroads.view.GuiWon;
 
@@ -17,7 +18,7 @@ public class WonState implements State {
     @Override
     public void step() throws IOException {
         gui.draw();
-        GuiWon.COMMAND command = gui.getNextCommand();
+        Gui.COMMAND command = gui.getNextCommand();
         switch (command){
             case EXIT:
                 appController.setEnd();

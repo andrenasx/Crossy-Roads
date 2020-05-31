@@ -10,10 +10,9 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 
 import java.io.IOException;
 
-public class GuiWon {
+public class GuiWon implements Gui{
     private TerminalScreen screen;
     private int score, health, steps;
-    public enum COMMAND {MENU, EXIT, NOTHING}
 
     public GuiWon(int score, int health, int steps, TerminalScreen screen){
         this.score = score;
@@ -83,7 +82,7 @@ public class GuiWon {
         graphics.putString(3, 20, "Score: " + score + "\tHealth: " + health + "\tSteps: " + steps);
     }
 
-    public GuiWon.COMMAND getNextCommand() throws IOException {
+    public COMMAND getNextCommand() throws IOException {
         KeyStroke input = screen.readInput();
 
         switch (input.getKeyType()){

@@ -1,9 +1,9 @@
 package crossyroads.controller.states;
 
 import crossyroads.controller.AppController;
+import crossyroads.view.Gui;
 import crossyroads.view.GuiMainMenu;
 import crossyroads.view.GuiPauseMenu;
-import crossyroads.view.ScreenFactory;
 
 import java.io.IOException;
 
@@ -22,9 +22,9 @@ public class PauseState implements State{
     public void step() throws IOException {
         //appController.getPlayer().pauseMusic();
         gui.draw();
-        GuiPauseMenu.COMMAND command = gui.getNextCommand();
+        Gui.COMMAND command = gui.getNextCommand();
         switch (command){
-            case RESUME:
+            case PLAY:
                 appController.setCurrentState(gameState);
                 break;
             case MENU:

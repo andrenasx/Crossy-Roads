@@ -8,10 +8,9 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 
 import java.io.IOException;
 
-public class GuiGame {
+public class GuiGame implements Gui{
     private GameModel gameModel;
     private TerminalScreen screen;
-    public enum COMMAND {UP, DOWN, LEFT, RIGHT, NOTHING, PAUSE}
 
     public GuiGame(GameModel gameModel, TerminalScreen screen){
         this.gameModel = gameModel;

@@ -14,9 +14,8 @@ import crossyroads.model.Terrain;
 import java.io.IOException;
 import java.util.List;
 
-public class GuiHighscoreMenu {
+public class GuiHighscoreMenu implements Gui{
     private TerminalScreen screen;
-    public enum COMMAND {PLAY, BACK, NOTHING}
 
     public GuiHighscoreMenu(TerminalScreen screen){
         this.screen = screen;
@@ -84,17 +83,17 @@ public class GuiHighscoreMenu {
 
     }
 
-    public GuiHighscoreMenu.COMMAND getNextCommand() throws IOException {
+    public COMMAND getNextCommand() throws IOException {
         KeyStroke input = screen.readInput();
 
         switch (input.getKeyType()){
             case Escape:
-                return GuiHighscoreMenu.COMMAND.BACK;
+                return COMMAND.EXIT;
             case Character:
                 if(input.getCharacter() == '1')
-                    return GuiHighscoreMenu.COMMAND.PLAY;
+                    return COMMAND.PLAY;
             default:
-                return GuiHighscoreMenu.COMMAND.NOTHING;
+                return COMMAND.NOTHING;
         }
     }
 }

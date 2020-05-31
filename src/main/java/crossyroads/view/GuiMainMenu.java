@@ -10,9 +10,8 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 
 import java.io.IOException;
 
-public class GuiMainMenu {
+public class GuiMainMenu implements Gui{
     private TerminalScreen screen;
-    public enum COMMAND {PLAY, HELP, EXIT, HIGHSCORES, NOTHING}
 
     public GuiMainMenu(TerminalScreen screen){
         this.screen = screen;
@@ -74,7 +73,7 @@ public class GuiMainMenu {
         graphics.putString(18,31,"[ESC]");
     }
 
-    public GuiMainMenu.COMMAND getNextCommand() throws IOException {
+    public COMMAND getNextCommand() throws IOException {
         KeyStroke input = screen.readInput();
 
         switch (input.getKeyType()){

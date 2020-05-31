@@ -12,9 +12,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GuiHelpMenu {
+public class GuiHelpMenu implements Gui{
     private TerminalScreen screen;
-    public enum COMMAND {PLAY, BACK, NOTHING}
 
     public GuiHelpMenu(TerminalScreen screen){
         this.screen = screen;
@@ -90,12 +89,12 @@ public class GuiHelpMenu {
 
     }
 
-    public GuiHelpMenu.COMMAND getNextCommand() throws IOException {
+    public COMMAND getNextCommand() throws IOException {
         KeyStroke input = screen.readInput();
 
         switch (input.getKeyType()){
             case Escape:
-                return COMMAND.BACK;
+                return COMMAND.EXIT;
             case Character:
                 if(input.getCharacter() == '1')
                 return COMMAND.PLAY;

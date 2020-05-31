@@ -5,10 +5,10 @@ import crossyroads.controller.ChickenController;
 import crossyroads.controller.VehicleController;
 import crossyroads.model.GameModel;
 import crossyroads.model.GameModelCreator;
+import crossyroads.view.Gui;
 import crossyroads.view.GuiGame;
 import crossyroads.view.GuiHelpMenu;
 import crossyroads.view.GuiMainMenu;
-import crossyroads.view.ScreenFactory;
 
 import java.io.IOException;
 
@@ -25,13 +25,13 @@ public class HelpState implements State{
     @Override
     public void step() throws IOException {
         gui.draw();
-        GuiHelpMenu.COMMAND command = gui.getNextCommand();
+        Gui.COMMAND command = gui.getNextCommand();
         switch (command){
             case PLAY:
                 GameModel gameModel = new GameModelCreator().createGameModel(40, 35);
                 appController.setCurrentState(new GameState(appController, new GuiGame(gameModel, gui.getScreen()), gameModel, new ChickenController(gameModel), new VehicleController(gameModel)));
                 break;
-            case BACK:
+            case EXIT:
                 appController.setCurrentState(new MenuState(appController, new GuiMainMenu(gui.getScreen())));
                 break;
             default:

@@ -15,7 +15,7 @@ public class GameState implements State{
     private VehicleController vehicleController;
     private GuiGame gui;
     private GameModel gameModel;
-    private final int FPS = 5;
+    private final int FPS = 10;
     private int step = 0;
 
     public GameState(AppController appController, GuiGame gui, GameModel gameModel, ChickenController chickenController, VehicleController vehicleController) {
@@ -31,7 +31,7 @@ public class GameState implements State{
             long time = System.currentTimeMillis();
             step++;
 
-            GuiGame.COMMAND command = gui.getNextCommand();
+            Gui.COMMAND command = gui.getNextCommand();
             if(command == GuiGame.COMMAND.PAUSE){
                 appController.setCurrentState(new PauseState(appController, new GuiPauseMenu(gui.getScreen()), this));
                 return;

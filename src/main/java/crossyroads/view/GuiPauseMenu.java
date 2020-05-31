@@ -10,9 +10,8 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 
 import java.io.IOException;
 
-public class GuiPauseMenu {
+public class GuiPauseMenu implements Gui{
     private TerminalScreen screen;
-    public enum COMMAND {RESUME, MENU, NOTHING}
 
     public GuiPauseMenu(TerminalScreen screen){
         this.screen = screen;
@@ -66,12 +65,12 @@ public class GuiPauseMenu {
 
     }
 
-    public GuiPauseMenu.COMMAND getNextCommand() throws IOException {
+    public COMMAND getNextCommand() throws IOException {
         KeyStroke input = screen.readInput();
 
         switch (input.getKeyType()){
             case Escape:
-                return COMMAND.RESUME;
+                return COMMAND.PLAY;
             case Character:
                 if(input.getCharacter() == '1')
                     return COMMAND.MENU;
