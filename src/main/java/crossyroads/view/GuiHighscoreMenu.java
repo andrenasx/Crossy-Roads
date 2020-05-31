@@ -9,7 +9,6 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import crossyroads.model.Highscore;
 import crossyroads.model.Score;
-import crossyroads.model.Terrain;
 
 import java.io.IOException;
 import java.util.List;

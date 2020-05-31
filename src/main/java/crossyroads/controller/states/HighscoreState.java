@@ -17,6 +17,7 @@ public class HighscoreState implements State {
         this.appController = appController;
         this.gui = gui;
     }
+
     @Override
     public void step() throws IOException {
         gui.draw();

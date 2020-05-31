@@ -20,7 +20,6 @@ public class PauseState implements State{
 
     @Override
     public void step() throws IOException {
-        //appController.getPlayer().pauseMusic();
         gui.draw();
         Gui.COMMAND command = gui.getNextCommand();
         switch (command){
@@ -33,7 +32,6 @@ public class PauseState implements State{
             default:
                 break;
         }
-        //appController.getPlayer().resumeMusic();
     }
 
     @Override

@@ -6,12 +6,10 @@ import java.util.List;
 
 public class VehicleController {
     private GameModel gameModel;
-    private long startTime;
 
 
     public VehicleController(GameModel gameModel) {
         this.gameModel = gameModel;
-        this.startTime = System.currentTimeMillis();
     }
 
     public void moveVehicles(int step) {

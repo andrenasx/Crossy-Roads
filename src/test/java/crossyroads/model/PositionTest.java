@@ -1,6 +1,5 @@
 package crossyroads.model;
 
-import javafx.geometry.Pos;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -64,9 +64,8 @@ public class GameState implements State{
 
         if(gameModel.isChickenDead())
             appController.setCurrentState(new LostState(appController, new GuiLost(gui.getScreen(), gameModel.getCurrentLevelInt())));
-        else {
+        else
             appController.setCurrentState(new WonState(appController, new GuiWon(gameModel.getScore(), gameModel.getLives(), gameModel.getChicken().getCountSteps(), gui.getScreen())));
-        }
     }
 
     @Override

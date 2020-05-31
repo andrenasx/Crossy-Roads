@@ -46,7 +46,6 @@ public class GuiWonTest {
     @Test
     public void commandWonTest() throws IOException {
 
-
         when(screen.readInput()).thenReturn(new KeyStroke(Enter));
         assertEquals(Gui.COMMAND.NOTHING, gui.getNextCommand());
 

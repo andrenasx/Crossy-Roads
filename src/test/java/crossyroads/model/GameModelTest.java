@@ -57,7 +57,6 @@ public class GameModelTest {
 
     @Test
     public void isLevelFinishedTest(){
-        //TODO acrescentar a condição do vetor as moedas estar vazio
         Chicken chicken = gameModel.getChicken();
         assertFalse(gameModel.isLevelFinished());
         while(chicken.getLives()>0) chicken.removeLife();

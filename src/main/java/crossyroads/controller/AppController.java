@@ -1,12 +1,10 @@
 package crossyroads.controller;
 
 import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.Terminal;
 import crossyroads.controller.states.MenuState;
 import crossyroads.controller.states.State;
 import crossyroads.model.MusicPlayer;
 import crossyroads.view.GuiMainMenu;
-import crossyroads.view.ScreenFactory;
 
 import java.io.IOException;
 
@@ -38,5 +36,4 @@ public class AppController {
 
     public void setEnd(){end = true;}
 
-    public MusicPlayer getPlayer() { return player; }
 }

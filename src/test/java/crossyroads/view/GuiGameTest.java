@@ -4,7 +4,6 @@ import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.TerminalScreen;
-import crossyroads.controller.states.GameState;
 import crossyroads.model.*;
 import org.junit.Before;
 import org.junit.Test;

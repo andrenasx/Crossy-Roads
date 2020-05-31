@@ -5,7 +5,6 @@ import crossyroads.controller.AppController;
 import crossyroads.view.Gui;
 import crossyroads.view.GuiMainMenu;
 import crossyroads.view.GuiWon;
-import crossyroads.view.ScreenFactory;
 import org.junit.Before;
 import org.junit.Test;
 

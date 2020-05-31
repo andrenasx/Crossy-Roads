@@ -2,12 +2,10 @@ package crossyroads.model;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Highscore {
     private String filename;
-    private String highscore;
     private String directory;
     private List<Score> highscores;
 
@@ -34,28 +32,26 @@ public class Highscore {
         catch (IOException e) {
             e.printStackTrace();
         }
-        this.highscore = allLines.get(0);
         for(int i = 1; i < allLines.size(); i++){
             addElement(allLines.get(i));
         }
-        Collections.sort(highscores, new ScoreComparator());
+        highscores.sort(new ScoreComparator());
     }
 
     public void writeFile(String filename, String directory){
         String filePath = "src/" + directory + "/resources/" + filename;
-        BufferedWriter bw = null;
-        String text = "Level - Coins - Steps";
+        BufferedWriter bw;
+        StringBuilder text = new StringBuilder("Level - Coins - Steps");
         for (Score score : highscores){
-            text += "\n";
-            text += score.getLevel() + ",";
-            text += score.getCoins() + ",";
-            text += score.getSteps();
-            //text.substring(0, text.length() - 1);
+            text.append("\n");
+            text.append(score.getLevel()).append(",");
+            text.append(score.getCoins()).append(",");
+            text.append(score.getSteps());
         }
 
         try {
             bw = new BufferedWriter(new FileWriter(filePath));
-            bw.write(text);
+            bw.write(text.toString());
             bw.close();
         }
         catch (IOException e) {
@@ -77,7 +73,7 @@ public class Highscore {
         Score result = new Score(level, coins, steps);
         highscores.add(result);
         highscores.sort(new ScoreComparator());
-        highscores = new ArrayList<Score>(highscores.subList(0, 7));
+        highscores = new ArrayList<>(highscores.subList(0, 7));
     }
 
     public List<Score> getHighscores(){ return highscores;}

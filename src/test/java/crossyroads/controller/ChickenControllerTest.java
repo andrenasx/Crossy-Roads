@@ -122,8 +122,6 @@ public class ChickenControllerTest {
         assertEquals(life - 1, chicken.getLives());
     }
 
-
-
    @Test
     public void checkCoinCollisionTest(){
         List<Coin> coins = new ArrayList<>();
