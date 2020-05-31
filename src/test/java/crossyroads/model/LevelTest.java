@@ -73,10 +73,10 @@ public class LevelTest {
         level.addElement(truck);
 
         List<Element> elements = new ArrayList<>();
-        elements.add(car);
-        elements.add(truck);
         elements.add(coin);
         elements.add(coin1);
+        elements.add(car);
+        elements.add(truck);
 
         assertEquals(elements, level.getAllElements());
     }
