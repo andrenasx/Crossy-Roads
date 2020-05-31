@@ -1,10 +1,10 @@
 # LPOO_50 - Crossy Roads
 
-Bem vindo ao _Crossy Roads_! Neste jogo tens que controlar a galinha para que esta chegue ao topo do ecrã recolhendo todas as moedas.
+Bem vindo ao _Crossy Roads_! Neste jogo tens de controlar a galinha para que esta chegue ao topo do ecrã recolhendo todas as moedas.
 
 Cuidado! Não achavas que ia ser assim tão fácil pois não? Se fores contra os veículos, ou atropelado por eles, perdes vida e regressas à posição inicial. Após perder as 3 vidas dadas no início do jogo, este acaba.
 
-Este projeto está a ser desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt), André Nascimento (up201806461@fe.up.pt) e Pedro Coelho (up201806802@fe.up.pt) no âmbito da cadeira LPOO 2019/20.
+Este projeto foi desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt), André Nascimento (up201806461@fe.up.pt) e Pedro Coelho (up201806802@fe.up.pt) no âmbito da cadeira LPOO 2019/20.
 
 ## Implemented Features 
 - **Menu Inicial:** a aplicação inicializa neste menu, onde o jogador pode escolher jogar, aceder a um Menu Help ou de Highscores, ou sair do jogo.
@@ -123,7 +123,7 @@ Neste padrão, o _Model_ apenas é responsável por armazenar a data, a _View_ m
 
 #### Implementation
 
-No nosso caso, o _GameMap_ contém toda a informação referente ao nível que é mostrada pela _Gui_ quando há alguma alteração, a _Gui_ recebe os _inputs_ do jogador e envia-os ao _GameController_, e o _GameController_ manipula os dados consoante os inputs.
+No nosso caso, o _GameModel_ contém toda a informação referente aos níveis, as várias _Guis_ recebem os _inputs_ do jogador e enviam-os ao estado atual do jogo, e a _AppController_ guarda o estado em que o jogo está a correr, o qual manipula os dados consoante os inputs.
 
 [![MVC](https://i.gyazo.com/0efec72c41247b5e6ce85dabb795bb89.png)](https://gyazo.com/0efec72c41247b5e6ce85dabb795bb89)
 
