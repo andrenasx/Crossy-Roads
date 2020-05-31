@@ -63,7 +63,7 @@ Por outro lado, não faz sentido que esta classe mãe fosse realmente um objeto 
 #### Implementation
 O gráfico em UML seguinte demonstra como foi a implementação nas classes.
 
-[![Image from Gyazo](https://i.gyazo.com/94181cdc5c406c9f0458182b22901864.png)](https://gyazo.com/94181cdc5c406c9f0458182b22901864)
+[![Image from Gyazo](https://i.gyazo.com/1f9f66ce22668b21c9cfe24c14523f2f.png)](https://gyazo.com/1f9f66ce22668b21c9cfe24c14523f2f)
 
 #### Consequences
 
@@ -86,11 +86,11 @@ No entanto, chegamos à conclusão que o uso deste padrão é desnecessário par
 #### Implementation
 O gráfico em UML seguinte demonstra como, inicialmente, foi aplicado o padrão nas classes.
 
-[![Image from Gyazo](https://i.gyazo.com/98fc64d7ec1815f01be4c2108791a78e.png)](https://gyazo.com/98fc64d7ec1815f01be4c2108791a78e)
+[![Image from Gyazo](https://i.gyazo.com/56c962bfab54de198ce7b5195de49cc7.png)](https://gyazo.com/56c962bfab54de198ce7b5195de49cc7)
 
 O gráfico em UML seguinte demonstra como foi implementada esta mudança.
 
-[![Image from Gyazo](https://i.gyazo.com/3d5ef8fb9af47c90fdc622a02f2ff02a.png)](https://gyazo.com/3d5ef8fb9af47c90fdc622a02f2ff02a)
+[![Image from Gyazo](https://i.gyazo.com/75df5f0bfa288a5a24a883cc317b4944.png)](https://gyazo.com/75df5f0bfa288a5a24a883cc317b4944)
 
 *Notar que apenas está representado um State e a sua Gui respetiva
 
@@ -109,6 +109,8 @@ Recorremos ao _State Pattern_ que permite alterar o comportamento de um objeto q
 Implementamos um controlador ([AppController.java](../src/main/java/crossyroads/controller/AppController.java)) que guarda o estado atual e 'corre'. Dentro de cada estado, dependendo do comando que recebe passa a outro estado.
 
 O gráfico UML seguinte demostra este padrão.
+
+[![Image from Gyazo](https://i.gyazo.com/b361e4eaf83272df0b79c1b3a3392545.png)](https://gyazo.com/b361e4eaf83272df0b79c1b3a3392545)
 
 #### Consequences
 
