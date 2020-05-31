@@ -187,11 +187,17 @@ Uma forma de eliminar este smell seria criar uma classe chamada _DrawButtons_ qu
 
 ## Testing
 
-- _Screenshot of coverage report:_
+- _Coverage report:_
 
     [![Image from Gyazo](https://i.gyazo.com/8066a8656338712940727839a64309e9.png)](https://gyazo.com/8066a8656338712940727839a64309e9)
 
-- _Link for coverage report_:
+    Mais informações [aqui](./reports/test/index.html)
+
+- _Mutation testing:_
+
+    [![Image from Gyazo](https://i.gyazo.com/38b2e4968bff8ff8264582dd44012544.png)](https://gyazo.com/38b2e4968bff8ff8264582dd44012544)
+    
+    Mais informações [aqui](./reports/pitest/index.html)
 
 ## Self-Evaluation
 
