@@ -189,6 +189,10 @@ Uma forma de eliminar este smell seria criar uma classe chamada _DrawButtons_ qu
 
 - _Screenshot of coverage report:_
 
+    [![Image from Gyazo](https://i.gyazo.com/8066a8656338712940727839a64309e9.png)](https://gyazo.com/8066a8656338712940727839a64309e9)
+
+- _Link for coverage report_:
+
 ## Self-Evaluation
 
 Inicialmente o grupo era só de 2 elementos e o trabalho foi distribuído de forma equitativa e justa. Mais tarde, juntou-se um outro elemento e fizemos uma nova distribuição de tarefas. Segue-se a percentagem discutida entre todos os elementos:
