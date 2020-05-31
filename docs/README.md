@@ -185,23 +185,23 @@ Todas as classes [Gui](../src/main/java/crossyroads/view) têm o método _drawBu
 Uma forma de eliminar este smell seria criar uma classe chamada _DrawButtons_ que desenharia um número de botões e uma lista de intruções passadas por argumento e cada classe chamaria este método. Assim, este método só seria implementado uma vez eliminando as linhas de código duplicadas.
 
 
-## Testing
+## _Testing Results_
 
-- _Coverage report:_
+### _Coverage report_
 
-    [![Image from Gyazo](https://i.gyazo.com/8066a8656338712940727839a64309e9.png)](https://gyazo.com/8066a8656338712940727839a64309e9)
+[![Image from Gyazo](https://i.gyazo.com/8066a8656338712940727839a64309e9.png)](https://gyazo.com/8066a8656338712940727839a64309e9)
 
-    Mais informações [aqui](./reports/test/index.html)
+Mais informações [aqui](./reports/test/index.html).
 
-- _Mutation testing:_
+### _Mutation testing report_
 
-    [![Image from Gyazo](https://i.gyazo.com/38b2e4968bff8ff8264582dd44012544.png)](https://gyazo.com/38b2e4968bff8ff8264582dd44012544)
-    
-    Mais informações [aqui](./reports/pitest/index.html)
+[![Image from Gyazo](https://i.gyazo.com/38b2e4968bff8ff8264582dd44012544.png)](https://gyazo.com/38b2e4968bff8ff8264582dd44012544)
 
-## Self-Evaluation
+Mais informações [aqui](./reports/pitest/index.html).
 
-Inicialmente o grupo era só de 2 elementos e o trabalho foi distribuído de forma equitativa e justa. Mais tarde, juntou-se um outro elemento e fizemos uma nova distribuição de tarefas. Segue-se a percentagem discutida entre todos os elementos:
+## _Self-Evaluation_
+
+Inicialmente o grupo era só de 2 elementos e o trabalho foi distribuído de forma equitativa e justa. Mais tarde, juntou-se um outro elemento e fizemos uma nova distribuição de tarefas. Segue-se a percentagem final discutida entre todos os elementos:
 
 - Ana Teresa Cruz: 40% 
 - André Nascimento: 40%
