@@ -4,7 +4,9 @@ import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.TerminalScreen;
+import crossyroads.controller.states.GameState;
 import crossyroads.model.*;
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -16,20 +18,24 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class GuiGameTest {
+    GameModel gameModel;
+    TerminalScreen screen;
+    GuiGame gui;
+
+    @Before
+    public void init(){
+        gameModel = Mockito.mock(GameModel.class);
+        screen = mock(TerminalScreen.class);
+        gui = new GuiGame(gameModel, screen);
+    }
+
     @Test
     public void getScreen() {
-        GameModel gameModel = Mockito.mock(GameModel.class);
-        TerminalScreen screen = mock(TerminalScreen.class);
-        GuiGame gui = new GuiGame(gameModel, screen);
-
         assertEquals(screen, gui.getScreen());
     }
 
     @Test
     public void drawTest() throws IOException {
-        TerminalScreen screen = Mockito.mock(TerminalScreen.class);
-        GameModel gameModel = Mockito.mock(GameModel.class);
-        GuiGame gui = new GuiGame(gameModel, screen);
         TextGraphics graphics = mock(TextGraphics.class);
         when(screen.newTextGraphics()).thenReturn(graphics);
 

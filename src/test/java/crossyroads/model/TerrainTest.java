@@ -16,7 +16,7 @@ public class TerrainTest {
     }
 
     /*@Test
-    public void getElementsTest(){
+    public void getElementsTest() throws IOException {
         Terrain terrain = new Terrain("test.txt", "test");
 
         List<Element> e = new ArrayList<>();
@@ -24,7 +24,7 @@ public class TerrainTest {
         e.add(new Car(2,23,"left"));
         e.add(new Truck(20,11,"left"));
         e.add(new Truck(5,25,"right"));
-        e.add(new Coin(30,5,1));
+        e.add(new Coin(30,5));
 
         assertEquals(e,terrain.getElements());
     }*/

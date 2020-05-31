@@ -7,6 +7,7 @@ import crossyroads.controller.VehicleController;
 import crossyroads.model.Chicken;
 import crossyroads.model.GameModel;
 import crossyroads.view.*;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -14,18 +15,29 @@ import java.io.IOException;
 import static org.mockito.Mockito.*;
 
 public class GameStateTest {
+    AppController appController;
+    GuiGame gui;
+    TerminalScreen screen;
+    GameModel gameModel;
+    ChickenController chickenController;
+    VehicleController vehicleController;
+    GameState gameState;
+
+    @Before
+    public void init(){
+        appController = mock(AppController.class);
+        gui = mock(GuiGame.class);
+        screen = mock(TerminalScreen.class);
+        when(gui.getScreen()).thenReturn(screen);
+        gameModel = mock(GameModel.class);
+        chickenController = mock(ChickenController.class);
+        vehicleController = mock(VehicleController.class);
+
+        gameState = new GameState(appController, gui, gameModel, chickenController, vehicleController);
+    }
+
     @Test
     public void stepPauseTest() throws IOException {
-        AppController appController = mock(AppController.class);
-        GuiGame gui = mock(GuiGame.class);
-        TerminalScreen screen = mock(TerminalScreen.class);
-        when(gui.getScreen()).thenReturn(screen);
-        GameModel gameModel = mock(GameModel.class);
-        ChickenController chickenController = mock(ChickenController.class);
-        VehicleController vehicleController = mock(VehicleController.class);
-
-        GameState gameState = new GameState(appController, gui, gameModel, chickenController, vehicleController);
-
         when(gameModel.isChickenDead()).thenReturn(false);
         when(gui.getNextCommand()).thenReturn(GuiGame.COMMAND.PAUSE);
 
@@ -36,16 +48,6 @@ public class GameStateTest {
 
     @Test
     public void stepLostTest() throws IOException {
-        AppController appController = mock(AppController.class);
-        GuiGame gui = mock(GuiGame.class);
-        TerminalScreen screen = mock(TerminalScreen.class);
-        when(gui.getScreen()).thenReturn(screen);
-        GameModel gameModel = mock(GameModel.class);
-        ChickenController chickenController = mock(ChickenController.class);
-        VehicleController vehicleController = mock(VehicleController.class);
-
-        GameState gameState = new GameState(appController, gui, gameModel, chickenController, vehicleController);
-
         when(gameModel.isChickenDead()).thenReturn(true);
         when(gameModel.getCurrentLevelInt()).thenReturn(1);
         when(gameModel.getScore()).thenReturn(1);
@@ -58,16 +60,6 @@ public class GameStateTest {
 
     @Test
     public void stepWonTest() throws IOException {
-        AppController appController = mock(AppController.class);
-        GuiGame gui = mock(GuiGame.class);
-        TerminalScreen screen = mock(TerminalScreen.class);
-        when(gui.getScreen()).thenReturn(screen);
-        GameModel gameModel = mock(GameModel.class);
-        ChickenController chickenController = mock(ChickenController.class);
-        VehicleController vehicleController = mock(VehicleController.class);
-
-        GameState gameState = new GameState(appController, gui, gameModel, chickenController, vehicleController);
-
         when(gameModel.isChickenDead()).thenReturn(false);
         when(gui.getNextCommand()).thenReturn(GuiGame.COMMAND.DOWN);
         when(gameModel.isLevelFinished()).thenReturn(true);

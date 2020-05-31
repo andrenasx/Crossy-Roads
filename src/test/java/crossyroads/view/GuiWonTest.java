@@ -7,6 +7,7 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.TerminalScreen;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -19,6 +20,21 @@ import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
 public class GuiWonTest {
+    TerminalScreen screen;
+    GuiWon gui;
+    Random rand;
+    int score, health, steps;
+
+    @Before
+    public void  init() {
+        screen = mock(TerminalScreen.class);
+        rand = new Random();
+        score = rand.nextInt(30);
+        health = rand.nextInt(3);
+        steps = rand.nextInt(50);
+        gui = new GuiWon(score, health, steps, screen);
+    }
+
     @Test
     public void getScreen() {
         TerminalScreen screen = mock(TerminalScreen.class);
@@ -29,21 +45,16 @@ public class GuiWonTest {
 
     @Test
     public void commandWonTest() throws IOException {
-        TerminalScreen screen = mock(TerminalScreen.class);
-        Random rand = new Random();
-        int score = rand.nextInt(30);
-        int health = rand.nextInt(3);
-        int steps = rand.nextInt(50);
-        GuiWon gui = new GuiWon(score, health, steps, screen);
+
 
         when(screen.readInput()).thenReturn(new KeyStroke(Enter));
-        assertEquals(GuiWon.COMMAND.NOTHING, gui.getNextCommand());
+        assertEquals(Gui.COMMAND.NOTHING, gui.getNextCommand());
 
         when(screen.readInput()).thenReturn(new KeyStroke(Escape));
-        assertEquals(GuiWon.COMMAND.EXIT, gui.getNextCommand());
+        assertEquals(Gui.COMMAND.EXIT, gui.getNextCommand());
 
         when(screen.readInput()).thenReturn(KeyStroke.fromString("1"));
-        assertEquals(GuiWon.COMMAND.MENU, gui.getNextCommand());
+        assertEquals(Gui.COMMAND.MENU, gui.getNextCommand());
 
         verify(screen, times((3))).readInput();
     }

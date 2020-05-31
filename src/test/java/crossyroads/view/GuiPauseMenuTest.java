@@ -7,6 +7,7 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.TerminalScreen;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -17,33 +18,34 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class GuiPauseMenuTest {
+    TerminalScreen screen;
+    GuiPauseMenu gui;
+
+    @Before
+    public void init(){
+        screen = mock(TerminalScreen.class);
+        gui = new GuiPauseMenu(screen);
+    }
+
     @Test
     public void getScreen() {
-        TerminalScreen screen = mock(TerminalScreen.class);
-        GuiPauseMenu gui = new GuiPauseMenu(screen);
-
         assertEquals(screen, gui.getScreen());
     }
 
     @Test
     public void commandPauseTest() throws IOException {
-        TerminalScreen screen = mock(TerminalScreen.class);
-        GuiPauseMenu gui = new GuiPauseMenu(screen);
-
         when(screen.readInput()).thenReturn(new KeyStroke(Enter));
-        assertEquals(GuiPauseMenu.COMMAND.NOTHING, gui.getNextCommand());
+        assertEquals(Gui.COMMAND.NOTHING, gui.getNextCommand());
 
         when(screen.readInput()).thenReturn(KeyStroke.fromString("1"));
-        assertEquals(GuiPauseMenu.COMMAND.MENU, gui.getNextCommand());
+        assertEquals(Gui.COMMAND.MENU, gui.getNextCommand());
 
         when(screen.readInput()).thenReturn(new KeyStroke(Escape));
-        assertEquals(GuiPauseMenu.COMMAND.RESUME, gui.getNextCommand());
+        assertEquals(Gui.COMMAND.PLAY, gui.getNextCommand());
     }
 
     @Test
     public void drawTest() throws IOException {
-        TerminalScreen screen = mock(TerminalScreen.class);
-        GuiPauseMenu gui = new GuiPauseMenu(screen);
         TextGraphics graphics = mock(TextGraphics.class);
         when(screen.newTextGraphics()).thenReturn(graphics);
 
@@ -69,6 +71,5 @@ public class GuiPauseMenuTest {
         verify(graphics,times(1)).putString(6, 8, "|  ___/ _` | | | / __|/ _ \\");
         verify(graphics,times(1)).putString(6, 9, "| |  | (_| | |_| \\__ \\  __/");
         verify(graphics,times(1)).putString(6, 10, "|_|   \\__,_|\\__,_|___/\\___");
-
     }
 }

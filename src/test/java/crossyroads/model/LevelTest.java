@@ -1,5 +1,6 @@
 package crossyroads.model;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -10,23 +11,29 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class LevelTest {
+    Random rand;
+    int x, y;
+    Terrain terrain;
+    Level level;
+
+    @Before
+    public void init(){
+        rand = new Random();
+        x = rand.nextInt(50);
+        y = rand.nextInt(70);
+
+        terrain = mock(Terrain.class);
+        level = new Level(x, y, terrain);
+    }
+
     @Test
     public void getLevelSizeTest(){
-        Random rand = new Random();
-        int x = rand.nextInt(50);
-        int y = rand.nextInt(70);
-
-        Terrain terrain = mock(Terrain.class);
-        Level level = new Level(x, y, terrain);
         assertEquals(x, level.getWidth());
         assertEquals(y, level.getHeight());
     }
 
     @Test
     public void addElementTest(){
-        Terrain terrain = mock(Terrain.class);
-        Level level = new Level(30,70, terrain);
-
         Coin coin = new Coin(10,10);
         Coin coin1 = new Coin(20,20);
         Coin coin2 = new Coin(25,20);
@@ -55,9 +62,6 @@ public class LevelTest {
 
     @Test
     public void getAllElementsTest(){
-        Terrain terrain = mock(Terrain.class);
-        Level level = new Level(30,70, terrain);
-
         Coin coin = new Coin(10,10);
         Coin coin1 = new Coin(20,20);
         Car car = new Car(30,30,"right");
@@ -79,8 +83,6 @@ public class LevelTest {
 
     @Test
     public void getTerrain(){
-        Terrain terrain = mock(Terrain.class);
-        Level level = new Level(30, 35, terrain);
         assertEquals(terrain, level.getLevelTerrain());
     }
 }

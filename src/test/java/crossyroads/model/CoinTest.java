@@ -1,5 +1,6 @@
 package crossyroads.model;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Random;
@@ -7,31 +8,36 @@ import java.util.Random;
 import static org.junit.Assert.assertEquals;
 
 public class CoinTest {
+    Random rand;
+    int x, y;
+    Coin coin;
+
+    @Before
+    public void init(){
+        rand = new Random();
+        x = rand.nextInt(40);
+        y = rand.nextInt(35);
+
+        coin = new Coin(x, y);
+    }
+
     @Test
     public void coinGetPositionTest(){
-        Random rand = new Random();
-        int x = rand.nextInt(40);
-        int y = rand.nextInt(35);
-
-        Coin coin = new Coin(x, y);
         assertEquals(x, coin.getPosition().getX());
         assertEquals(y, coin.getPosition().getY());
     }
 
     @Test
     public void coinColorTest(){
-        Coin coin = new Coin(1,1);
         assertEquals("#FFFF00", coin.getColor());
     }
 
      @Test
     public void coinSetPosition(){
-        Coin coin = new Coin(1, 2);
-        Random rand = new Random();
-        int x = rand.nextInt(40);
-        int y = rand.nextInt(35);
-        coin.setPosition(new Position(x, y));
-        assertEquals(x, coin.getPosition().getX());
-        assertEquals(y, coin.getPosition().getY());
+        int new_x = rand.nextInt(40);
+        int new_y = rand.nextInt(35);
+        coin.setPosition(new Position(new_x, new_y));
+        assertEquals(new_x, coin.getPosition().getX());
+        assertEquals(new_y, coin.getPosition().getY());
      }
 }

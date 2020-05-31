@@ -7,6 +7,7 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.TerminalScreen;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -17,42 +18,42 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class GuiMainMenuTest {
+    TerminalScreen screen;
+    GuiMainMenu gui;
+
+    @Before
+    public void init() {
+        screen = mock(TerminalScreen.class);
+        gui = new GuiMainMenu(screen);
+    }
+
     @Test
     public void getScreen() {
-        TerminalScreen screen = mock(TerminalScreen.class);
-        GuiMainMenu gui = new GuiMainMenu(screen);
-
         assertEquals(screen, gui.getScreen());
     }
 
     @Test
     public void commandsMenuTest() throws IOException {
-        TerminalScreen screen = mock(TerminalScreen.class);
-        GuiMainMenu gui = new GuiMainMenu(screen);
-
         when(screen.readInput()).thenReturn(new KeyStroke(Enter));
-        assertEquals(GuiMainMenu.COMMAND.NOTHING, gui.getNextCommand());
+        assertEquals(Gui.COMMAND.NOTHING, gui.getNextCommand());
 
         when(screen.readInput()).thenReturn(new KeyStroke(Escape));
-        assertEquals(GuiMainMenu.COMMAND.EXIT, gui.getNextCommand());
+        assertEquals(Gui.COMMAND.EXIT, gui.getNextCommand());
 
         when(screen.readInput()).thenReturn(KeyStroke.fromString("1"));
-        assertEquals(GuiMainMenu.COMMAND.PLAY, gui.getNextCommand());
+        assertEquals(Gui.COMMAND.PLAY, gui.getNextCommand());
 
         when(screen.readInput()).thenReturn(KeyStroke.fromString("2"));
-        assertEquals(GuiMainMenu.COMMAND.HELP, gui.getNextCommand());
+        assertEquals(Gui.COMMAND.HELP, gui.getNextCommand());
 
         when(screen.readInput()).thenReturn(KeyStroke.fromString("3"));
-        assertEquals(GuiMainMenu.COMMAND.HIGHSCORES, gui.getNextCommand());
+        assertEquals(Gui.COMMAND.HIGHSCORES, gui.getNextCommand());
 
         verify(screen, times((5))).readInput();
     }
 
     @Test
     public void drawTest() throws IOException {
-        TerminalScreen screen = mock(TerminalScreen.class);
-        GuiMainMenu gui = new GuiMainMenu(screen);
-
         TextGraphics graphics = mock(TextGraphics.class);
         when(screen.newTextGraphics()).thenReturn(graphics);
 
@@ -87,6 +88,5 @@ public class GuiMainMenuTest {
         verify(graphics,times(1)).putString(4, 9, "|  _  // _ \\ / _` |/ _` / __|   ");
         verify(graphics,times(1)).putString(4, 10, "| | \\ \\ (_) | (_| | (_| \\__ \\");
         verify(graphics,times(1)).putString(4, 11, "|_|  \\_\\___/ \\__,_|\\__,_|___/");
-
     }
 }
