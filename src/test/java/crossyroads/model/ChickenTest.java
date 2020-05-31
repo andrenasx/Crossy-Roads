@@ -1,5 +1,6 @@
 package crossyroads.model;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Random;
@@ -7,22 +8,28 @@ import java.util.Random;
  import static org.junit.Assert.*;
 
  public class ChickenTest {
+     Random rand;
+     int x, y;
+     Chicken chicken;
+
+     @Before
+     public void init() {
+         rand = new Random();
+         x = rand.nextInt(40);
+         y = rand.nextInt(35);
+
+         chicken = new Chicken(x, y);
+     }
+
     @Test
     public void chickenGetPositionTest(){
-        Random rand = new Random();
-        int x = rand.nextInt(40);
-        int y = rand.nextInt(35);
-
-        Chicken chicken = new Chicken(x, y);
         assertEquals(x, chicken.getPosition().getX());
         assertEquals(y, chicken.getPosition().getY());
     }
 
     @Test
     public void chickenScoreTest(){
-        Random rand = new Random();
         int quantity = rand.nextInt(10);
-        Chicken chicken = new Chicken(1, 2);
         int score = chicken.getScore();
         chicken.raiseScore(quantity);
         assertEquals(score + quantity, chicken.getScore());
@@ -31,7 +38,6 @@ import java.util.Random;
 
     @Test
     public void chickenLivesTest(){
-        Chicken chicken = new Chicken(1, 2);
         int lives = chicken.getLives();
         chicken.removeLife();
         assertEquals(lives-1, chicken.getLives());
@@ -43,25 +49,21 @@ import java.util.Random;
 
      @Test
      public void chickenColorTest(){
-         Chicken chicken = new Chicken(1, 2);
          assertEquals("#FFFFFF", chicken.getColor());
      }
 
      @Test
      public void chickenSetPositionTest(){
-        Chicken chicken = new Chicken(1, 2);
-        Random rand = new Random();
-        int x = rand.nextInt(40);
-        int y = rand.nextInt(35);
-        chicken.setPosition(new Position(x, y));
-        assertEquals(x, chicken.getPosition().getX());
-        assertEquals(y, chicken.getPosition().getY());
+        int new_x = rand.nextInt(40);
+        int new_y = rand.nextInt(35);
+        chicken.setPosition(new Position(new_x, new_y));
+        assertEquals(new_x, chicken.getPosition().getX());
+        assertEquals(new_y, chicken.getPosition().getY());
 
      }
 
      @Test
      public void chickenStepsTest(){
-        Chicken chicken = new Chicken(1, 2);
         assertEquals(0, chicken.getCountSteps());
         chicken.increaseCount();
         assertEquals(1, chicken.getCountSteps());

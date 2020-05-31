@@ -7,6 +7,7 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.TerminalScreen;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -17,6 +18,19 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class GuiLostTest {
+    TerminalScreen screen;
+    Random rand;
+    int level;
+    GuiLost gui;
+
+    @Before
+    public void init() {
+        screen = mock(TerminalScreen.class);
+        rand = new Random();
+        level = rand.nextInt(10);
+        gui = new GuiLost(screen, level);
+    }
+
     @Test
     public void getScreen() {
         TerminalScreen screen = mock(TerminalScreen.class);
@@ -27,30 +41,20 @@ public class GuiLostTest {
 
     @Test
     public void commandLostTest() throws IOException {
-        TerminalScreen screen = mock(TerminalScreen.class);
-        Random rand = new Random();
-        int level = rand.nextInt(10);
-        GuiLost gui = new GuiLost(screen, level);
-
         when(screen.readInput()).thenReturn(new KeyStroke(Enter));
-        assertEquals(GuiLost.COMMAND.NOTHING, gui.getNextCommand());
+        assertEquals(Gui.COMMAND.NOTHING, gui.getNextCommand());
 
         when(screen.readInput()).thenReturn(new KeyStroke(Escape));
-        assertEquals(GuiLost.COMMAND.EXIT, gui.getNextCommand());
+        assertEquals(Gui.COMMAND.EXIT, gui.getNextCommand());
 
         when(screen.readInput()).thenReturn(KeyStroke.fromString("1"));
-        assertEquals(GuiLost.COMMAND.MENU, gui.getNextCommand());
+        assertEquals(Gui.COMMAND.MENU, gui.getNextCommand());
 
         verify(screen, times((3))).readInput();
     }
 
     @Test
     public void drawTest() throws IOException {
-        TerminalScreen screen = mock(TerminalScreen.class);
-        Random rand = new Random();
-        int level = rand.nextInt(10);
-        GuiLost gui = new GuiLost(screen, level);
-
         TextGraphics graphics = mock(TextGraphics.class);
         when(screen.newTextGraphics()).thenReturn(graphics);
 

@@ -1,5 +1,6 @@
 package crossyroads.model;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Random;
@@ -7,38 +8,46 @@ import java.util.Random;
 import static org.junit.Assert.*;
 
 public class CarTest {
+    Car car;
+    Random rand;
+    int x, y;
+
+    @Before
+    public void init(){
+        rand = new Random();
+        x = rand.nextInt(40);
+        y = rand.nextInt(35);
+        car = new Car(x, y, "right");
+    }
+
     @Test
     public void carColorTest(){
-        Car car = new Car(1, 1, "left");
         assertEquals("#FF0000", car.getColor());
     }
 
     @Test
     public void carLengthTest(){
-        Car car = new Car(1, 1, "right");
         assertEquals(2, car.getLength());
     }
 
     @Test
-    public void carGetPositionTest(){
-        Random rand = new Random();
-        int x = rand.nextInt(40);
-        int y = rand.nextInt(35);
+    public void carGetSpeedTest(){
+        assertEquals(3, car.getSpeed());
+    }
 
-        Car car = new Car(x, y, "right");
+    @Test
+    public void carGetPositionTest(){
         assertEquals(x, car.getPosition().getX());
         assertEquals(y, car.getPosition().getY());
     }
 
     @Test
     public void carSetPositionTest(){
-        Car car = new Car(1,1,"left");
-        Random rand = new Random();
-        int x = rand.nextInt(40);
-        int y = rand.nextInt(35);
-        car.setPosition(new Position(x, y));
-        assertEquals(x, car.getPosition().getX());
-        assertEquals(y, car.getPosition().getY());
+        int new_x = rand.nextInt(40);
+        int new_y = rand.nextInt(35);
+        car.setPosition(new Position(new_x, new_y));
+        assertEquals(new_x, car.getPosition().getX());
+        assertEquals(new_y, car.getPosition().getY());
 
     }
 
@@ -52,7 +61,7 @@ public class CarTest {
 
     @Test
     public void carCheckCollisionTest(){
-        Car car = new Car(12, 15, "right");
+        car.setPosition(new Position(12, 15));
         Position position1 = new Position(18, 15);
         assertFalse(car.checkCollision(position1));
         Position position2 = new Position(15, 3);
@@ -61,11 +70,5 @@ public class CarTest {
         assertFalse(car.checkCollision(position3));
         Position position4 = new Position(13, 15);
         assertTrue(car.checkCollision(position4));
-    }
-
-    @Test
-    public void carGetSpeedTest(){
-        Car car = new Car(12, 15, "left");
-        assertEquals(3, car.getSpeed());
     }
 }

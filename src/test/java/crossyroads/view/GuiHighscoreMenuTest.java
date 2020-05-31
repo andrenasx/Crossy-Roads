@@ -8,6 +8,7 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.TerminalScreen;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -16,38 +17,37 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class GuiHighscoreMenuTest {
-    @Test
-    public void getScreen() {
-        TerminalScreen screen = mock(TerminalScreen.class);
-        GuiHighscoreMenu gui = new GuiHighscoreMenu(screen);
+    TerminalScreen screen;
+    GuiHighscoreMenu gui;
 
-        assertEquals(screen, gui.getScreen());
+    @Before
+    public void init() {
+        screen = mock(TerminalScreen.class);
+        gui = new GuiHighscoreMenu(screen);
+    }
+
+    @Test
+    public void getScreen() {assertEquals(screen, gui.getScreen());
     }
 
     @Test
     public void commandTest() throws IOException {
-        TerminalScreen screen = mock(TerminalScreen.class);
-        GuiHighscoreMenu guiHighscoreMenu = new GuiHighscoreMenu(screen);
-
         when(screen.readInput()).thenReturn(new KeyStroke(KeyType.Enter));
-        assertEquals(GuiHighscoreMenu.COMMAND.NOTHING, guiHighscoreMenu.getNextCommand());
+        assertEquals(Gui.COMMAND.NOTHING, gui.getNextCommand());
 
         when(screen.readInput()).thenReturn(new KeyStroke(KeyType.Escape));
-        assertEquals(GuiHighscoreMenu.COMMAND.BACK, guiHighscoreMenu.getNextCommand());
+        assertEquals(Gui.COMMAND.EXIT, gui.getNextCommand());
 
         when(screen.readInput()).thenReturn(KeyStroke.fromString("1"));
-        assertEquals(GuiHighscoreMenu.COMMAND.PLAY, guiHighscoreMenu.getNextCommand());
+        assertEquals(Gui.COMMAND.PLAY, gui.getNextCommand());
     }
 
     @Test
     public void drawTest() throws IOException {
-        TerminalScreen screen = mock(TerminalScreen.class);
-        GuiHighscoreMenu guiHighscoreMenu = new GuiHighscoreMenu(screen);
-
         TextGraphics graphics = mock(TextGraphics.class);
         when(screen.newTextGraphics()).thenReturn(graphics);
 
-        guiHighscoreMenu.draw();
+        gui.draw();
 
         verify(graphics,times(1)).setBackgroundColor(TextColor.Factory.fromString("#006600"));
         verify(graphics,times(2)).enableModifiers(SGR.BOLD);

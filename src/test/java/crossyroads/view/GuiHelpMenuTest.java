@@ -7,6 +7,7 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.TerminalScreen;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -16,24 +17,27 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class GuiHelpMenuTest {
+    TerminalScreen screen;
+    GuiHelpMenu gui;
+
+    @Before
+    public void init() {
+        screen = mock(TerminalScreen.class);
+        gui = new GuiHelpMenu(screen);
+    }
+
     @Test
     public void getScreen() {
-        TerminalScreen screen = mock(TerminalScreen.class);
-        GuiHelpMenu gui = new GuiHelpMenu(screen);
-
         assertEquals(screen, gui.getScreen());
     }
 
     @Test
     public void commandTest() throws IOException {
-        TerminalScreen screen = mock(TerminalScreen.class);
-        GuiHelpMenu gui = new GuiHelpMenu(screen);
-
         when(screen.readInput()).thenReturn(new KeyStroke(Enter));
         assertEquals(GuiHelpMenu.COMMAND.NOTHING, gui.getNextCommand());
 
         when(screen.readInput()).thenReturn(new KeyStroke(Escape));
-        assertEquals(GuiHelpMenu.COMMAND.BACK, gui.getNextCommand());
+        assertEquals(GuiHelpMenu.COMMAND.EXIT, gui.getNextCommand());
 
         when(screen.readInput()).thenReturn(KeyStroke.fromString("1"));
         assertEquals(GuiHelpMenu.COMMAND.PLAY, gui.getNextCommand());
@@ -43,9 +47,6 @@ public class GuiHelpMenuTest {
 
     @Test
     public void draw() throws IOException {
-        TerminalScreen screen = mock(TerminalScreen.class);
-        GuiHelpMenu gui = new GuiHelpMenu(screen);
-
         TextGraphics graphics = mock(TextGraphics.class);
         when(screen.newTextGraphics()).thenReturn(graphics);
 
