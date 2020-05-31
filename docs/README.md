@@ -36,8 +36,8 @@ Este projeto foi desenvolvido por: Ana Teresa Cruz (up201806460@fe.up.pt), Andr�
     
 - **Níveis:** o jogo consiste em 5 níveis com dificuldade, número de veículos e moedas crescente.
 
-    [![Image from Gyazo](https://i.gyazo.com/02c2b3ea39ff5c4141b46e27d7e9cf93.gif)](https://gyazo.com/02c2b3ea39ff5c4141b46e27d7e9cf93)
-    
+    [![Image from Gyazo](https://i.gyazo.com/05f51c4294a84e159cef5017b4b905e1.gif)](https://gyazo.com/05f51c4294a84e159cef5017b4b905e1)
+        
 - **Mensagens da _performance_:** no final de uma partida é apresentada uma mensagem no ecrã dizendo se o jogador ganhou ou perdeu e alguns aspetos da sua partida, como por exemplo, o _score_.
 
     [![Image from Gyazo](https://i.gyazo.com/2120d77c1c2d9f21689fc52c5bfeb34d.png)](https://gyazo.com/2120d77c1c2d9f21689fc52c5bfeb34d)             [![Image from Gyazo](https://i.gyazo.com/2e2f73aa67d34f56eed39d272c88d585.png)](https://gyazo.com/2e2f73aa67d34f56eed39d272c88d585)
