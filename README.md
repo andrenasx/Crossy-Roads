@@ -7,8 +7,7 @@ O utilizador controla uma "galinha" através das setas do teclado, tendo como ob
 
 ### - Project Demo
 
-
-
+![demo](./docs/project_demo/demo.gif)
 
 ### - Contribuidores
 
